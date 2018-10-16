@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="GBK">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>门户管理</title>
+    <link rel="stylesheet" href="/static/js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/modules/portal/portalManage/css/index.css?20180516">
+    <link href="/static/js/jquery-1.10.2/jquery-ui/css/flick/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="/static/js/jCrop/jquery.Jcrop.min.css" />
+    <script src="/static/js/jquery-1.10.2/jquery.min.js"></script>
+    <script src="/static/js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery-1.10.2/template/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-1.10.2/jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/static/js/webuploader/webuploader.js"></script>
+    <script src="/static/js/jCrop/jquery.Jcrop.min.js"></script>
+    <script src="/static/js/module.js"></script>
+    <script src="/static/modules/portal/portalManage/portal.js"></script>
+
+</head>
+<body>
+    <div class="portal_table_box">
+        <button class="btn btn-primary build_btn" type="button" onClick="portalManage.buildNew()">新建门户</button>
+        <button class="btn build_btn" type="button" id="dra_btn" onClick="portalManage.draggableHandle()">调整排序</button>
+        <table class="table table-bordered">
+            <thead id="portal_head">
+                <tr>
+                    <th width="230">门户名称</th>
+                    <th width="100">创建人</th>
+                    <th width="180">创建时间</th>
+                    <th width="100">状态</th>
+                    <th class="span3">操作</th>
+                </tr>
+            </thead>
+            <tbody id="sortable" class="portal_tbody">
+            </tbody>
+            <script id="portal_tpl" type="text/x-jquery-tmpl">
+                {{if data_info.length != 0}}
+                    {{each(i,item) data_info}}
+                        <tr id=${item.portal_id} class="portal_tr">  
+                            <td>${item.portal_name}</td>  
+                            <td>${item.creator}</td>  
+                            <td>${item.create_time}</td>  
+                            {{if item.use_flag == 1}}
+                                <td class="use_status">启用</td>
+                            {{else}}
+                                <td class="no_use">停用</td>
+                            {{/if}}  
+                            <td class="porHandle">
+                                <div class="maskTd hide"></div>
+                                    <span class="handle_btn" onClick="portalManage.cloneModalShow(${item.portal_id},${item.is_new})">克隆</span>
+                                {{if item.use_power != 0}}
+                                    {{if item.use_flag == 1}}
+                                        <span class="handle_btn" onClick="portalManage.changeStatus(${item.portal_id})">停用</span>
+                                    {{else}}
+                                        <span class="handle_btn" onClick="portalManage.changeStatus(${item.portal_id})">启用</span>
+                                    {{/if}}
+                                    <span class="handle_btn" onClick="portalManage.editModalShow(${item.portal_id})">编辑</span>
+                                    <span class="handle_btn" onClick="portalManage.columnJump(${item.portal_id})">栏目管理</span>
+                                    <span class="log_del handle_btn" portal-id="${item.portal_id}" onClick="portalManage.delPortal(${item.portal_id})">删除</span>
+                                    <span class="handle_btn" onClick="portalManage.jump(${item.portal_id})">设计</span>
+                                {{/if}}  
+                            </td>  
+                        </tr>
+                    {{/each}}
+                {{else}}
+                    <tr>
+                        <td style="text-align:center;" colspan="5" >暂无数据</td>
+                    </tr>
+                {{/if}}
+            </script>
+        </table>
+        <!-- 编辑模态框 -->
+        <div class="modal hide fade" id="editModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4>门户编辑</h4>
+                    </div>
+                    <div class="modal-body" id="edit_box"></div>
+                    <div class="modal-footer">
+                        <button href="#" class="btn" onClick="portalManage.editModalHide()">关闭</button>
+                        <button href="#" class="btn btn-primary" onClick="portalManage.setEditInfo()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 克隆模态框 -->
+        <div class="modal hide fade" id="cloneModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4>克隆门户</h4>
+                    </div>
+                    <div class="modal-body" id="clone_box">
+                        <div id="clone_div">
+                            <input type="hidden" name="portal_id">
+                            <input type="hidden" name="is_new">
+                            <span id="clone_content">
+                                <span>模板名称:</span>
+                                <input type="text" name="cloneName">
+                            </span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button href="#" class="btn" onClick="portalManage.cloneModalHide()">关闭</button>
+                        <button href="#" class="btn btn-primary" onClick="portalManage.cloneSubmit()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script id="portal_edit" type="text/x-jquery-tmpl">
+            <ul id="edit_ul">
+                <li>
+                    门户名称: <input type="text" id="portal_name" value="${portal_name}"/>
+                    <input type="hidden" id="portal_id" value="${portal_id}">
+                </li>
+                <li>
+                    门户图标: <img src="${portal_icon_url}" alt="" id="portal_icon" onClick="portalManage.iconModalShow()">
+                </li>
+                <li>
+                    状&nbsp;&nbsp;态: 
+                    <span id="portal_status">
+                    {{if use_flag == 1}}
+                        <input type="radio" class="status_radio" name="status" checked="true" value="1" onClick="">启用 
+                        <input type="radio" class="status_radio status_stop" name="status" value="0" onClick="">停用
+                    {{else}}
+                        <input type="radio" class="status_radio" name="status" value="1" onClick="">启用 
+                        <input type="radio" class="status_radio status_stop" name="status" value="0" checked="true" onClick="">停用
+                    {{/if}}  
+                    </span>
+                </li>
+                <li>
+                    访问权限:
+                    <span id="portal_power">
+                        {{if access_flag == 0}}
+                            <input type="radio" class="power_status" name="power" value="0" checked="true" onChange="portalManage.changeOutPower(value)">所有OA用户可访问
+                            <input type="radio" class="power_status no_limit" name="power" value="1" onChange="portalManage.changeOutPower(value)">无身份限制(外部人员可访问)
+                            <input type="radio" class="power_status" name="power" value="2" onChange="portalManage.changeOutPower(value)">指定访问权限
+                        {{else access_flag == 1}}
+                            <input type="radio" class="power_status" name="power" value="0" onChange="portalManage.changeOutPower(value)">所有OA用户可访问
+                            <input type="radio" class="power_status no_limit" name="power" value="1" checked="true" onChange="portalManage.changeOutPower(value)">无身份限制(外部人员可访问)
+                            <input type="radio" class="power_status" name="power" value="2" onChange="portalManage.changeOutPower(value)">指定访问权限
+                        {{else}}
+                            <input type="radio" class="power_status" name="power" value="0" onChange="portalManage.changeOutPower(value)">所有OA用户可访问
+                            <input type="radio" class="power_status no_limit" name="power" value="1" onChange="portalManage.changeOutPower(value)">无身份限制(外部人员可访问)
+                            <input type="radio" class="power_status" name="power" checked="true" value="2" onChange="portalManage.changeOutPower(value)">指定访问权限
+                        {{/if}} 
+                    
+                    </span>
+                </li>
+                <li class="powerList hide">
+                    <span style="float:left;margin-top:24px;">部门选择:</span>
+                    <div class="span6 power_margin">
+                        <input type="hidden" name="DEPT_IDS" id="DEPT_IDS" value="${deptIds}">
+                        <textarea name="DEPT_NAMES" id="DEPT_NAMES" rows="3"  class="SmallStatic text_style" wrap="yes" readonly>${deptNames}</textarea>
+                        <span href="#" class="orgAdd power_btn" onClick="SelectDept('','DEPT_IDS','DEPT_NAMES','','form1','1')" title='添加管理员'>添加</span>
+                        <span href="#" class="orgClear power_btn" onClick="ClearUser('DEPT_IDS', 'DEPT_NAMES')" title='清空管理员'>清空</span>
+                    </div>
+                </li>
+                <li class="powerList hide">
+                    <span style="float:left;margin-top:24px;">角色选择:</span>
+                    <div class="span6 power_margin">
+                        <input type="hidden" name="PRIV_IDS" id="PRIV_IDS" value="${privIds}">
+                        <textarea name="PRIV_NAMES" id="PRIV_NAMES" rows="3"  class="SmallStatic text_style" wrap="yes" readonly>${privNames}</textarea>
+                        <span href="#" class="orgAdd power_btn" onClick="SelectPriv('','PRIV_IDS', 'PRIV_NAMES', '', 'form1', '1')" title="添加管理员">添加</span>
+                        <span href="#" class="orgClear power_btn" onClick="ClearUser('PRIV_IDS', 'PRIV_NAMES')" title="清空管理员">清空</span>
+                    </div> 
+                </li>
+                <li class="powerList hide">
+                    <span style="float:left;margin-top:24px;">人员选择:</span>
+                    <div class="span6 power_margin">
+                        <input type="hidden" name="USER_IDS" id="USER_IDS" value="${userIds}">
+                        <textarea name="USER_NAMES" id="USER_NAMES" rows="3"  class="SmallStatic text_style" wrap="yes" readonly>${userNames}</textarea>
+                        <span href="#" class="orgAdd power_btn" onClick="SelectUser('133','','USER_IDS', 'USER_NAMES', '', 'form1', '1')" title='添加管理员'>添加</span>
+                        <span href="#" class="orgClear power_btn" onClick="ClearUser('USER_IDS', 'USER_NAMES')" title='清空管理员'>清空</span>
+                    </div>
+                </li>
+                <li id="powerFilter">
+                    <span style="float:left;margin-top:24px;">管理权限:</span>
+                    <div class="span6 power_margin">
+                        <input type="hidden" name="POWER_USER_IDS" id="POWER_USER_IDS" value="${manageIds}">
+                        <textarea name="POWER_USER_NAMES" id="POWER_USER_NAMES" rows="3"  class="SmallStatic text_style" wrap="yes" readonly>${manageNames}</textarea>
+                        <span href="#" class="orgAdd power_btn" onClick="SelectUser('133','','POWER_USER_IDS', 'POWER_USER_NAMES', '', 'form1', '1')" title='添加管理员'>添加</span>
+                        <span href="#" class="orgClear power_btn" onClick="ClearUser('POWER_USER_IDS', 'POWER_USER_NAMES')" title='清空管理员'>清空</span>
+                    </div>
+
+                </li>
+                <li>
+                    <span style="float:left;">操作日志记录:</span>
+                    <span id="portal_keep">
+                        {{if log_keep_time == 0}}
+                            <input type="radio" class="power_status" name="keepTime" value="3" onChange="portalManage.changeLogKeep(value)">保留3个月
+                            <input type="radio" class="power_status no_limit" name="keepTime" checked="true" value="0" onChange="portalManage.changeLogKeep(value)">不允许删除
+                            <div class="setKeepTime">
+                                <input type="radio" class="power_status" name="keepTime" id="readyTime" value="2" onChange="portalManage.changeLogKeep(value)" /><span class="appTime">保留</span><span class="mouthKeep" ><input type="text" id="keep_power" value="1" onChange="portalManage.keepTimeFilter(value)" disabled="true" />个月</span>
+                            </div>
+                        {{else log_keep_time == 3}}
+                            <input type="radio" class="power_status" name="keepTime" checked="true" onChange="portalManage.changeLogKeep(value)" value="3">保留3个月
+                            <input type="radio" class="power_status no_limit" name="keepTime" onChange="portalManage.changeLogKeep(value)" value="0">不允许删除
+                            <div class="setKeepTime">
+                                <input type="radio" class="power_status" name="keepTime" id="readyTime" value="2" onChange="portalManage.changeLogKeep(value)" /><span class="appTime">保留</span><span class="mouthKeep" ><input type="text" id="keep_power" value="1" onChange="portalManage.keepTimeFilter(value)" disabled="true"/>个月</span>
+                            </div>
+                        {{else}}
+                            <input type="radio" class="power_status" name="keepTime" onChange="portalManage.changeLogKeep(value)" value="3">保留3个月
+                            <input type="radio" class="power_status no_limit" name="keepTime"  onChange="portalManage.changeLogKeep(value)" value="0">不允许删除
+                            <div class="setKeepTime">
+                                <input type="radio" class="power_status" name="keepTime" id="readyTime" checked="true" value="1" onChange="portalManage.changeLogKeep(value)" /><span class="appTime">保留</span><span class="mouthKeep" ><input type="text" id="keep_power" value="${log_keep_time}" onChange="portalManage.keepTimeFilter(value)"/>个月</span>
+                            </div>
+                        {{/if}} 
+                    </span>
+                </li>
+            </ul>
+        </script>
+        
+        <div class="modal hide fade" id="iconModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onClick="portalManage.iconModalHide()">&times;</button>
+                        <h4>图标编辑</h4>
+                    </div>
+                    <div class="modal-body" id="icon_box">
+                        <div class="cropper-content">
+                            <div class="select-icon">
+                                <h4>选择门户图标</h4>
+                                <ul id="icon-list">
+                                    <li>
+                                        <img src="/static/portal/index/icons/png8/0.png" draggable="false" alt="" onClick="portalManage.getSystemIcon(0,event)">
+                                    </li>
+                                    <li>
+                                        <img src="/static/portal/index/icons/png8/1.png" draggable="false" alt="" onClick="portalManage.getSystemIcon(1,event)">
+                                    </li>
+                                    <li>
+                                        <img src="/static/portal/index/icons/png8/2.png" draggable="false" alt="" onClick="portalManage.getSystemIcon(2,event)">
+                                    </li>
+                                    <li>
+                                        <img src="/static/portal/index/icons/png8/3.png" draggable="false" alt="" onClick="portalManage.getSystemIcon(3,event)">
+                                    </li>
+                                    <li>
+                                        <img src="/static/portal/index/icons/png8/4.png" draggable="false" alt="" onClick="portalManage.getSystemIcon(4,event)">
+                                    </li>
+                                    <li>
+                                        <img src="/static/portal/index/icons/png8/5.png" draggable="false" alt="" onClick="portalManage.getSystemIcon(5,event)">
+                                    </li>
+                                    <li>
+                                        <img src="/static/portal/index/icons/png8/6.png" draggable="false" alt="" onClick="portalManage.getSystemIcon(6,event)">
+                                    </li>
+                                </ul>
+                                <div class="upload-icon">
+                                    <div class="left">
+                                        <h4>上传门户图标</h4>
+                                        <div class="filePicker" id="avatarPick">
+                                            <button>
+                                                <span class="icon-arrow-up up-icon-btn"></span>上传图片
+                                            </button>
+                                            
+                                        </div>
+                                        <p>只支持jpg、png，大小不超过1M</p>
+                                    </div>
+                                    <div class="right">
+                                        <img draggable="false" src="" id="otherImg" onClick="portalManage.getSystemIcon(7)"/>
+                                    </div>
+                                    <br style="clear:both" />
+                                </div>
+                            </div>
+                            <br style="clear:both"/>
+                        </div>
+                        <div id="new-portrait-wrapper">
+                            <div class="portrait-content">
+        
+                            </div>
+                            <div class="portrait-slide-bar">
+                                <h4 style="marginBottom:10">预览</h4>
+                                <div class="avatar-small-wrapper">
+                                    <img class="avatar-small" src="" />
+                                </div>
+                            </div>
+                            <br style="clear: both" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button href="#" class="btn" onClick="portalManage.iconModalHide()">取消</button>
+                        <button href="#" class="btn btn-primary" onClick="portalManage.submitIcon()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+    <meta name="renderer" content="ie-stand">
+    <meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+
+    <title>表单设计器</title>
+    <!--[if lt IE 8]>
+	<script src="/static/js/ietip.js"></script>
+    <![endif]-->
+    <link href="/static/js/jquery1.12/jquery-ui.min.css" rel="stylesheet">
+    <link href="/static/js/jquery1.12/jquery.contextMenu.min.css" rel="stylesheet">
+    <link href="/static/js/antd/1.11.0/antd.css" rel="stylesheet">
+    <link href="/module/formbuilder/css/main.css" rel="stylesheet">
+
+
+    <script src="/static/js/jquery1.12/jquery1.12.4.min.js"></script>
+    <script src="/static/js/jquery1.12/jquery-ui-1.12.0.min.js"></script>
+    <script src="/static/js/jquery1.12/jquery.contextMenu.2.2.3.min.js"></script>
+	<script charset="utf-8" src="/module/formbuilder/js/formbuildercfg.js?20180309"></script>
+  </head>
+  <body>
+    <div id="root">
+      <app :config-view="configView" :config-data="configData"></app>
+    </div>
+    <script src="/module/formbuilder/js/main.js?20180115"></script>
+  </body>
+</html>

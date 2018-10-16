@@ -1,0 +1,99 @@
+<!--startprint--><style>
+<!--
+	  table { border-collapse:collapse; page-break-after:always }
+	  .gridlines td { border:0px dotted black }
+	  .b { text-align:center }
+	  .e { text-align:center }
+	  .f { text-align:right }
+	  .inlineStr { text-align:left }
+	  .n { text-align:right }
+	  .s { text-align:left }
+	  td.style0 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style1 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style2 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style3 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  table.sheet0 col.col0 { width:72pt }
+	  table.sheet0 col.col1 { width:72pt }
+	  table.sheet0 col.col2 { width:72pt }
+	  table.sheet0 col.col3 { width:63.749977546221pt }
+	  table.sheet0 col.col4 { width:72pt }
+	  table.sheet0 col.col5 { width:72pt }
+	  table.sheet0 col.col6 { width:72pt }
+	  table.sheet0 tr { height:16.363636363636pt }
+-->
+  td.selected {cursor:pointer;}
+  td.selected2 {cursor:pointer;}
+  tr.selected {background-color:#D0DEEB;}
+</style>
+<img id="loading" src="/static/images/loading.gif" style="z-index:999;position:absolute;display:none;"><div id='showdiv' align='center' ><form name='my_form' method='post' enctype='multipart/form-data' action='' target=''><style>
+@page { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+body { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+</style>
+	<table border="0" style="border-collapse:collapse;table-layout:fixed;width:63.749977546221pt" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+		<col class="col0">
+		<col class="col1">
+		<col class="col2">
+		<col class="col3">
+		<col class="col4">
+		<col class="col5">
+		<col class="col6">
+		<tbody>
+		  <tr class="row0" id="row0">
+			<td class="column0">&nbsp;</td>
+			<td class="column1 style3 null"></td>
+			<td class="column2 style2 null"></td>
+			<td class="column3">&nbsp;</td>
+			<td class="column4">&nbsp;</td>
+			<td class="column5">&nbsp;</td>
+			<td class="column6">&nbsp;</td>
+		  </tr>
+		  <tr class="row1" id="row1">
+			<td class="column0 style2 null"></td>
+			<td class="column1 style3 s">商品</td>
+			<td class="column2 style3 null"></td>
+			<td class="column3 style3 s">仓库</td>
+			<td class="column4 style3 null"></td>
+			<td class="column5 style2 null"></td>
+			<td class="column6">&nbsp;</td>
+		  </tr>
+		  <tr class="row2" id="row2">
+			<td class="column0">&nbsp;</td>
+			<td class="column1 style3 s">批号</td>
+			<td class="column2 style3 s">数量</td>
+			<td class="column3 style3 s">单价</td>
+			<td class="column4 style3 s">金额</td>
+			<td class="column5 style3 s">生产日期</td>
+			<td class="column6">&nbsp;</td>
+		  </tr>
+		  <tr class="row3" id="row3">
+			<td class="column0">&nbsp;</td>
+			<td class="column1 style3 null"></td>
+			<td class="column2 style3 null"></td>
+			<td class="column3 style3 null"></td>
+			<td class="column4 style3 null"></td>
+			<td class="column5 style3 null"></td>
+			<td class="column6">&nbsp;</td>
+		  </tr>
+		  <tr class="row4" id="row4">
+			<td class="column0">&nbsp;</td>
+			<td class="column1 style2 s">合计</td>
+			<td class="column2 style2 f">=SUM(C$4:C4)</td>
+			<td class="column3 style2 f">=IF(C5=0,0,E5/C5)</td>
+			<td class="column4 style2 f">=SUM(E$4:E4)</td>
+			<td class="column5 style2 null"></td>
+			<td class="column6">&nbsp;</td>
+		  </tr>
+		  <tr class="row5" id="row5">
+			<td class="column0">&nbsp;</td>
+			<td class="column1">&nbsp;</td>
+			<td class="column2">&nbsp;</td>
+			<td class="column3 style2 null"></td>
+			<td class="column4 style2 null"></td>
+			<td class="column5">&nbsp;</td>
+			<td class="column6">&nbsp;</td>
+		  </tr>
+		</tbody>
+	</table>
+</form></div><!--endprint--><div id="id_select" style="width: 250px;height:250px;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"></div><div id="_all_map" style="left:0px;top:0px;width: 100%;height:80%;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"><span style="font-size: 12px;float: right;cursor: pointer;" onclick=""><b>关闭</b></span></div>  </body>
+</html>
+<script language='javascript'>var obj = $("span[id^='id_select']", window.top.document); if($(obj).length > 0){obj.remove();}</script>

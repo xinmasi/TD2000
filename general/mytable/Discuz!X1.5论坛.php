@@ -1,0 +1,13 @@
+<?
+$MODULE_FUNC_ID="";
+$MODULE_DESC=_("Discuz!X1.5 - д╛хо╟Ф©И");
+$MODULE_BODY=$MODULE_OP="";
+$MODULE_HEAD_CLASS = 'bbs';
+
+$DISCUZ_API_URL='';
+
+if($MODULE_FUNC_ID=="" || find_id($USER_FUNC_ID_STR, $MODULE_FUNC_ID))
+{
+   $MODULE_BODY.=$DISCUZ_API_URL;
+}
+?>

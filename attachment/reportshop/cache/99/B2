@@ -1,0 +1,215 @@
+<!--startprint--><style>
+<!--
+	  table { border-collapse:collapse; page-break-after:always }
+	  .gridlines td { border:0px dotted black }
+	  .b { text-align:center }
+	  .e { text-align:center }
+	  .f { text-align:right }
+	  .inlineStr { text-align:left }
+	  .n { text-align:right }
+	  .s { text-align:left }
+	  td.style0 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:transparent }
+	  td.style1 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:transparent }
+	  td.style2 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:none #000000; border-left:none #000000; border-right:none #000000; font-weight:bold; color:#0000FF; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style3 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:#CCFFFF }
+	  td.style4 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:transparent }
+	  td.style5 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; font-weight:bold; color:#000000; font-family:'宋体'; font-size:9pt; background-color:#C0C0C0 }
+	  td.style6 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:transparent }
+	  td.style7 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:#C0C0C0 }
+	  td.style8 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; font-weight:bold; color:#000000; font-family:'宋体'; font-size:9pt; background-color:#C0C0C0 }
+	  td.style9 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:transparent }
+	  td.style10 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; font-weight:bold; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:#C0C0C0 }
+	  td.style11 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:transparent }
+	  td.style12 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:transparent }
+	  td.style13 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:transparent }
+	  td.style14 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:1px solid #000000 !important; border-right:none #000000; color:#000000; font-family:'Tahoma'; font-size:8pt; background-color:transparent }
+	  table.sheet0 col.col0 { width:29.249989697678pt }
+	  table.sheet0 col.col1 { width:31.499988905191pt }
+	  table.sheet0 col.col2 { width:42.74998494276pt }
+	  table.sheet0 col.col3 { width:45.749983886111pt }
+	  table.sheet0 col.col4 { width:17.249993924271pt }
+	  table.sheet0 col.col5 { width:72pt }
+	  table.sheet0 col.col6 { width:37.499986791895pt }
+	  table.sheet0 col.col7 { width:44.999984150273pt }
+	  table.sheet0 col.col8 { width:74.249973847951pt }
+	  table.sheet0 col.col9 { width:58.499979395355pt }
+	  table.sheet0 col.col10 { width:74.249973847951pt }
+	  table.sheet0 col.col11 { width:58.499979395355pt }
+	  table.sheet0 col.col12 { width:51.749981772814pt }
+	  table.sheet0 col.col13 { width:51.749981772814pt }
+	  table.sheet0 col.col14 { width:51.749981772814pt }
+	  table.sheet0 col.col15 { width:35.999987320219pt }
+	  table.sheet0 col.col16 { width:43.499984678598pt }
+	  table.sheet0 col.col17 { width:35.999987320219pt }
+	  table.sheet0 col.col18 { width:35.999987320219pt }
+	  table.sheet0 col.col19 { width:35.999987320219pt }
+	  table.sheet0 col.col20 { width:47.999983093625pt }
+	  table.sheet0 col.col21 { width:2.2499992075137pt }
+	  table.sheet0 tr { height:10.909090909091pt }
+	  table.sheet0 tr.row0 { height:26.4pt }
+	  table.sheet0 tr.row1 { height:20.4pt }
+	  table.sheet0 tr.row2 { height:13.6pt }
+	  table.sheet0 tr.row3 { height:18.1pt }
+	  table.sheet0 tr.row4 { height:10.55pt }
+	  table.sheet0 tr.row5 { height:10.55pt }
+-->
+  td.selected {cursor:pointer;}
+  td.selected2 {cursor:pointer;}
+  tr.selected {background-color:#D0DEEB;}
+</style>
+<img id="loading" src="/static/images/loading.gif" style="z-index:999;position:absolute;display:none;"><div id='showdiv' align='center' ><form name='my_form' method='post' enctype='multipart/form-data' action='' target=''><style>
+@page { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+body { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+</style>
+	<table border="0" style="border-collapse:collapse;table-layout:fixed;width:907.49968036385pt" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+		<col class="col0">
+		<col class="col1">
+		<col class="col2">
+		<col class="col3">
+		<col class="col4">
+		<col class="col5">
+		<col class="col6">
+		<col class="col7">
+		<col class="col8">
+		<col class="col9">
+		<col class="col10">
+		<col class="col11">
+		<col class="col12">
+		<col class="col13">
+		<col class="col14">
+		<col class="col15">
+		<col class="col16">
+		<col class="col17">
+		<col class="col18">
+		<col class="col19">
+		<col class="col20">
+		<col class="col21">
+		<tbody>
+		  <tr class="row0" id="row0">
+			<td class="column0 style2 s style2" colspan="21">责任业务日销售表</td>
+			<td class="column21">&nbsp;</td>
+		  </tr>
+		  <tr class="row1" id="row1">
+			<td class="column0 style3 s">序号</td>
+			<td class="column1 style3 s">城市</td>
+			<td class="column2 style3 s">负责人</td>
+			<td class="column3 style3 s">系统</td>
+			<td class="column4 style3 s">门店</td>
+			<td class="column5 style3 s">责任业务</td>
+			<td class="column6 style3 s">导购</td>
+			<td class="column7 style3 s">导购电话</td>
+			<td class="column8 style3 s">瓶装兴安岭椴树花蜜</td>
+			<td class="column9 style3 s">瓶装塞外槐花蜜</td>
+			<td class="column10 style3 s">瓶装长白山野荆花蜜</td>
+			<td class="column11 style3 s">瓶装塞外枣花蜜</td>
+			<td class="column12 style3 s">结晶蜂蜜720g</td>
+			<td class="column13 style3 s">结晶蜂蜜240g</td>
+			<td class="column14 style3 s">牛奶伴侣450g</td>
+			<td class="column15 style3 s">盒装900g</td>
+			<td class="column16 style3 s">儿童装270g</td>
+			<td class="column17 style3 s">盒装270g</td>
+			<td class="column18 style3 s">软装300g</td>
+			<td class="column19 style3 s">盒装300g</td>
+			<td class="column20 style3 s">礼品装1500g</td>
+			<td class="column21 style14 null"></td>
+		  </tr>
+		  <tr class="row2" id="row2">
+			<td class="column0 style4 null"></td>
+			<td class="column1 style4 null"></td>
+			<td class="column2 style4 null"></td>
+			<td class="column3 style4 null"></td>
+			<td class="column4 style9 null"></td>
+			<td class="column5 style4 null"></td>
+			<td class="column6 style4 null"></td>
+			<td class="column7 style4 null"></td>
+			<td class="column8 style12 null"></td>
+			<td class="column9 style4 null"></td>
+			<td class="column10 style4 null"></td>
+			<td class="column11 style4 null"></td>
+			<td class="column12 style4 null"></td>
+			<td class="column13 style4 null"></td>
+			<td class="column14 style4 null"></td>
+			<td class="column15 style4 null"></td>
+			<td class="column16 style4 null"></td>
+			<td class="column17 style4 null"></td>
+			<td class="column18 style4 null"></td>
+			<td class="column19 style4 null"></td>
+			<td class="column20 style4 null"></td>
+			<td class="column21 style14 null"></td>
+		  </tr>
+		  <tr class="row3" id="row3">
+			<td class="column0 style5 s style5" colspan="2">填写日期：</td>
+			<td class="column2 style7 null"></td>
+			<td class="column3 style8 s">填写人：</td>
+			<td class="column4 style10 null"></td>
+			<td class="column5 style11 null"></td>
+			<td class="column6 style11 null"></td>
+			<td class="column7 style11 null"></td>
+			<td class="column8 style11 null"></td>
+			<td class="column9 style11 null"></td>
+			<td class="column10 style11 null"></td>
+			<td class="column11 style11 null"></td>
+			<td class="column12 style11 null"></td>
+			<td class="column13 style11 null"></td>
+			<td class="column14 style11 null"></td>
+			<td class="column15 style11 null"></td>
+			<td class="column16 style11 null"></td>
+			<td class="column17 style11 null"></td>
+			<td class="column18 style11 null"></td>
+			<td class="column19 style13 null"></td>
+			<td class="column20 style13 null"></td>
+			<td class="column21">&nbsp;</td>
+		  </tr>
+		  <tr class="row4" id="row4">
+			<td class="column0 style6 s">简要说明：</td>
+			<td class="column1">&nbsp;</td>
+			<td class="column2">&nbsp;</td>
+			<td class="column3">&nbsp;</td>
+			<td class="column4">&nbsp;</td>
+			<td class="column5">&nbsp;</td>
+			<td class="column6">&nbsp;</td>
+			<td class="column7">&nbsp;</td>
+			<td class="column8">&nbsp;</td>
+			<td class="column9">&nbsp;</td>
+			<td class="column10">&nbsp;</td>
+			<td class="column11">&nbsp;</td>
+			<td class="column12">&nbsp;</td>
+			<td class="column13">&nbsp;</td>
+			<td class="column14">&nbsp;</td>
+			<td class="column15">&nbsp;</td>
+			<td class="column16">&nbsp;</td>
+			<td class="column17">&nbsp;</td>
+			<td class="column18">&nbsp;</td>
+			<td class="column19">&nbsp;</td>
+			<td class="column20">&nbsp;</td>
+			<td class="column21">&nbsp;</td>
+		  </tr>
+		  <tr class="row5" id="row5">
+			<td class="column0">&nbsp;</td>
+			<td class="column1">&nbsp;</td>
+			<td class="column2">&nbsp;</td>
+			<td class="column3">&nbsp;</td>
+			<td class="column4">&nbsp;</td>
+			<td class="column5">&nbsp;</td>
+			<td class="column6">&nbsp;</td>
+			<td class="column7">&nbsp;</td>
+			<td class="column8">&nbsp;</td>
+			<td class="column9">&nbsp;</td>
+			<td class="column10">&nbsp;</td>
+			<td class="column11">&nbsp;</td>
+			<td class="column12">&nbsp;</td>
+			<td class="column13">&nbsp;</td>
+			<td class="column14">&nbsp;</td>
+			<td class="column15">&nbsp;</td>
+			<td class="column16">&nbsp;</td>
+			<td class="column17">&nbsp;</td>
+			<td class="column18">&nbsp;</td>
+			<td class="column19">&nbsp;</td>
+			<td class="column20">&nbsp;</td>
+			<td class="column21">&nbsp;</td>
+		  </tr>
+		</tbody>
+	</table>
+</form></div><!--endprint--><div id="id_select" style="width: 250px;height:250px;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"></div><div id="_all_map" style="left:0px;top:0px;width: 100%;height:80%;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"><span style="font-size: 12px;float: right;cursor: pointer;" onclick=""><b>关闭</b></span></div>  </body>
+</html>
+<script language='javascript'>var obj = $("span[id^='id_select']", window.top.document); if($(obj).length > 0){obj.remove();}</script>

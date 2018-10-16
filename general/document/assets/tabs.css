@@ -1,0 +1,103 @@
+body {
+	overflow: hidden; margin: 0 px;
+	padding: 0px;
+}
+
+div,ul,li {
+	margin: 0px;
+	padding: 0px;
+}
+
+.tab {
+	list-style-type: none;
+	height: 30px;
+	float: left;
+}
+
+.tab li {
+	float: left;
+	cursor: pointer;
+	font-size: 14px;
+	text-align: center;
+	font-weight: bold;
+	width: 90px;
+	padding-left: 3px;
+}
+
+.tab li.left {
+	background: url('/static/images/folder_tabs_bg.png') left top no-repeat;
+}
+
+.tab li.right {
+	background: url('/static/images/folder_tabs_bg.png') right top no-repeat;
+}
+
+.tab li span {
+	padding-top: 8px;
+	display: block;
+	color: #383838;
+	height: 22px;
+	line-height: 22px;
+	cursor: pointer;
+}
+
+.tab li.tab_on {
+	background: url('/static/images/folder_tabs_bg.png') left -30px no-repeat;
+	border: none;
+}
+
+.tab li.tab_on span {
+	color: #383838 !important;
+	background: url('/static/images/folder_tabs_bg.png') right -60px no-repeat;
+}
+
+#tab {
+	height: 30px;
+	line-height: 30px;
+	width: 100%;
+}
+
+#content {
+	background: #ffffff;
+	border-left: 1px #cccccc solid;
+	border-right: 1px #cccccc solid;
+	overflow: auto;
+	clear: both;
+}
+/*
+ * 原文件中style
+ */
+#op {
+	position: absolute;
+	right: 10px;
+	top: 8px;
+}
+
+#document,#aip {
+	display: none;
+}
+#attach{
+	display: none;
+}
+.red {
+	border: 1px #FF0000 solid;
+	font-size: 14px;
+	line-height: 30px;
+}
+
+.field {
+	border: 0px;
+	height: 25px;
+	padding: 5px 2px;
+	background: #ffffbb;
+}
+
+textarea .field {
+	border: 0px;
+	background: #ffffbb;
+	overflow-y: auto;
+}
+
+h1 {
+	color: #FF0000
+}

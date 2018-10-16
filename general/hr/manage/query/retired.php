@@ -1,0 +1,6 @@
+<?
+include_once("inc/auth.inc.php");
+
+$HTML_PAGE_TITLE = _("ÀëÍËÐÝÈËÔ±");
+include_once("user_retired.php");
+?>

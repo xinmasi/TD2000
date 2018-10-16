@@ -1,0 +1,92 @@
+<!--startprint--><style>
+<!--
+	  table { border-collapse:collapse; page-break-after:always }
+	  .gridlines td { border:0px dotted black }
+	  .b { text-align:center }
+	  .e { text-align:center }
+	  .f { text-align:right }
+	  .inlineStr { text-align:left }
+	  .n { text-align:right }
+	  .s { text-align:left }
+	  td.style0 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style1 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style2 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:3px double #000000 !important; border-top:none #000000; border-left:none #000000; border-right:none #000000; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:15pt; background-color:transparent }
+	  td.style3 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:3px double #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:#CCCCFF }
+	  td.style4 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style5 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style6 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style7 { padding-left:1px; padding-right:0px; vertical-align:middle; text-align:right; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style8 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:3px double #000000 !important; border-top:none #000000; border-left:none #000000; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:15pt; background-color:transparent }
+	  td.style9 { padding-left:1px; padding-right:0px; vertical-align:middle; text-align:right; border-bottom:3px double #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000080; font-family:'微软雅黑'; font-size:12pt; background-color:#C0C0C0 }
+	  td.style10 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:3px double #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000080; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style11 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:3px double #000000 !important; border-left:1px solid #000000 !important; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style12 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:1px solid #000000 !important; border-top:none #000000; border-left:1px solid #000000 !important; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style13 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:1px solid #000000 !important; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  table.sheet0 col.col0 { width:130.49995403579pt }
+	  table.sheet0 col.col1 { width:73.499974112113pt }
+	  table.sheet0 col.col2 { width:238.49991599645pt }
+	  table.sheet0 col.col3 { width:56.99997992368pt }
+	  table.sheet0 col.col4 { width:51.749981772814pt }
+	  table.sheet0 col.col5 { width:83.249970678006pt }
+	  table.sheet0 col.col6 { width:72pt }
+	  table.sheet0 tr { height:16.363636363636pt }
+	  table.sheet0 tr.row0 { height:33.95pt }
+	  table.sheet0 tr.row1 { height:0pt; display:none; visibility:hidden }
+	  table.sheet0 tr.row2 { height:0pt; display:none; visibility:hidden }
+	  table.sheet0 tr.row3 { height:15.85pt }
+-->
+  td.selected {cursor:pointer;}
+  td.selected2 {cursor:pointer;}
+  tr.selected {background-color:#D0DEEB;}
+</style>
+<img id="loading" src="/static/images/loading.gif" style="z-index:999;position:absolute;display:none;"><div id='showdiv' align='left' ><form name='my_form' method='post' enctype='multipart/form-data' action='' target=''><style>
+@page { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+body { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+</style>
+	<table border="0" style="border-collapse:collapse;table-layout:fixed;width:634.49977651885pt" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+		<col class="col0">
+		<col class="col1">
+		<col class="col2">
+		<col class="col3">
+		<col class="col4">
+		<col class="col5">
+		<col class="col6">
+		<tbody>
+		  <tr class="row0" id="row0">
+			<td class="column0 style2 s style8" colspan="3">各部门签订合同分析</td>
+			<td class="column3 style9 s style9" colspan="2">指定月度（默认全年）：</td>
+			<td class="column5 style10 null"></td>
+			<td class="column6 style13 null"></td>
+		  </tr>
+		  <tr class="row1" id="row1">
+			<td class="column0 style3 s">部门名称</td>
+			<td class="column1 style3 s">应收金额</td>
+			<td class="column2 style3 s">实到金额</td>
+			<td class="column3 style3 s">已确认金额</td>
+			<td class="column4 style3 s">待确认金额</td>
+			<td class="column5 style11 null"></td>
+			<td class="column6">&nbsp;</td>
+		  </tr>
+		  <tr class="row2" id="row2">
+			<td class="column0 style4 null"></td>
+			<td class="column1 style7 null"></td>
+			<td class="column2 style7 null"></td>
+			<td class="column3 style7 null"></td>
+			<td class="column4 style7 null"></td>
+			<td class="column5 style12 null"></td>
+			<td class="column6 style6 null"></td>
+		  </tr>
+		  <tr class="row3" id="row3">
+			<td class="column0 style5 null"></td>
+			<td class="column1 style5 null"></td>
+			<td class="column2 style5 null"></td>
+			<td class="column3 style5 null"></td>
+			<td class="column4 style5 null"></td>
+			<td class="column5 style5 null"></td>
+			<td class="column6">&nbsp;</td>
+		  </tr>
+		</tbody>
+	</table>
+</form></div><!--endprint--><div id="id_select" style="width: 250px;height:250px;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"></div><div id="_all_map" style="left:0px;top:0px;width: 100%;height:80%;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"><span style="font-size: 12px;float: right;cursor: pointer;" onclick=""><b>关闭</b></span></div>  </body>
+</html>
+<script language='javascript'>var obj = $("span[id^='id_select']", window.top.document); if($(obj).length > 0){obj.remove();}</script>

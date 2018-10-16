@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="GBK">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>门户日志管理</title>
+    <link rel="stylesheet" href="/static/js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/modules/portal/portalNotes/css/index.css">
+    <link rel="stylesheet" href="/static/js/jstree/dist/themes/default/style.min.css" />
+    <script src="/static/js/jquery-1.10.2/jquery.min.js"></script>
+    <script src="/static/js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery-1.10.2/template/jquery.tmpl.min.js"></script>
+    <script src="/static/js/bootstrap/paginator/bootstrap.paginator.js"></script>
+    <script type="text/javascript" src="/inc/js_lang.php"></script>
+    <script src="/static/js/jstree/dist/jstree.min.js"></script>
+    <script src="/module/DatePicker/WdatePicker.js"></script>
+    <script src="/static/modules/portal/portalNotes/notes.js"></script>
+</head>
+<body>
+    <div id="portalTree"></div>
+    <div id="welcome">
+        <div id="welcome_div">
+            <h4>欢迎使用门户日志管理</h4>
+        </div>
+    </div>
+    <div class="logs_table_box hide">
+        <button class="btn btn-primary del_btn" type="button" onClick="logManage.delQuery()">批量删除</button>
+        <div class="input-append mar_left">
+            <input type="text" class="span2 search-query" id="searchInp" placeholder="请按内容搜索">
+            <button type="submit" class="btn" onClick="logManage.searchInfo()">搜索</button>
+        </div>
+        <div class="time_box">
+            <input type="text" id="beginTime" name="start" class="span2" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'#F{$dp.$D(\'endTime\')}'})"  placeholder="请选择起始时间">
+            <span class="time_line"> - </span>
+            <input type="text" id="endTime" name="end" class="span2" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'beginTime\')}'})"  placeholder="请选择结束时间" style="margin-left:14px;">
+        </div>
+        
+        <table class="table table-bordered">
+            <thead id="log_head" data-id="111111">
+                <tr>
+                    <th class="span1 check_center">
+                        <input type="checkbox" id="checkList" name="allDel" onClick="logManage.checkAll($(this),event)">
+                    </th>
+                    <th class="span1">类型</th>
+                    <th class="span5">内容</th>
+                    <th class="span2">操作用户</th>
+                    <th class="span2">操作时间</th>
+                    <th class="span2">IP地址</th>
+                    <th class="span1">操作</th>
+                </tr>
+            </thead>
+            <tbody id="log_tbody">
+                
+            </tbody>
+            <script id="log_tpl" type="text/x-jquery-tmpl"> 
+                {{if log_info.length != 0}}
+                    {{each(i,item) log_info}}
+                        <tr>  
+                            <td class="check_center span1">
+                                <input type="checkbox" data-item name="dels" data-id="${item.log_id}" onClick="logManage.allDel()">
+                            </td>
+                            <!-- <td>${item.portal_name}</td>   -->
+                            <td class="span1">${item.type}</td>  
+                            <td class="span5">${item.content}</td>  
+                            <td class="span2">${item.user}</td>  
+                            <td class="span2">${item.operating_time}</td>  
+                            <td class="span2">${item.ip}</td>  
+                            <td class="span1">
+                                <span class="log_del" data-id="${item.log_id}" onClick="logManage.delLog(${item.log_id})">删除</span>
+                            </td>  
+                        </tr>   
+                    {{/each}}
+                {{else}}
+                    <tr>
+                        <td style="text-align:center;" colspan="8" >暂无数据</td>
+                    </tr>
+                {{/if}}
+        </script>
+        </table>
+        <div id="page"></div>
+    </div>
+</body>
+</html>

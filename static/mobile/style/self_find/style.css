@@ -1,0 +1,176 @@
+#nosalary{
+    display: none;
+    padding-top: 150px;
+}
+#salary{
+    display: none;
+}
+
+.ui-list-info span{
+    padding: 0px 10px 0px 0px;
+    display: inline-block;
+}
+.flow-title-info{
+    margin-left: 20px;
+}
+.perform-list-info{
+    padding: 20px;
+}
+
+.ui-list-info span{
+    padding: 0px 10px 0px 0px;
+    display: inline-block;
+}
+.mark-font{
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.ui-list-info span{
+    padding: 0px 10px 0px 0px;
+    display: inline-block;
+}
+.attend-info-border{
+    border-bottom: 1px solid #dad7d7;
+}
+.attendance-info-list{
+    margin-left: 20px;
+}
+.attendance-info-list span{
+    margin-left: 50px
+}
+.mark-font{
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+}
+.attend-search-info{
+    margin-left: 95px;
+}
+.form1,.form2{
+    padding: 10px 10px 30px 10px;
+}
+
+.ui-list-info span{
+    padding: 0px 10px 0px 0px;
+    display: inline-block;
+}
+.attend-info-border{
+    border-bottom: 1px solid #dad7d7;
+}
+.attendance-info-list{
+    margin-left: 20px;
+}
+.attendance-info-list span{
+    margin-left: 50px
+}
+.mark-font{
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+}
+.attend-search-info{
+    margin-left: 120px;
+}
+.form1,.form2{
+    padding: 10px 10px 30px 10px;
+}
+.search-title-item{
+    font-weight: 600;
+}
+
+.ui-list-info span{
+    padding: 0px 10px 0px 0px;
+    display: inline-block;
+}
+.attend-info-border{
+    border-bottom: 1px solid #dad7d7;
+}
+.attendance-info-list{
+    margin-left: 20px;
+}
+.attendance-info-list span{
+    margin-left: 50px
+}
+.mark-font{
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+}
+.attend-search-info{
+    margin-left: 120px;
+}
+.form1,.form2{
+    padding: 10px 10px 30px 10px;
+}
+.search-title-item{
+    font-weight: 600;
+}
+.mark-title{
+    padding: 10px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+.ui-attend-info-preview{
+    border-bottom: 1px solid #c3c1c1;
+}
+.ui-attend-info-cover{
+    display: inline-block;
+    width: 100%;
+    padding: 5px 20px;
+}
+.ui-attend-info-time{
+    width: 45%;
+    display: inline-block;
+}
+.ui-attend-info-type{
+    width: 45%;
+    display: inline-block;
+}
+.ui-attend-card-time{
+    font-weight: 700;
+}
+.ui-attend-register-color{
+    color:#707369
+}
+.ui-block-check-list{
+	background: #fff;
+}
+.ui-block-check-preview{
+    width: 50%;
+    height: 50%;
+    float: left
+}
+.ui-block-check-preview a{
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+.ui-block-check-preview a span{
+    color: #000000;
+}
+.ui-block-check-preview img{
+    width: 30%;
+    margin: 50% 25% 10% 35%;
+}
+.ui-block-check-preview span{
+    width: 100%;
+    display: inline-block;
+    text-align: center;
+}
+.ui-preview-width{
+    position: absolute;
+    left: 0;
+    height: 1px;
+    width: 100%;
+    background-color: #a7a5a5;
+}
+.ui-preview-height{
+    position: absolute;
+    width: 1px;
+    background-color: #a7a5a5;
+}
+#day_list .ui-form-item label:not(.ui-switch):not(.ui-checkbox):not(.ui-radio) {
+    width: 100px;
+}

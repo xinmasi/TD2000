@@ -1,0 +1,597 @@
+body {
+	background-color: #fff;
+	-webkit-overflow-scrolling: touch;
+	color: #333;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.personal-info {
+	padding: 10px;
+	border-bottom: 1px solid #dedeea;
+}
+
+.personal-info img {
+	border-radius: 50%;
+	width: 10%;
+	margin-top: 6px;
+}
+
+.personal-info span {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.personal-info span h4 {
+	font-size: 14px;
+	margin-bottom: 5px;
+}
+
+.personal-info span p {
+	font-size: 13px;
+	color: #aaa;
+}
+
+.personal-info input {
+	float: right;
+	font-size: 12px;
+	border-radius: 4px;
+	padding: 5px 10px;
+	width: 90px;
+	border: 1px solid #ddd;
+	-webkit-appearance: none;
+	margin-top: 10px;
+}
+
+.personal-info i {
+	display: inline-block;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+@media screen and (max-height: 600px) {
+	.card-record {
+		padding: 15px 10px 0 0;
+		height: 65%;
+		overflow: auto;
+	}
+}
+
+@media screen and (min-height: 600px) {
+	.card-record {
+		padding: 15px 10px 0 0;
+		height: 70%;
+		overflow: auto;
+	}
+}
+
+.card-record h4 {
+	padding-left: 20px;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.card-record ul {
+	margin: 8px 0 0px 80px;
+	border-left: 1px solid #ddd;
+	padding-left: 20px;
+}
+
+.card-record ul li {
+	margin-bottom: 30px;
+	position: relative;
+	min-height: 50px;
+}
+
+.card-record li h4 {
+	font-size: 14px;
+	padding: 0px;
+}
+
+.card-record li p {
+	font-size: 13px;
+	color: #666;
+	line-height: 1.8em;
+}
+
+.card-record li i.checkin-refresh {
+	top: 67px;
+	left: 60px;
+	font-size: 20px;
+	line-height: 20px;
+	color: #007aff;
+}
+
+.card-record li p.updata-record {
+	color: #007aff;
+}
+
+.personal-image {
+	width: 10%;
+}
+
+.record-time {
+	position: absolute;
+	top: 0px;
+	left: -80px;
+	margin-top: 0;
+}
+
+.ui-icon-pin {
+	color: #9f9f9f;
+	position: absolute;
+	top: -15px;
+	left: -36.5px;
+	z-index: 99;
+	background-color: #fff;
+	border-radius: 20px;
+	height: 35px;
+}
+
+.checkBtn {
+	padding: 15px 20px 0 20px;
+}
+
+.checkBtn button {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.card-outside {
+	padding: 10px 20px 0 20px;
+	font-size: 14px;
+}
+
+.card-outside p {
+	text-align: right;
+	font-size: 14px;
+	color: #000000;
+}
+
+.card-outside button {
+	color: #5464e0;
+}
+.card-appeal-btn{
+    border: 1px solid #ddd;
+    padding: 3px 8px;
+    border-radius: 5px;
+    position: absolute;
+    right: 2px;
+    top: 0px;
+    font-size: 13px;
+}
+.card-appeal-btn.done{
+	color: #aaa;
+	border: none;
+}
+
+/*申述页面*/
+.appeal-wrap{
+	display: none;
+	background: #fff;
+	z-index:100;
+}
+.appeal-wrap .ui-form-item-textarea{
+	height: 100px;
+}
+.appeal-wrap .ui-form-item-textarea textarea{
+	margin-top: 10px;
+	height: 80px;
+	resize: none;
+}
+.appeal-wrap #appealDate{
+	margin-left: 95px;
+}
+/*统计页面*/
+.personal-info.count-personal-info {
+	padding: 10px;
+	border-bottom: 0px;
+	background-color: #fff;
+}
+
+.personal-info.count-personal-info input {
+	width: 80px;
+}
+
+.count-title {
+	padding: 0 25px 10px 10px;
+	font-size: 14px;
+	text-align: right;
+}
+
+.count-title img {
+	vertical-align: middle;
+}
+
+.count-title span {
+	font-weight: bold;
+}
+/*统计记录*/
+.count-info {
+	margin: 10px;
+	border-top: 1px solid #eaeaea;
+	border-bottom: 1px dashed #e6e3e3;
+	background-color: #fff;
+	position: relative;
+	clear: both;
+}
+
+.count-info-title {
+	position: absolute;
+	top: -12px;
+	width: 100px;
+	height: 20px;
+	left: 50%;
+	margin-left: -50px;
+	text-align: center;
+	background-color: #fff;
+	font-size: 14px;
+}
+
+.count-intro {
+	position: absolute;
+	top: -10px;
+	right: 0;
+	background-color: #fff;
+	width: 70px;
+	font-size: 13px;
+	color: #17ade3;
+	text-align: center;
+}
+
+.count-info ul {
+	display: inline-block;
+	margin: 25px 0 0 0;
+}
+
+.count-info ul li,
+#count_leave_list li {
+	width: 50%;
+	float: left;
+	font-size: 14px;
+	min-height: 40px;
+	color: #333;
+}
+
+.count-info ul li img {
+	vertical-align: middle;
+}
+
+.count-info ul li p,
+#count_leave_list li p {
+	float: right;
+	display: inline-block;
+	margin-right: 15px;
+	color: #aaa;
+}
+
+.count-info ul li p.count-message {
+	color: #000000;
+}
+
+.count-info-leave {
+	padding: 10px;
+	background-color: #fff;
+}
+
+.count-info-leave ul li {
+	width: 55%;
+	font-size: 14px;
+	min-height: 40px;
+}
+
+.count-info-leave ul li p {
+	display: inline-block;
+	float: right;
+	color: #cccccc;
+}
+
+.count-info-leave ul li img {
+	vertical-align: middle;
+}
+/*旷工记录*/
+.record-list-title {
+	font-size: 13px;
+	line-height: 35px;
+	background-color: #eee;
+	padding-left: 10px;
+	clear: both;
+}
+
+.absent-record div {
+	background-color: #fff;
+	margin: 0 -10px;
+	min-height: 40px;
+}
+
+.absent-record ul {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.absent-record-item {
+	margin: 5px 15px 10px 10px;
+	font-size: 14px;
+	color: #333;
+}
+
+.absent-record-item p {
+	color: #aaa;
+}
+/*缺卡记录*/
+.lack-record ul {
+	margin: 20px 0 0 30px;
+	border-left: 1px solid #ddd;
+	padding: 10px 0 10px 20px;
+}
+
+.lack-record div {
+	margin: -10px;
+	background-color: #fff;
+}
+
+.lack-record ul li {
+	margin-bottom: 30px;
+	position: relative;
+	min-height: 40px;
+	padding: 15px 13px;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	font-size: 13px;
+	margin-right: 30px;
+}
+
+.lack-record ul li h4 {
+	font-size: 14px;
+	margin-bottom: 3px;
+}
+
+.lack-record ul li i {
+	color: #9f9f9f;
+	position: absolute;
+	top: -18px;
+	left: -37.5px;
+	z-index: 99;
+	background-color: #fff;
+	border-radius: 20px;
+	height: 30px;
+}
+
+.lack-record-week {
+	margin-right: 2%;
+	float: right;
+	font-size: 14px;
+}
+
+.lack-record-time {
+	display: block;
+	font-size: 13px;
+	color: #999;
+	margin-bottom: 3px;
+}
+
+/*外勤打卡定位编辑页*/
+.field-list {
+	display: none;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background: #f3f3f3;
+}
+
+.field-title-wrap {
+	width: 100%;
+	background: #fff;
+	padding: 10px 0;
+}
+
+#field-switch {
+	vertical-align: top;
+	margin: 5px 10px 0;
+	width: 30px;
+	float: left;
+}
+
+.field-title {
+	margin-left: 50px;
+}
+
+.field-title-location {
+	display: inline-table;
+	vertical-align: top;
+	height: 35px;
+	line-height: 35px;
+	margin-right: 10px;
+	word-break: break-all;
+	font-weight: bold;
+}
+
+.field-reload {
+	color: #aaa;
+	font-size: 12px;
+}
+
+.field-wrap {
+	background: #fff;
+	width: 100%;
+	height: 250px;
+	margin: 20px 0;
+	padding-bottom: 10px;
+}
+.field-relation{
+	background: #fff;
+	width: 100%;
+	/* height: 250px; */
+	margin: 20px 0;
+	padding-bottom: 10px;
+}
+.field-desc {
+	padding: 10px 0 10px 10px;
+	height: 120px;
+	width: 96%;
+	border: 0;
+	resize: none;
+}
+
+#field_preview {
+	float: left;
+	margin: 0 10px;
+	position: relative;
+}
+
+.field-addimage-btn {
+	padding: 5px 10px;
+	border-radius: 4px;
+	border: 1px dashed #017bff;
+	background: #fff;
+	cursor: pointer;
+	margin: 5px 10px 0 10px;
+}
+
+#deleteImage {
+	color: #f72515;
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	padding: 10px;
+	line-height: 30px;
+	position: absolute;
+	top: -20px;
+	right: -18px;
+	font-size: 40px;
+	z-index: 100;
+}
+
+/* #outsideSubmit {
+	width: 100%;
+	position: fixed;
+	bottom: 15px;
+	left: 50%;
+	margin-left: -50%;
+} */
+/*外勤打卡列表页*/
+.img-border {
+	width: 80px;
+	height: 80px;
+	overflow: hidden;
+	border: 1px solid #eee;
+	display: inline-block;
+	vertical-align: middle;
+	margin-top: 5px;
+}
+
+.img-size {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: 0;
+	padding: 0;
+}
+
+.fleld-img {
+	position: absolute;
+	top: -50%;
+	left: 0;
+	display: block;
+	width: 100px;
+}
+
+#normal_card_preview {
+	display: none;
+}
+
+#field_card_preview {
+	display: none;
+}
+
+.ui-attend-preview-normal-card {
+	width: 10px;
+	height: 15px;
+	display: inline-block;
+	margin: 3px;
+	background-color: #17ade2;
+	vertical-align: top;
+}
+
+.ui-attend-preview-lack-card {
+	width: 10px;
+	height: 15px;
+	display: inline-block;
+	margin: 3px;
+	background-color: #e89c11;
+	vertical-align: top;
+}
+.check_btn_box{
+	display: block;
+	width:110px;
+	height:110px;
+	border-radius:55px;
+	background:#ddd;
+	padding:0px;
+	margin:20px auto;
+	color:#fff;
+}
+.place_info{
+	display:block;
+	font-size:10px;
+	text-align:center;
+	color:#999;
+}
+.ball_sign_info{
+	display:inline-block;
+	width:50px;
+	height:50px;
+	font-size:12px;
+	margin:25px;
+}
+.blue_ball{
+	background:#12B7F5!important;
+}
+.card-record h5 {
+    padding-left: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+#class_name{
+	/* padding-top:10px; */
+	margin-bottom:16px;
+}
+#relation_btn{
+	margin-left:10px;
+}
+.is_foot_sign{
+	width:60px;
+	height:20px;
+	display: inline-block;
+	text-align:center;
+	line-height:20px;
+	border-radius:10px;
+	/* background:#1B8E1B; */
+	background:#3fb470;
+	
+	font-size:12px;
+	color:#fff;
+	margin-left:5px;
+}
+.is_relation_sign{
+	width:60px;
+	height:20px;
+	display: inline-block;
+	text-align:center;
+	line-height:20px;
+	border-radius:10px;
+	/* background:#53BCE9; */
+	background:#fc6b4e;
+	font-size:12px;
+	color:#fff;
+	margin-left:5px;
+}
+.log_time{
+	font-size:12px;
+}
+

@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="GBK">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>内容管理</title>
+    <link rel="stylesheet" href="/static/js/bootstrap/css/bootstrap.min.css">
+    <link href="/static/js/jquery-1.10.2/jquery-ui/css/flick/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="/static/js/bootstrap/datepicker/bootstrap.datepicker.css"> -->
+    <link rel="stylesheet" href="/static/modules/portal/newContent/index.css">
+    <link rel="stylesheet" href="/static/js/jstree/dist/themes/default/style.min.css" />
+    <script src="/static/js/jquery-1.10.2/jquery.min.js"></script>
+    <script src="/static/js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery-1.10.2/template/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-1.10.2/jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/static/js/jstree/dist/jstree.min.js"></script>
+    <script src="/static/js/bootstrap/paginator/bootstrap.paginator.js"></script>
+    <!-- <script src="/static/js/bootstrap/datepicker/bootstrap.datepicker.js"></script> -->
+    <script type="text/javascript" src="/inc/js_lang.php"></script>
+    <script src="/module/ueditor/ueditor.config.js"></script>
+    <script src="/module/ueditor/ueditor.all.min.js"></script>
+    <script src="/static/js/attach.js"></script>
+    <script src="/module/DatePicker/WdatePicker.js"></script>
+    
+    
+</head>
+<script>
+    var upload_limit=1,limit_type="php,php3,php4,php5,";
+</script>
+<body>
+    <!-- top -->
+    <div id="power_btn_box">
+        <div id="power_icon_box">
+            <i class="icon-cog power_icon"></i>
+            <span class="power_jump_btn" onClick="javascrtpt:window.location.href='/general/system/portal/newContent/permissionConfig.html'">权限管理</span>
+        </div>
+    </div>
+    <!-- <div id="content_box"> -->
+        <!-- tree -->
+        <div id="portalTree"></div>
+        <!-- 旧版内容管理页 -->
+        <div id="iframe_box" class="hide">
+            <iframe id="is_new_old" name="" src="" border="0" frameborder="0" framespacing="0" marginheight="0" marginwidth="0" allowTransparency="true" style="width:100%;height:100%;"></iframe>
+        </div>
+        <!-- 右侧数据展示 -->
+        <div id="right_box" class="">
+            <div id="welcome">
+                <div id="welcome_div">
+                    <h4>欢迎使用门户内容管理</h4>
+                </div>
+            </div>
+            <div id="noPower" class="hide">
+                <div class="explain_box">
+                    <h3 class="explain_info">暂无权限</h3>
+                </div>
+            </div>
+            <!-- 列表 -->
+            <div id="content_table_box" class="hide">
+                <button class="btn btn-primary del_btn" type="button" id="newBtn" onClick="contentManage.buildModalShow()">添加内容</button>
+                <button class="btn btn-primary del_btn" type="button" id="delBtn" onClick="contentManage.delQuery()">批量删除</button>
+                <div class="input-append mar_left">
+                    <input type="text" class="span3 search-query" id="searchInp">
+                    <button type="submit" class="btn" onClick="contentManage.search()">搜索</button>
+                </div>
+                <table class="table table-bordered">
+                    <thead id="content_head">
+                        <tr>
+                            <th class="span1 check_center">
+                                <input type="checkbox" id="checkList" name="allDel" onChange="contentManage.checkAll($(this),event)">
+                            </th>
+                            <th class="span3">标题</th>
+                            <th class="span1">类型</th>
+                            <th class="span2">创建时间</th>
+                            <th class="span1">创建者</th>
+                            <th class="span1">最后修改人</th>
+                            <th class="span2">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="content_tbody">
+                        <tr>
+                            <td>暂无数据</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <script id="content_tpl" type="text/x-jquery-tmpl">
+    　
+                    <tr>  
+                        <td class="check_center span1">
+                            <input type="checkbox" data-id="${content_id}"  name="dels" onChange="contentManage.allDel()">
+                        </td>
+                        <td class="span3">${subject}</td>  
+                        <td class="span1">${content_type_name}</td>  
+                        <td class="span2">${publish_date}</td>  
+                        <td class="span1">${create_name}</td>  
+                        <td class="span1">${modify_name}</td>  
+                        <td class="span2">
+                            <span class="content_del" data-id="${content_id}" onClick="contentManage.editModalShow()">编辑</span>
+                            <span class="content_del" data-id="${content_id}" onClick="contentManage.delSingle(${content_id})">删除</span>
+                        </td>  
+                    </tr>  
+                    
+                </script>
+                <div id="page"></div>
+            </div>
+            <div id="content_defined_box" class="hide">
+                <button class="btn btn-primary edit_btn" type="button" id="editBtn" onCli>编辑页面</button>
+                <button class="btn btn-danger del_definded" type="button" id="delDefinded">删除页面</button>
+                <div id="definded_info_box">
+                    <h5 class="weight">内容预览:</h5>
+                    <div id="preview">
+                            <div class="control-label" style="padding-top: 5px; width: 100%; text-align: left;">
+                                <!-- <script>attach_link($attach_id,$attach_name,0,1,1,1,1,1,1,1)</script> -->
+                                <!-- <span><script>ShowAddFile();</script></span> -->
+                                <!-- <script>ShowAddImage();</script> -->
+                            </div>
+                    </div>
+                    <span>提示：预览结果为示意图，不显示附件信息，实际效果请在我的门户中查看。</span>
+                </div>
+            </div>
+            <!-- 新建内容 -->
+            <div class="modal hide fade" id="buildModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4>新建内容</h4>
+                        </div>
+                        <div class="modal-body" id="build_box">
+                            <form action="/general/appbuilder/web/portal/portalcontents/addcontent" enctype="multipart/form-data" id="build_form" method="POST" name="form1" onSubmit="">
+                                <ul id="new_list">
+                                    <li>
+                                        <label for="inputSubject" class="control-label"><span class="required">*</span>标题:</label>
+                                        <div class="controls">
+                                            <input type="text" id="inputSubject" class="span5" name="subject">
+                                            <input type="hidden" name="portal_id">
+                                            <input type="hidden" name="column_id">
+                                            <input type="hidden" name="type">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label for="link_img" class="control-label">链接图片:</label>
+                                        <div class="controls">
+                                            <input name="link_img" type="file" class="span5" accept=".jpg,.png,.gif">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label for="inputType" class="control-label"><span class="required">*</span>类型:</label>
+                                        <div class="controls">
+                                            <div class="radio dis_inline" id="type_article">
+                                                <input name="content_type" type="radio" value="0" onClick="contentManage.contentChange(value)">文章
+                                            </div>
+                                            <div class="radio dis_inline" id="type_link_column">
+                                                <input name="content_type" type="radio" value="4"  onClick="contentManage.contentChange(value)">链接至栏目
+                                            </div>
+                                            <div class="radio dis_inline" id="type_link_out">
+                                                <input name="content_type" type="radio" value="1"  onClick="contentManage.contentChange(value)">外部链接
+                                            </div>
+                                            <div class="radio dis_inline" id="type_imgs">
+                                                <input name="content_type" type="radio" value="2"  onClick="contentManage.contentChange(value)">图片集
+                                            </div>
+                                            <div class="radio dis_inline" id="type_video">
+                                                <input name="content_type" type="radio" value="3" onClick="contentManage.contentChange(value)">视频
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li id="column_tree" class="hide">
+                                        <label for="" class="control-label">栏目:</label>
+                                        <div class="parentName controls" id="parentInp" onclick="contentManage.columnHandle(event)">                             
+                                            <span class="parent_text" id="parentText" onclick="">图片新闻</span>                             
+                                            <i class="icon-chevron-down i_right" id="parentIcon"></i>                         
+                                        </div>
+                                        <input type="hidden" name="">
+                                        <div id="parentTree" class="hide"></div>
+                                    </li>
+                                    <li id="content_text_box" class="hide">
+                                        <label class="control-label" for="inputContent">内容:</label>
+                                        <div class="controls" style="width: 500px;height:350px;border:1px solid #eee;">
+                                            <script id="editorBuild" type="text/plain"></script>
+                                        </div>
+                                    </li>
+                                    <li id="link_box" class="hide">
+                                        <label class="control-label" for="inputLink"><span class="required">*</span>链接地址</label>
+                                        <div class="controls">
+                                            <input type="text" id="inputLink" name="content_link" class="span5" value="">
+                                        </div>
+                                    </li>
+                                    <li id="attachment_box" class="hide">
+                                        <label class="control-label">附件</label>
+                                        <div class="controls" style="padding-top: 5px;width: 380px;" id="add_file_box">
+                                            <span><script>ShowAddFile();</script></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="control-label"><span class="required">*</span>打开方式</label>
+                                        <div class="controls inlinearea2">
+                                                <label class="radio inline">
+                                                    <input name="link_target" type="radio" value="0" checked="true"> 默认                        
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input name="link_target" type="radio" value="1"> 新窗口                        
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input name="link_target" type="radio" value="2"> 当前窗口                        
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input name="link_target" type="radio" value="3"> 父窗口                        
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input name="link_target" type="radio" value="4"> 顶层窗口                        
+                                                </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="control-label" for="inputCreateTime"><span class="required">*</span>发布时间</label>
+                                        <div class="controls">
+                                            <input type="text" id="inputCreateTime" name="publish_time" class="span2" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="control-label"><span class="required"></span>首页推送</label>
+                                        <div class="controls inlinearea2">
+                                                <label class="radio inline">
+                                                    <input name="home_page_push" type="radio" value="1" checked> 是                        
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input name="home_page_push" type="radio" value="0" > 否                        
+                                                </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="control-label"><span class="required"></span>关键字</label>
+                                        <div class="controls inlinearea2">
+                                            <input name="keyword1" type="text" class="keyword_value">        
+                                            <input name="keyword2" type="text" class="keyword_value">                      
+                                            <input name="keyword3" type="text" class="keyword_value">
+                                            <input name="keyword4" type="text" class="keyword_value">                      
+                                            <input name="keyword5" type="text" class="keyword_value">                        
+                                        </div>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                            
+                        <div class="modal-footer">
+                            <span class="btn" onClick="contentManage.buildModalHide()">关闭</span>
+                            <button type="submit" class="btn btn-primary" onClick="contentManage.addListInfo()">确定</button>
+                            <!-- <button type="submit" class="btn btn-primary">确定</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 编辑内容 -->
+            <div class="modal hide fade" id="editModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4>编辑内容</h4>
+                        </div>
+                        <div class="modal-body" id="edit_box">
+                            <form action="/general/appbuilder/web/portal/portalcontents/addcontent" enctype="multipart/form-data" id="edit_form" method="POST" name="form2" onSubmit="">
+                                <ul id="new_list">
+                                    <li>
+                                        <label for="inputSubject" class="control-label"><span class="required">*</span>标题:</label>
+                                        <div class="controls">
+                                            <input type="text" id="inputSubjectEdit" class="span5" name="subject">
+                                            <input type="hidden" name="portal_id">
+                                            <input type="hidden" name="column_id">
+                                            <input type="hidden" name="content_id">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label for="link_img" class="control-label">链接图片:</label>
+                                        <div class="controls hide" id="file_image">
+                                            <input name="link_img" type="file" class="span5" accept=".jpg,.png,.gif">
+                                        </div>
+                                        <div class="controls " id="show_image">
+                                            <img src="/static/templates/2017_01/cry2.png" alt="" id="editImage">
+                                            <button class="btn delete-logo" onClick="contentManage.delImg();return false;">删除</button>
+                                        </div>
+                                    </li>
+                                    <!-- <li>
+                                        <label for="inputType" class="control-label"><span class="required">*</span>类型:</label>
+                                        <div class="controls">
+                                            <div class="radio dis_inline" id="type_article">
+                                                <input name="content_type" type="radio" value="0" onClick="contentManage.contentChange(value)">文章
+                                            </div>
+                                            <div class="radio dis_inline" id="type_link_column">
+                                                <input name="content_type" type="radio" value="1"  onClick="contentManage.contentChange(value)">链接至栏目
+                                            </div>
+                                            <div class="radio dis_inline" id="type_link_out">
+                                                <input name="content_type" type="radio" value="2"  onClick="contentManage.contentChange(value)">外部链接
+                                            </div>
+                                            <div class="radio dis_inline" id="type_imgs">
+                                                <input name="content_type" type="radio" value="3"  onClick="contentManage.contentChange(value)">图片集
+                                            </div>
+                                            <div class="radio dis_inline" id="type_video">
+                                                <input name="content_type" type="radio" value="4" onClick="contentManage.contentChange(value)">视频
+                                            </div>
+                                        </div>
+                                    </li> -->
+                                    <li id="column_tree_edit" class="hide">
+                                        <label for="" class="control-label">栏目:</label>
+                                        <div class="parentName controls" id="parentInpEdit" onclick="contentManage.columnHandle(event)">                             
+                                            <span class="parent_text" id="parentTextEdit" onclick="">图片新闻</span>                             
+                                            <i class="icon-chevron-down i_right" id="parentIconEdit"></i>                         
+                                        </div>
+                                        <input type="hidden" name="link_column_id">
+                                        <div id="parentTreeEdit" class="hide"></div>
+                                    </li>
+                                    <li id="content_text_box_edit" class="hide">
+                                        <label class="control-label" for="inputContent">内容:</label>
+                                        <div class="controls" style="width: 500px;height:350px;border:1px solid #eee;">
+                                            <script id="editorEdit" type="text/plain"></script>
+                                        </div>
+                                    </li>
+                                    <li id="link_box_edit" class="hide">
+                                        <label class="control-label" for="inputLink"><span class="required">*</span>链接地址</label>
+                                        <div class="controls">
+                                            <input type="text" id="inputLinkEdit" name="content_link" class="span5" value="">
+                                        </div>
+                                    </li>
+                                    <li id="attachment_box_edit" class="hide">
+                                        <label class="control-label">附件</label>
+                                        <div class="controls" style="padding-top: 5px;width: 380px;" id="add_file_box_edit">
+                                            <span><script>ShowAddFile('Edit',1);</script></span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="control-label"><span class="required">*</span>打开方式</label>
+                                        <div class="controls inlinearea2">
+                                                <label class="radio inline">
+                                                    <input name="link_target" type="radio" value="0" checked="true"> 默认                        
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input name="link_target" type="radio" value="1"> 新窗口                        
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input name="link_target" type="radio" value="2"> 当前窗口                        
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input name="link_target" type="radio" value="3"> 父窗口                        
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input name="link_target" type="radio" value="4"> 顶层窗口                        
+                                                </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="control-label" for="inputCreateTime"><span class="required">*</span>发布时间</label>
+                                        <div class="controls">
+                                            <input type="text" id="inputCreateTimeEdit" name="publish_time" class="span2" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="">
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="control-label"><span class="required"></span>首页推送</label>
+                                        <div class="controls inlinearea2">
+                                                <label class="radio inline">
+                                                    <input name="home_page_push" type="radio" value="1" checked> 是                        
+                                                </label>
+                                                <label class="radio inline">
+                                                    <input name="home_page_push" type="radio" value="0" > 否                        
+                                                </label>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <label class="control-label"><span class="required"></span>关键字</label>
+                                        <div class="controls inlinearea2">
+                                            <input name="keyword1" type="text" class="keyword_value">        
+                                            <input name="keyword2" type="text" class="keyword_value">                      
+                                            <input name="keyword3" type="text" class="keyword_value">
+                                            <input name="keyword4" type="text" class="keyword_value">                      
+                                            <input name="keyword5" type="text" class="keyword_value">                        
+                                        </div>
+                                    </li>
+                                </ul>
+                            </form>
+                        </div>
+                            
+                        <div class="modal-footer">
+                            <span class="btn" onClick="contentManage.editModalHide()">关闭</span>
+                            <button type="submit" class="btn btn-primary" onClick="contentManage.editListInfo()">确定</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!-- </div> -->
+</body>
+</html>
+<script>
+    
+    (function($){
+        $(document).ready(function(){
+            
+            window.UEDITOR_CONFIG.zIndex = 1100;
+
+            //列表请求参数
+            var listParams = {};
+            var delListParams = {};
+            //列表删除数组
+            var listDelArr = [];
+                
+            var addInfoType = '';
+            //栏目树显示标识
+            var portalTreeSign = false;
+            //link树数据
+            // var link_tree = [];
+            var content_text_box_edit = $('#content_text_box_edit');
+            var column_tree_edit = $('#column_tree_edit');
+            var link_box_edit = $('#link_box_edit');
+            var attachment_box_edit = $('#attachment_box_edit');
+
+            var contentManage = {
+                init:function(){
+                
+                    this.getTreeInfo()
+                    // this.modalHidden()
+                    
+                },
+                //获取树的数据
+                getTreeInfo:function(){
+                    var _this = this;
+                    $('#portalTree').jstree({
+                        'core': {
+                            'data': 
+                            {   //后台请求到的渲染数据
+                                'url':'/general/appbuilder/web/portal/portalcontents/getcolumns', //请求数据地址
+                                'dataType': "json", //请求数据的类型
+                                'data': function (node) { //请求参数
+                                    if(node.id=='#'){
+                                        return {'portal_id':0,'is_new':'','portal_name':''};
+                                    }else{
+                                        return {'portal_id':node.original.portal_id,'is_new':node.original.is_new,'portal_name':node.text,'template_id':node.original.template_id};
+                                    }
+                                }
+                            }
+                        },
+                        'types': {                         //这里就是图片的显示格式
+                            // "default": {
+                            //     "icon": "fa fa-folder tree-item-icon-color icon-lg"
+                            // },
+                            "file": {
+                                "icon": "fa fa-file tree-item-icon-color icon-lg"
+                            }
+                        },
+                        'plugins': [                       //插件，下面是插件的功能
+                            'types',                      //可以设置其图标，在上面的一样
+                            // 'contextmenu',                //文本菜单
+                            'wholerow',                   //
+                            // 'unique'                      //独特----防止重复。(新添加的)
+                        ]
+                    });
+                    $('#portalTree').bind("activate_node.jstree", function (obj, e) {
+                        // console.log(obj);
+                        console.log(e);
+                        $('#welcome').addClass('hide');
+
+                        if(e.node.parents[0]!='#'){
+                            if(e.node.original.is_new==1){
+                                $('#iframe_box').addClass('hide');
+                                $('#right_box').removeClass('hide');
+                                if(e.node.original.priv==1){
+                                    $('#content_defined_box').addClass('hide');
+                                    $('#content_table_box').removeClass('hide');
+                                    $('#noPower').addClass('hide');
+                                    $('#searchInp').val('');
+                                    if(e.node.original.source==0){
+
+                                        delListParams.column_id = e.node.original.column_id;
+                                        delListParams.portal_id = e.node.original.portal_id;
+                                        delListParams.type = e.node.original.type;
+                                        delListParams.pageNo = 1;
+                                        listParams.column_id = e.node.original.column_id;
+                                        listParams.portal_id = e.node.original.portal_id;
+                                        listParams.keyword = $('#searchInp').val();
+                                        listParams.type = e.node.original.type;
+                                        listParams.pageNo = 1;
+                                        listParams.pageSize = 3;
+                                        listParams.portal_name = e.node.original.portal_name;
+                                        listParams.is_new = e.node.original.is_new;
+                                        _this.getContentListInfo(listParams);
+                                        $('input[name=portal_id]').val(e.node.original.portal_id);
+                                        $('input[name=column_id]').val(e.node.original.column_id);
+                                        $('input[name=type]').val(e.node.original.type);
+
+                                        addInfoType = e.node.original.content_type;
+                                        
+                                    }else if(e.node.original.source==1){
+                                        $('#content_table_box').addClass('hide');
+                                        $('#content_defined_box').removeClass('hide');
+                                        $('#noPower').addClass('hide');
+
+                                        _this.contentListRender([]);
+                                    }else{
+                                        $('#content_table_box').addClass('hide');
+                                        $('#content_defined_box').addClass('hide');
+                                        alert('该栏目类型非列表和自定义页面，不能管理其内容。');
+                                    }
+                                }else{
+                                    $('#content_table_box').addClass('hide');
+                                    $('#content_defined_box').addClass('hide');
+                                    $('#noPower').removeClass('hide');
+                                }
+                            }else{
+                                $('#right_box').addClass('hide');
+                                $('#iframe_box').removeClass('hide');
+                                $('#is_new_old').attr('src',e.node.original.url);
+                                
+                            }
+                        }else{
+                            alert('该栏目类型非列表和自定义页面，不能管理其内容。');
+                        }
+
+                    });
+                    
+                },
+                //添加跳转
+                newJump:function(portal_id,column_id){
+                    window.location.href = 'newContent.html';
+                },
+                //单个删除
+                delSingle:function(id){
+                    var _this = this;
+                    listDelArr.push(id);
+                    _this.delListInfo()
+                },
+                //批量删除
+                delQuery:function(){
+                    var _this = this;
+                    $("input:checkbox[name=dels]:checked").each(function(index,value){
+
+                        listDelArr.push($("input:checkbox[name=dels]:checked").eq(index).attr('data-id'))
+                    })
+                    if(listDelArr.length==0){
+                        alert('请选择要删除的内容');
+                    }
+                    _this.delListInfo();
+                },
+                //删除接口
+                delListInfo:function(){
+                    var _this = this;
+                    delListParams.content_id = listDelArr.toString();
+                    
+                    delListParams.pageSize = 3;
+                    
+                    $.ajax({
+                        type:'GET',
+                        url:'/general/appbuilder/web/portal/portalcontents/delcontent',
+                        data:delListParams,
+                        success:function(res){
+                            if(res.status == 1){
+                                _this.contentListRender(res.content_info);
+                                if(res.content_info.length!=0){
+                                    _this.pageRender('page',res.pageNo,res.pageSize,res.total);
+                                }else{
+                                    _this.pageRender('page',1,1,1);
+                                }
+                            }else{
+                                alert('删除失败');
+                            }
+                            $('#checkList').attr('checked',false);
+                        },
+                        error:function(){
+                            alter('删除失败');
+                        }
+                    })
+
+                    listDelArr = [];
+
+                    
+                },
+                //列表渲染
+                contentListRender:function(data){
+                    $('#content_tbody').html($("#content_tpl").tmpl(data));
+                },
+                //列表数据获取
+                getContentListInfo:function(params){
+                    var _this = this;
+                    $.ajax({
+                        type:'GET',
+                        url:'/general/appbuilder/web/portal/portalcontents/getcontentlist',
+                        data:params,
+                        success:function(res){
+                            if(res.status == 1){
+                                console.log(res.column_tree);
+                                // link_tree = res.column_tree;
+                                _this.contentListRender(res.content_info);
+                                if(res.content_info.length!=0){
+                                    _this.pageRender('page',res.pageNo,res.pageSize,res.total);
+                                    _this.columnTree(res.column_tree);
+                                }else{
+                                    _this.pageRender('page',1,1,1);
+                                }
+                                
+                            }else{
+                                alert('获取数据失败');
+                            }
+                            
+                        },
+                        error:function(){
+                            alter('获取门户数据失败');
+                        }
+                    })
+                    
+                },
+                //列表分页
+                pageRender:function(id,pageNo,pageSize,total){
+                    var _this = this;
+                    $("#" + id).bootstrapPaginator({
+                        bootstrapMajorVersion: 2,　　// 指定Bootstrap的版本，默认是Boostrap2，如果你用的是Boostrap3，则必须指定该值。
+                        currentPage: pageNo,　　// 当前页码
+                        totalPages: Math.ceil(total/pageSize),　　// 总页数
+                        numberOfPages: 5,　　// 显示页的数量
+                        useBootstrapTooltip: true　,　// 使用Bootstrap提示样式
+                        itemContainerClass: function (type, page, current) {　　// 应用鼠标的手型光标
+                            
+                            return (page === current) ? "active" : "pointer-cursor";
+                            
+                        },
+                        onPageChanged: function(event, oldPage, newPage){　　// 页面改变时事件
+                            listParams.keyword = $('#searchInp').val();
+                            listParams.pageNo = newPage;
+                            delListParams.pageNo = newPage;
+                            
+                            _this.getContentListInfo(listParams);
+                        }
+                    });
+                },
+                //列表搜索
+                search:function(){
+                    var _this = this;
+                    listParams.keyword = $('#searchInp').val();
+                    
+                    _this.getContentListInfo(listParams);
+                },
+                //显示关闭列表新建内容拟态框
+                buildModalShow:function(){             
+                    $('#buildModal').modal('show');   
+                    var _this = this;
+                    _this.modalHidden($('#ATTACHMENT_div'),$('#SelFileDiv'),$('#build_form'));
+                    _this.contentRender(addInfoType);
+                    _this.buildAddUE();
+                    
+                },
+                buildModalHide:function(){
+                    $('#buildModal').modal('hide');  
+                                 
+                
+                },
+                //模态框关闭
+                modalHidden:function(atta,selFile,formName){
+                    var _this = this;
+                    atta.html('');
+                    selFile.html('');
+                    _this.clearModalInfo(formName);
+                },
+                checkAll:function(ele,event){
+
+                    if(ele.prop('checked')){
+
+                        $("input:checkbox[name=dels]").prop('checked',true);
+                    }else{
+
+                        $("input:checkbox[name=dels]").prop('checked',false);
+                    }
+                },
+                allDel:function(){
+
+                    if($("input:checkbox[name=dels]:checked").length == $("input:checkbox[name=dels]").length){
+
+                        $('#checkList').prop('checked',true)
+
+                    }else{
+
+                        $('#checkList').prop('checked',false)
+                    }
+
+                },
+                //类型逻辑
+                contentRender:function(type){
+                    
+                    var type_article_int = $('#type_article input');
+                    var content_text_box = $('#content_text_box');
+                    var attachment_box = $('#attachment_box');
+                    var link_box = $('#link_box');
+                    var type_article = $('#type_article');
+                    var type_link_column = $('#type_link_column');
+                    var type_link_out = $('#type_link_out');
+                    var type_imgs = $('#type_imgs');
+                    var type_video = $('#type_video');
+                    var column_tree = $('#column_tree');
+                    switch(type){
+                        case '1':
+                            type_article_int.attr('checked',true);content_text_box.removeClass('hide');column_tree.addClass('hide');attachment_box.removeClass('hide');link_box.addClass('hide');type_article.removeClass('hide');type_link_column.removeClass('hide');type_link_out.removeClass('hide');type_imgs.addClass('hide');type_video.addClass('hide');
+                        break;
+
+                        case '2':
+                            type_article_int.attr('checked',true);content_text_box.addClass('hide');attachment_box.removeClass('hide');link_box.addClass('hide');type_article.addClass('hide');type_link_column.addClass('hide');type_link_out.addClass('hide');type_imgs.removeClass('hide');type_video.addClass('hide');
+                        break;
+
+                        case '3':
+                            type_article_int.attr('checked',true);content_text_box.addClass('hide');attachment_box.removeClass('hide');link_box.addClass('hide');type_article.addClass('hide');type_link_column.addClass('hide');type_link_out.addClass('hide');type_imgs.addClass('hide');type_video.removeClass('hide');
+                        break;
+                        default:
+                            type_article_int.attr('checked',true);content_text_box.removeClass('hide');column_tree.addClass('hide');attachment_box.removeClass('hide');link_box.addClass('hide');$('#column_tree').addClass('hide');
+                        break;
+                    }
+                    
+                },
+                //类型切换逻辑
+                contentChange:function(value){
+                    var _this = this;
+                    var contentBox = $('#content_text_box');
+                    var attachment_box = $('#attachment_box');
+                    var linkBox = $('#link_box');
+                    var column_tree = $('#column_tree');
+                    switch(value){
+                        case '0':
+                            contentBox.removeClass('hide');attachment_box.removeClass('hide');linkBox.addClass('hide');column_tree.addClass('hide');
+                        break;
+                        case '4':
+                            _this.columnTreeHandle(false);
+                            contentBox.addClass('hide');attachment_box.addClass('hide');linkBox.addClass('hide');column_tree.removeClass('hide');
+                        break;
+                        case '1':
+                            contentBox.addClass('hide');attachment_box.addClass('hide');linkBox.removeClass('hide');column_tree.addClass('hide');
+                        break;
+                        case '2':
+                            contentBox.addClass('hide');attachment_box.removeClass('hide');linkBox.addClass('hide');column_tree.addClass('hide');
+                        break;
+                        case '3':
+                            contentBox.addClass('hide');attachment_box.removeClass('hide');linkBox.addClass('hide');column_tree.addClass('hide');
+                        break;
+                        default:
+                            return ;
+                    }
+                },
+                //创建新建内容编辑器
+                buildAddUE:function(){
+                    
+                    UE.getEditor( 'editorBuild', {
+                        autoHeightEnabled: true,
+                    
+                        autoFloatEnabled: true,
+                    
+                        initialFrameWidth: 500,
+                    
+                        initialFrameHeight: 275
+                    }).setContent('', false);
+                    
+                },
+                //清空表单
+                clearModalInfo:function(dom){
+
+                    dom[0].reset();
+                    
+                },
+                //展开树
+                columnHandle:function(){
+                    portalTreeSign = !portalTreeSign;
+                    this.columnTreeHandle(portalTreeSign);
+                },
+                //栏目树
+                columnTree:function(data){ 
+                    var _this = this;
+                    $('#parentTree').jstree({ 'core' : {  
+                        'data' : data 
+                        },
+                        'types': {                         //这里就是图片的显示格式
+                            // "default": {
+                            //     "icon": "fa fa-folder tree-item-icon-color icon-lg"
+                            // },
+                            "file": {
+                                "icon": "fa fa-file tree-item-icon-color icon-lg"
+                            }
+                        },
+                        'plugins': [                       //插件，下面是插件的功能
+                            'types',                      //可以设置其图标，在上面的一样
+                            // 'contextmenu',                //文本菜单
+                            'wholerow',                   //
+                            // 'unique'                      //独特----防止重复。(新添加的)
+                        ] }
+                    );
+                    $('#parentTree').bind("activate_node.jstree", function (obj, e) {
+
+                        console.log(e.node);
+                        $('#parentText').text(e.node.text);
+                        $('#link_column_id').val(e.node.original.column_id);
+                        
+                        _this.columnTreeHandle(false);
+                    }); 
+                },
+                //栏目树的显示隐藏
+                columnTreeHandle:function(bool){
+                    if(!bool){
+                        $('#parentTree').addClass('hide');
+                    }else{
+                        $('#parentTree').removeClass('hide');
+                    }
+                },
+                //新建添加
+                addListInfo:function(){
+                    
+                    if($('#inputSubject').val()==''){
+                        alert('标题不得为空');
+                        return ;
+                    }
+
+                    if($('#inputCreateTime').val() == ''){
+                        alert('发布时间不得为空');
+                        return;
+                    }
+                    
+                    
+                    document.form1.submit();
+                    this.buildModalHide();
+                },
+                //新建表单提交方法
+                addSub:function(){
+
+                    if($('#inputSubject').val()==''){
+                        alert('标题不得为空');
+                        return false;
+                    }
+
+                    if($('#inputCreateTime').val() == ''){
+                        alert('发布时间不得为空');
+                        return false;
+                    }
+                    
+                    
+                    // document.form1.submit();
+                    this.buildModalHide();
+                    $("#build_form").ajaxSubmit(function(message) {   
+                    // 对于表单提交成功后处理，message为返回内容
+                        alert(message)
+                    });   
+            
+                    return false; // 必须返回false，否则表单会自己再做一次提交操作，并且页面跳转
+                },
+                //创建编辑内容编辑器
+                editAddUE:function(){
+                    
+                    UE.getEditor( 'editorEdit', {
+                        autoHeightEnabled: true,
+                    
+                        autoFloatEnabled: true,
+                    
+                        initialFrameWidth: 500,
+                    
+                        initialFrameHeight: 275
+                    }).setContent('', false);
+                    
+                },
+                //内容编辑显示隐藏
+                editModalShow:function(){              
+                    $('#editModal').modal('show');   
+                    content_text_box_edit.addClass('hide');column_tree_edit.addClass('hide');link_box_edit.addClass('hide');attachment_box_edit.addClass('hide');
+                    _this = this;
+                    _this.editTypeHandle('3')
+                    // _this.modalHidden()
+                    // _this.contentRender(addInfoType);
+                    _this.editAddUE();
+                    _this.modalHidden($('#ATTACHMENTEdit_div'),$('#SelFileDivEdit'),$('#edit_form'));
+                    
+                },
+                editModalHide:function(){
+                    $('#editModal').modal('hide');  
+                    
+                },
+                //编辑逻辑
+                editTypeHandle:function(type){
+                    
+                    switch(type){
+                        case '0':
+                            content_text_box_edit.removeClass('hide');attachment_box_edit.removeClass('hide');
+                        break;
+                        case '1':
+                            column_tree_edit.removeClass('hide');
+                        break; 
+                        case '2':
+                            link_box_edit.removeClass('hide');
+                        break;
+                        case '3':
+                            attachment_box_edit.removeClass('hide');
+                        break; 
+                        case '4':
+                            attachment_box_edit.removeClass('hide');
+                        break;
+                        default:
+                            return;
+                        break;
+                    }
+                },
+                //删除已选链接图片
+                delImg:function(){
+                    $('#show_image').addClass('hide');
+                    $('#file_image').removeClass('hide');
+                },
+                //编辑提交
+                editListInfo:function(){
+                    if($('#inputSubject').val()==''){
+                        alert('标题不得为空');
+                        return ;
+                    }
+
+                    if($('#inputCreateTime').val() == ''){
+                        alert('发布时间不得为空');
+                        return;
+                    }
+                    
+                    
+                    document.form2.submit();
+                }
+            };
+            contentManage.init();
+            window.contentManage = contentManage;
+        })
+    })(jQuery)
+</script>

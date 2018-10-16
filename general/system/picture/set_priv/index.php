@@ -1,0 +1,8 @@
+<?
+include_once("inc/auth.inc.php");
+
+$HTML_PAGE_TITLE = _("Í¼Æ¬ä¯ÀÀÈ¨ÏÞÉèÖÃ");
+$PIC_ID=$_GET['PIC_ID'];
+$IS_MAIN=$_GET['IS_MAIN'];
+include_once("menu_top.php");
+?>

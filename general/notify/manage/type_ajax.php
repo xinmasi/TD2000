@@ -1,0 +1,31 @@
+<?
+include_once("inc/auth.inc.php");
+include_once("inc/utility_all.php");
+include_once("inc/utility_org.php");
+ob_end_clean();
+
+$PARA_ARRAY=get_sys_para("NOTIFY_AUDITING_SINGLE,NOTIFY_AUDITING_SINGLE_NEW,NOTIFY_AUDITING_EXCEPTION");
+$NOTIFY_AUDITING_SINGLE_NEW=$PARA_ARRAY["NOTIFY_AUDITING_SINGLE_NEW"];
+$NOTIFY_AUDITING_EXCEPTION=$PARA_ARRAY["NOTIFY_AUDITING_EXCEPTION"];
+$NOTIFY_AUDITING_SINGLE = $PARA_ARRAY["NOTIFY_AUDITING_SINGLE"];
+
+$NOTIFY_TYPE_ARRAY=explode(",", $NOTIFY_AUDITING_SINGLE_NEW);
+for ($I=0;$I<count($NOTIFY_TYPE_ARRAY);$I++)
+{
+	$TYPE_ID_ARRAY=explode("-", $NOTIFY_TYPE_ARRAY[$I]);
+	if ($TYPE_ID_ARRAY[0]!="TYPE")
+	    $TYPE_ID_STR.=$TYPE_ID_ARRAY[0].",";
+}
+
+$TYPE_ID_STR=td_trim($TYPE_ID_STR);
+
+$NOTIFY_TYPE_ID=$type_id."-1";
+
+if ((!find_id($TYPE_ID_STR, $type_id) && find_id($NOTIFY_AUDITING_SINGLE_NEW, 'TYPE-1') && $NOTIFY_AUDITING_SINGLE_NEW!="" && !find_id($NOTIFY_AUDITING_EXCEPTION,$_SESSION["LOGIN_USER_ID"]))||(find_id($NOTIFY_AUDITING_SINGLE_NEW, $NOTIFY_TYPE_ID) && !find_id($NOTIFY_AUDITING_EXCEPTION,$_SESSION["LOGIN_USER_ID"])) || ($type_id==""&& find_id($NOTIFY_AUDITING_SINGLE_NEW, 'TYPE-1') && !find_id($NOTIFY_AUDITING_EXCEPTION,$_SESSION["LOGIN_USER_ID"])))
+{
+	echo "1";
+}
+else
+  echo "0";
+
+?>

@@ -1,0 +1,139 @@
+<?
+include_once("inc/auth.inc.php");
+include_once("inc/utility_all.php");
+include_once("inc/utility_file.php");
+include_once("inc/utility_org.php");
+
+$HTML_PAGE_TITLE = _("员工复职详细信息");
+include_once("inc/header.inc.php");
+?>
+
+
+<script type="text/javascript" src="/inc/js_lang.php"></script>
+<script type="text/javascript" src="<?=MYOA_JS_SERVER?>/static/js/attach.js"></script>
+
+
+<body class="bodycolor">
+<table border="0" width="100%" cellspacing="0" cellpadding="3" class="small">
+  <tr>
+    <td class="Big"><img src="<?=MYOA_STATIC_SERVER?>/static/images/menu/meeting.gif" width="17" height="17"><span class="big3"> <?=_("员工复职详细信息")?></span><br>
+    </td>
+  </tr>
+</table>
+<br>
+<?
+$query = "SELECT * from HR_STAFF_REINSTATEMENT where REINSTATEMENT_ID='$REINSTATEMENT_ID'";
+$cursor= exequery(TD::conn(),$query);
+if($ROW=mysql_fetch_array($cursor))
+{
+   $REAPPOINTMENT_TIME_FACT=$ROW["REAPPOINTMENT_TIME_FACT"];
+   $REAPPOINTMENT_TYPE=$ROW["REAPPOINTMENT_TYPE"];
+   $REAPPOINTMENT_STATE=$ROW["REAPPOINTMENT_STATE"];
+   $REMARK=$ROW["REMARK"];
+   $REINSTATEMENT_PERSON=$ROW["REINSTATEMENT_PERSON"];
+   $REAPPOINTMENT_TIME_PLAN=$ROW["REAPPOINTMENT_TIME_PLAN"];
+   $NOW_POSITION=$ROW["NOW_POSITION"];
+   $APPLICATION_DATE=$ROW["APPLICATION_DATE"];
+   $MATERIALS_CONDITION=$ROW["MATERIALS_CONDITION"];
+   $FIRST_SALARY_TIME=$ROW["FIRST_SALARY_TIME"];
+   $ADD_TIME=$ROW["ADD_TIME"];
+   $REAPPOINTMENT_DEPT =$ROW["REAPPOINTMENT_DEPT"];
+   $LAST_UPDATE_TIME =$ROW["LAST_UPDATE_TIME"];
+   $ATTACHMENT_ID=$ROW["ATTACHMENT_ID"];  
+   $ATTACHMENT_NAME=$ROW["ATTACHMENT_NAME"];
+   
+   if($LAST_UPDATE_TIME=="0000-00-00 00:00:00")
+     $LAST_UPDATE_TIME="";
+   if($APPLICATION_DATE=="0000-00-00")
+     $APPLICATION_DATE="";
+   if($REAPPOINTMENT_TIME_PLAN=="0000-00-00")
+     $REAPPOINTMENT_TIME_PLAN="";
+   if($REAPPOINTMENT_TIME_FACT=="0000-00-00")
+     $REAPPOINTMENT_TIME_FACT="";
+   if($FIRST_SALARY_TIME=="0000-00-00")
+     $FIRST_SALARY_TIME="";
+     
+   $REAPPOINTMENT_TYPE=get_hrms_code_name($REAPPOINTMENT_TYPE,"HR_STAFF_REINSTATEMENT");
+   
+   $REINSTATEMENT_PERSON_NAME=substr(GetUserNameById($REINSTATEMENT_PERSON),0,-1);
+    if($REINSTATEMENT_PERSON_NAME=="")
+    {
+        	$query2 = "SELECT STAFF_NAME from HR_STAFF_INFO where USER_ID='$REINSTATEMENT_PERSON'";
+          $cursor2= exequery(TD::conn(),$query2);
+          if($ROW2=mysql_fetch_array($cursor2))
+          	$REINSTATEMENT_PERSON_NAME=$ROW2["STAFF_NAME"];    	
+    	     $REINSTATEMENT_PERSON_NAME=$REINSTATEMENT_PERSON_NAME."("."<font color=red>"._("用户已删除")."</font>".")";	
+	}
+   $REAPPOINTMENT_DEPT_NAME=substr(GetDeptNameById($REAPPOINTMENT_DEPT),0,-1);
+?>
+<table class="TableBlock" width="90%" align="center">
+  <tr>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("姓名：")?></td>
+    <td nowrap align="left"class="TableData" width="180"><?=$REINSTATEMENT_PERSON_NAME?></td>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("复职类型：")?></td>
+    <td nowrap align="left"class="TableData" width="180"><?=$REAPPOINTMENT_TYPE?></td>
+  </tr>
+  <tr>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("担任职务：")?></td>
+    <td nowrap align="left"class="TableData" width="180"><?=$NOW_POSITION?></td>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("复职部门：")?></td>
+    <td nowrap align="left"class="TableData" width="180"><?=$REAPPOINTMENT_DEPT_NAME?></td>
+  </tr>
+  <tr>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("申请日期：")?></td>
+    <td align="left" class="TableData" width="180"><?=$APPLICATION_DATE?></td>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("拟复职日期：")?></td>
+    <td nowrap align="left"class="TableData" width="180"><?=$REAPPOINTMENT_TIME_PLAN?></td>
+  </tr>
+  <tr>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("实际复职日期：")?></td>
+    <td nowrap align="left"class="TableData" width="180"><?=$REAPPOINTMENT_TIME_FACT?></td>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("工资恢复日期：")?></td>
+    <td nowrap align="left"class="TableData" width="180"><?=$FIRST_SALARY_TIME?></td>
+  </tr>
+  <tr>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("复职手续办理：")?></td>
+    <td nowrap align="left"class="TableData" colspan="3"><?=$MATERIALS_CONDITION?></td>
+  </tr>      
+  <tr>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("复职说明：")?></td>
+    <td nowrap align="left"class="TableData" colspan="3"><?=$REAPPOINTMENT_STATE?></td>
+  </tr>
+  <tr>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("备注：")?></td>
+    <td nowrap align="left"class="TableData" colspan="3"><?=$REMARK?></td>
+  </tr>
+  <tr>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("附件文档：")?></td>
+    <td nowrap align="left"class="TableData" colspan="3">
+<?
+    if($ATTACHMENT_ID=="")
+       echo _("无附件");
+    else
+       echo attach_link($ATTACHMENT_ID,$ATTACHMENT_NAME,1,1,1,1,0,1,0);
+
+?>
+    </td>
+  </tr>
+  <tr>
+    <td nowrap align="left" width="120" class="TableContent"><?=_("登记时间：")?></td>
+    <td nowrap align="left"class="TableData" colspan="3"><?=$ADD_TIME?></td>
+  </tr>
+  <tr>    
+    <td nowrap align="left" width="120" class="TableContent"><?=_("最后修改时间：")?></td>
+    <td nowrap align="left" class="TableData" width="180" colspan="3"><?=$LAST_UPDATE_TIME?></td>
+  </tr>
+  <tr align="center" class="TableControl">
+    <td colspan="4">
+      <input type="button" value="<?=_("关闭")?>" class="BigButton" onClick="window.close();" title="<?=_("关闭窗口")?>">
+    </td>
+  </tr>
+</table>
+<?
+}
+else
+  Message("",_("未找到相应记录！"));
+?>
+</body>
+
+</html>

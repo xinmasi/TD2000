@@ -1,0 +1,283 @@
+<!--startprint--><style>
+<!--
+	  table { border-collapse:collapse; page-break-after:always }
+	  .gridlines td { border:0px dotted black }
+	  .b { text-align:center }
+	  .e { text-align:center }
+	  .f { text-align:right }
+	  .inlineStr { text-align:left }
+	  .n { text-align:right }
+	  .s { text-align:left }
+	  td.style0 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style1 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style2 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style3 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:1px solid #000000 !important; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style4 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style5 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:#99CCFF }
+	  td.style6 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style7 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style8 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:#FFFFCC }
+	  td.style9 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style10 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style11 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style12 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style13 { padding-left:1px; padding-right:0px; vertical-align:middle; text-align:right; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style14 { padding-left:0px; padding-right:1px; vertical-align:middle; text-align:left; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style15 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:none #000000; border-left:1px solid #000000 !important; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style16 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:#FFFFCC }
+	  table.sheet0 col.col0 { width:72pt }
+	  table.sheet0 col.col1 { width:380.24986606981pt }
+	  table.sheet0 col.col2 { width:177.74993739358pt }
+	  table.sheet0 col.col3 { width:168.74994056353pt }
+	  table.sheet0 col.col4 { width:72pt }
+	  table.sheet0 tr { height:16.363636363636pt }
+	  table.sheet0 tr.row1 { height:31.7pt }
+	  table.sheet0 tr.row2 { height:20.4pt }
+	  table.sheet0 tr.row3 { height:20.4pt }
+	  table.sheet0 tr.row4 { height:20.4pt }
+	  table.sheet0 tr.row5 { height:21.9pt }
+	  table.sheet0 tr.row6 { height:22.65pt }
+	  table.sheet0 tr.row7 { height:21.9pt }
+	  table.sheet0 tr.row8 { height:19.6pt }
+	  table.sheet0 tr.row9 { height:20.4pt }
+	  table.sheet0 tr.row10 { height:19.6pt }
+	  table.sheet0 tr.row11 { height:20.4pt }
+	  table.sheet0 tr.row12 { height:19.6pt }
+	  table.sheet0 tr.row13 { height:19.6pt }
+	  table.sheet0 tr.row14 { height:20.4pt }
+	  table.sheet0 tr.row15 { height:20.4pt }
+	  table.sheet0 tr.row16 { height:20.4pt }
+	  table.sheet0 tr.row17 { height:20.4pt }
+	  table.sheet0 tr.row18 { height:20.4pt }
+	  table.sheet0 tr.row19 { height:18.85pt }
+	  table.sheet0 tr.row20 { height:19.6pt }
+	  table.sheet0 tr.row21 { height:20.4pt }
+	  table.sheet0 tr.row22 { height:18.85pt }
+	  table.sheet0 tr.row23 { height:19.6pt }
+	  table.sheet0 tr.row24 { height:18.85pt }
+	  table.sheet0 tr.row25 { height:22.65pt }
+	  table.sheet0 tr.row26 { height:18.85pt }
+	  table.sheet0 tr.row27 { height:19.6pt }
+-->
+  td.selected {cursor:pointer;}
+  td.selected2 {cursor:pointer;}
+  tr.selected {background-color:#D0DEEB;}
+</style>
+<img id="loading" src="/static/images/loading.gif" style="z-index:999;position:absolute;display:none;"><div id='showdiv' align='center' ><form name='my_form' method='post' enctype='multipart/form-data' action='' target=''><style>
+@page { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+body { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+</style>
+	<table border="0" style="border-collapse:collapse;table-layout:fixed;width:726.74974402692pt" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+		<col class="col0">
+		<col class="col1">
+		<col class="col2">
+		<col class="col3">
+		<col class="col4">
+		<tbody>
+		  <tr class="row0" id="row0">
+			<td class="column0 style2 null"></td>
+			<td class="column1 style4 null"></td>
+			<td class="column2 style4 null"></td>
+			<td class="column3 style4 null"></td>
+			<td class="column4 style2 null"></td>
+		  </tr>
+		  <tr class="row1" id="row1">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style5 s style5" colspan="3">损  益  表</td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row2" id="row2">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style6 null style7" rowspan="3"></td>
+			<td class="column2 style13 s">编制单位：<br />
+<br />
+</td>
+			<td class="column3 style14 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row3" id="row3">
+			<td class="column0 style3 null"></td>
+			<td class="column2 style13 s">日期：</td>
+			<td class="column3 style14 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row4" id="row4">
+			<td class="column0 style3 null"></td>
+			<td class="column2 style13 s">单位：<br />
+</td>
+			<td class="column3 style14 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row5" id="row5">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;项    目</td>
+			<td class="column2 style8 s">本期金额</td>
+			<td class="column3 style8 s">上期金额</td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row6" id="row6">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">一、营业收入                          </td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row7" id="row7">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;减：营业成本                        </td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row8" id="row8">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;营业税金及附加             </td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row9" id="row9">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;销售费用</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row10" id="row10">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;管理费用</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row11" id="row11">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;财务费用</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row12" id="row12">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;资产减值损失</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row13" id="row13">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;加：公允价值变动收益（损失以“-”号填列）</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row14" id="row14">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;投资收益（损失以“－”号填列）    </td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row15" id="row15">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中：对联营企业和合营企业的投资收益</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row16" id="row16">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">二、营业利润（亏损以“－”号填列）    </td>
+			<td class="column2 style16 f">=C7-C8-C9-C10-C11-C12-C13+C14+C15</td>
+			<td class="column3 style16 f">=D7-D8-D9-D10-D11-D12-D13+D14+D15</td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row17" id="row17">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;加：营业外收入</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row18" id="row18">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;减：营业外支出                        </td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row19" id="row19">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;其中：非流动资产处置损失</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row20" id="row20">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">三、利润总额（亏损总额以“－”号填列）    </td>
+			<td class="column2 style16 f">=C17+C18-C19</td>
+			<td class="column3 style16 f">=D17+D18-D19</td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row21" id="row21">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">&nbsp;&nbsp;&nbsp;&nbsp;减：所得税费用                            </td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row22" id="row22">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">四、净利润（净亏损以“－”号填列）        </td>
+			<td class="column2 style16 f">=C21-C22</td>
+			<td class="column3 style16 f">=D21-D22</td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row23" id="row23">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">五、每股收益：</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row24" id="row24">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">（一）基本每股收益</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row25" id="row25">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style10 s">（二）稀释每股收益</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row26" id="row26">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">六、其他综合收益</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style9 null"></td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row27" id="row27">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">七、综合收益总额</td>
+			<td class="column2 style16 f">=C23+C27</td>
+			<td class="column3 style16 f">=D23+D27</td>
+			<td class="column4 style15 null"></td>
+		  </tr>
+		  <tr class="row28" id="row28">
+			<td class="column0">&nbsp;</td>
+			<td class="column1 style11 null"></td>
+			<td class="column2 style11 null"></td>
+			<td class="column3 style11 null"></td>
+			<td class="column4">&nbsp;</td>
+		  </tr>
+		</tbody>
+	</table>
+</form></div><!--endprint--><div id="id_select" style="width: 250px;height:250px;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"></div><div id="_all_map" style="left:0px;top:0px;width: 100%;height:80%;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"><span style="font-size: 12px;float: right;cursor: pointer;" onclick=""><b>关闭</b></span></div>  </body>
+</html>
+<script language='javascript'>var obj = $("span[id^='id_select']", window.top.document); if($(obj).length > 0){obj.remove();}</script>

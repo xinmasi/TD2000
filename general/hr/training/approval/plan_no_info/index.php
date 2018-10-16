@@ -1,0 +1,6 @@
+<?
+include_once("inc/auth.inc.php");
+
+$HTML_PAGE_TITLE = _("Ñ¡Ôñ¼Æ»®±àºÅ");
+include_once("query.php");
+?>

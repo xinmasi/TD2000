@@ -1,0 +1,575 @@
+<!--startprint--><style>
+<!--
+	  table { border-collapse:collapse; page-break-after:always }
+	  .gridlines td { border:0px dotted black }
+	  .b { text-align:center }
+	  .e { text-align:center }
+	  .f { text-align:right }
+	  .inlineStr { text-align:left }
+	  .n { text-align:right }
+	  .s { text-align:left }
+	  td.style0 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style1 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style2 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style3 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:1px solid #000000 !important; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style4 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style5 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'宋体'; font-size:14pt; background-color:#99CCFF }
+	  td.style6 { padding-left:1px; padding-right:0px; vertical-align:middle; text-align:right; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style7 { padding-left:1px; padding-right:1px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:#FFFFCC }
+	  td.style8 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style9 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style10 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style11 { padding-left:0px; padding-right:1px; vertical-align:middle; text-align:left; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style12 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:none #000000; border-left:1px solid #000000 !important; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style13 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style14 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:#FFFFCC }
+	  table.sheet0 col.col0 { width:72pt }
+	  table.sheet0 col.col1 { width:436.49984625765pt }
+	  table.sheet0 col.col2 { width:179.24993686526pt }
+	  table.sheet0 col.col3 { width:72pt }
+	  table.sheet0 tr { height:16.363636363636pt }
+	  table.sheet0 tr.row1 { height:24.15pt }
+	  table.sheet0 tr.row2 { height:24.15pt }
+	  table.sheet0 tr.row3 { height:23.4pt }
+	  table.sheet0 tr.row4 { height:23.4pt }
+	  table.sheet0 tr.row5 { height:21.15pt }
+	  table.sheet0 tr.row6 { height:20.4pt }
+	  table.sheet0 tr.row7 { height:21.15pt }
+	  table.sheet0 tr.row8 { height:21.9pt }
+	  table.sheet0 tr.row9 { height:21.15pt }
+	  table.sheet0 tr.row10 { height:20.4pt }
+	  table.sheet0 tr.row11 { height:19.6pt }
+	  table.sheet0 tr.row12 { height:18.1pt }
+	  table.sheet0 tr.row13 { height:18.85pt }
+	  table.sheet0 tr.row14 { height:18.1pt }
+	  table.sheet0 tr.row15 { height:18.1pt }
+	  table.sheet0 tr.row16 { height:19.6pt }
+	  table.sheet0 tr.row17 { height:21.15pt }
+	  table.sheet0 tr.row18 { height:22.65pt }
+	  table.sheet0 tr.row19 { height:18.1pt }
+	  table.sheet0 tr.row20 { height:18.85pt }
+	  table.sheet0 tr.row21 { height:19.6pt }
+	  table.sheet0 tr.row22 { height:18.85pt }
+	  table.sheet0 tr.row23 { height:18.85pt }
+	  table.sheet0 tr.row24 { height:19.6pt }
+	  table.sheet0 tr.row25 { height:18.85pt }
+	  table.sheet0 tr.row26 { height:18.85pt }
+	  table.sheet0 tr.row27 { height:18.1pt }
+	  table.sheet0 tr.row28 { height:17.35pt }
+	  table.sheet0 tr.row29 { height:18.1pt }
+	  table.sheet0 tr.row30 { height:18.85pt }
+	  table.sheet0 tr.row31 { height:21.15pt }
+	  table.sheet0 tr.row32 { height:17.35pt }
+	  table.sheet0 tr.row33 { height:17.35pt }
+	  table.sheet0 tr.row34 { height:18.1pt }
+	  table.sheet0 tr.row35 { height:17.35pt }
+	  table.sheet0 tr.row36 { height:18.1pt }
+	  table.sheet0 tr.row37 { height:18.1pt }
+	  table.sheet0 tr.row38 { height:20.4pt }
+	  table.sheet0 tr.row39 { height:18.85pt }
+	  table.sheet0 tr.row40 { height:22.65pt }
+	  table.sheet0 tr.row41 { height:20.4pt }
+	  table.sheet0 tr.row42 { height:18.1pt }
+	  table.sheet0 tr.row43 { height:20.4pt }
+	  table.sheet0 tr.row44 { height:18.85pt }
+	  table.sheet0 tr.row45 { height:18.85pt }
+	  table.sheet0 tr.row46 { height:21.15pt }
+	  table.sheet0 tr.row47 { height:19.6pt }
+	  table.sheet0 tr.row48 { height:18.85pt }
+	  table.sheet0 tr.row49 { height:18.1pt }
+	  table.sheet0 tr.row50 { height:19.6pt }
+	  table.sheet0 tr.row51 { height:19.6pt }
+	  table.sheet0 tr.row52 { height:19.6pt }
+	  table.sheet0 tr.row53 { height:19.6pt }
+	  table.sheet0 tr.row54 { height:18.85pt }
+	  table.sheet0 tr.row55 { height:18.85pt }
+	  table.sheet0 tr.row56 { height:18.1pt }
+	  table.sheet0 tr.row57 { height:18.85pt }
+	  table.sheet0 tr.row58 { height:20.4pt }
+	  table.sheet0 tr.row59 { height:19.6pt }
+	  table.sheet0 tr.row60 { height:18.85pt }
+	  table.sheet0 tr.row61 { height:19.6pt }
+	  table.sheet0 tr.row62 { height:20.4pt }
+	  table.sheet0 tr.row63 { height:21.15pt }
+	  table.sheet0 tr.row64 { height:18.85pt }
+	  table.sheet0 tr.row65 { height:18.1pt }
+	  table.sheet0 tr.row66 { height:20.4pt }
+	  table.sheet0 tr.row67 { height:18.85pt }
+	  table.sheet0 tr.row68 { height:21.9pt }
+	  table.sheet0 tr.row69 { height:18.1pt }
+	  table.sheet0 tr.row70 { height:18.1pt }
+	  table.sheet0 tr.row71 { height:18.85pt }
+	  table.sheet0 tr.row72 { height:18.1pt }
+	  table.sheet0 tr.row73 { height:18.1pt }
+-->
+  td.selected {cursor:pointer;}
+  td.selected2 {cursor:pointer;}
+  tr.selected {background-color:#D0DEEB;}
+</style>
+<img id="loading" src="/static/images/loading.gif" style="z-index:999;position:absolute;display:none;"><div id='showdiv' align='center' ><form name='my_form' method='post' enctype='multipart/form-data' action='' target=''><style>
+@page { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+body { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+</style>
+	<table border="0" style="border-collapse:collapse;table-layout:fixed;width:615.74978312291pt" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+		<col class="col0">
+		<col class="col1">
+		<col class="col2">
+		<col class="col3">
+		<tbody>
+		  <tr class="row0" id="row0">
+			<td class="column0 style2 null"></td>
+			<td class="column1 style4 null"></td>
+			<td class="column2 style4 null"></td>
+			<td class="column3 style2 null"></td>
+		  </tr>
+		  <tr class="row1" id="row1">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style5 s style5" colspan="2">现金流量表</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row2" id="row2">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style6 s">编制单位：<br />
+<br />
+</td>
+			<td class="column2 style11 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row3" id="row3">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style6 s">日期：</td>
+			<td class="column2 style11 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row4" id="row4">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style6 s">单位：<br />
+</td>
+			<td class="column2 style11 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row5" id="row5">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style7 s">项目</td>
+			<td class="column2 style7 s">金额</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row6" id="row6">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">一、经营活动产生的现金流量</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row7" id="row7">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">销售商品、提供劳务收到的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row8" id="row8">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">收到的税费返还</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row9" id="row9">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">收到的其他与经营活动有关的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row10" id="row10">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">现金流入小计</td>
+			<td class="column2 style14 f">=C8+C9+C10</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row11" id="row11">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">购买商品、接受劳务支付的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row12" id="row12">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">支付给职工以及为职工支付的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row13" id="row13">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">支付的各项税费</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row14" id="row14">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">支付的其他与经营活动有关的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row15" id="row15">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">现金流出小计</td>
+			<td class="column2 style14 f">=C12+C13+C14+C15</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row16" id="row16">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">经营活动产生的现金流量净额</td>
+			<td class="column2 style14 f">=C11-C16</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row17" id="row17">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">二、投资活动产生的现金流量</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row18" id="row18">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">收回投资所收到的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row19" id="row19">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">取得投资收益所收到的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row20" id="row20">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">处置固定资产、无形资产和其他长期资产所收回的现金净额</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row21" id="row21">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">处置子公司及其他营业单位收到的现金净额</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row22" id="row22">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">收到的其他与投资活动有关的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row23" id="row23">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">现金流入小计</td>
+			<td class="column2 style14 f">=C19+C20+C21+C22+C23</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row24" id="row24">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">购建固定资产、无形资产和其他长期资产所支付的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row25" id="row25">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">投资所支付的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row26" id="row26">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">取得子公司及其他营业单位支付的现金净额</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row27" id="row27">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">支付的其他与投资活动有关的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row28" id="row28">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">现金流出小计</td>
+			<td class="column2 style14 f">=C25+C26+C27+C28</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row29" id="row29">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">投资活动产生的现金流量净额</td>
+			<td class="column2 style14 f">=C24-C29</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row30" id="row30">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">三、筹资活动产生的现金流量</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row31" id="row31">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">吸收投资所收到的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row32" id="row32">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">取得借款收到的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row33" id="row33">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">收到的其他与筹资活动有关的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row34" id="row34">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">现金流入小计</td>
+			<td class="column2 style14 f">=C32+C33+C34</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row35" id="row35">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">偿还债务所支付的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row36" id="row36">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">分配股利、利润或偿付利息所支付的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row37" id="row37">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">支付的其他与筹资活动有关的现金</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row38" id="row38">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">现金流出小计</td>
+			<td class="column2 style14 f">=C36+C37+C38</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row39" id="row39">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">筹资活动产生的现金流量净额</td>
+			<td class="column2 style14 f">=C32+C33+C34-C36-C37-C38</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row40" id="row40">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">四、汇率变动对现金的影响</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row41" id="row41">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">五、现金及现金等价物净增加额</td>
+			<td class="column2 style14 f">=C17+C30+C40+C41</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row42" id="row42">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">加：期初现金及现金等价物余额</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row43" id="row43">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">六、期末现金及现金等价物余额</td>
+			<td class="column2 style14 f">=C42+C43</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row44" id="row44">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">补充资料:</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row45" id="row45">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">现金流量附表项目</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row46" id="row46">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">1、将净利润调节为经营活动现金流量</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row47" id="row47">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">净利润</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row48" id="row48">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">资产减值准备</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row49" id="row49">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">固定资产折旧、油气资产折耗、生产性生物资产折旧</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row50" id="row50">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">无形资产摊销</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row51" id="row51">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">长期待摊费用摊销</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row52" id="row52">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">处理固定资产、无形资产和其他长期资产的损失</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row53" id="row53">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">固定资产报废损失</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row54" id="row54">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">公允价值变动损失</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row55" id="row55">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">财务费用</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row56" id="row56">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">投资损失</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row57" id="row57">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">递延所得税资产减少</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row58" id="row58">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">递延所得税负债增加</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row59" id="row59">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">存货的减少</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row60" id="row60">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">经营性应收项目的减少</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row61" id="row61">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">经营性应付项目的增加</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row62" id="row62">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">其他</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row63" id="row63">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">经营活动产生的现金流量净额</td>
+			<td class="column2 style14 f">=C42-C30-C40</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row64" id="row64">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">2、不涉及现金收支的投资和筹资活动</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row65" id="row65">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">债务转为资本</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row66" id="row66">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">一年内到期的可转换公司债券</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row67" id="row67">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">融资租入固定资产</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row68" id="row68">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style8 s">3、现金及现金等价物净增加情况</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row69" id="row69">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">现金的期末余额</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row70" id="row70">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">减：现金的期初余额</td>
+			<td class="column2 style14 f">=C43</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row71" id="row71">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">加：现金等价物的期末余额</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row72" id="row72">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">减：现金等价物的期初余额</td>
+			<td class="column2 style9 null"></td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row73" id="row73">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style9 s">现金及现金等价物的净增加额</td>
+			<td class="column2 style14 f">=C70-C71+C72-C73</td>
+			<td class="column3 style12 null"></td>
+		  </tr>
+		  <tr class="row74" id="row74">
+			<td class="column0">&nbsp;</td>
+			<td class="column1 style10 null"></td>
+			<td class="column2 style10 null"></td>
+			<td class="column3">&nbsp;</td>
+		  </tr>
+		</tbody>
+	</table>
+</form></div><!--endprint--><div id="id_select" style="width: 250px;height:250px;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"></div><div id="_all_map" style="left:0px;top:0px;width: 100%;height:80%;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"><span style="font-size: 12px;float: right;cursor: pointer;" onclick=""><b>关闭</b></span></div>  </body>
+</html>
+<script language='javascript'>var obj = $("span[id^='id_select']", window.top.document); if($(obj).length > 0){obj.remove();}</script>

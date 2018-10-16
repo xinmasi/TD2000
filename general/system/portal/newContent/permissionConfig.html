@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="GBK">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>权限配置</title>
+    <link rel="stylesheet" href="/static/js/bootstrap/css/bootstrap.min.css">
+    <link href="/static/js/jquery-1.10.2/jquery-ui/css/flick/jquery-ui-1.10.3.custom.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/js/jstree/dist/themes/default/style.min.css" />
+    <link rel="stylesheet" href="/static/modules/portal/newContent/css/index.css">
+    <script src="/static/js/jquery-1.10.2/jquery.min.js"></script>
+    <script src="/static/js/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery-1.10.2/template/jquery.tmpl.min.js"></script>
+    <script type="text/javascript" src="/static/js/jquery-1.10.2/jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="/static/js/jstree/dist/jstree.min.js"></script>
+    <script src="/static/js/module.js"></script>
+    <script src="/static/modules/portal/newContent/power.js"></script>
+</head>
+<body>
+    <!-- top -->
+    <div id="power_btn_box">
+        <h4 id="content_h4">门户权限管理</h4>
+        <button class="btn btn-primary power_jump_btn pull-right"  type="button" onclick="javascript:window.history.back(-1);">返回内容管理</button>
+    </div>
+    <div id="portalPowerTree"></div>
+    <div id="power_right_box">
+        <div id="welcome_power" class="">
+            <div id="welcome_div_power">
+                <!-- <h4>请从左侧选择栏目</h4> -->
+                <div class="explain_box">
+                    <h5 class="explain_info">请从左侧选择栏目</h5>
+                </div>
+                <!-- <button class="btn back_btn" onclick="javascript:window.history.back(-1);">返回内容管理</button> -->
+            </div>
+        </div>
+        <div id="complete_box" class="hide">
+            <div id="complete_div">
+                <!-- <h4>权限设置成功，请选择其他栏目进行设置</h4> -->
+                <div class="explain_box">
+                    <h5 class="explain_info">权限设置成功，请选择其他栏目进行设置</h5>
+                </div>
+                <!-- <button class="btn back_btn" onclick="javascript:window.history.back(-1);">返回内容管理</button> -->
+            </div>
+        </div>
+        <div id="custom_box" class="hide">
+            <!-- <div id="custom_div">
+                <h4>该栏目非普通栏目，不能管理其内容</h4>
+            </div> -->
+            <div class="explain_box">
+                <h5 class="explain_info">该栏目只支持展开下级菜单，无管理内容。</h5>
+            </div>
+        </div>
+        <div id="power_box" class="hide">
+            <form action=""  method="" id="form1" name="form1" style="overflow-x:hidden;">
+                <div class="container">
+                    <div class="span12">
+                        <h5>内容新建/编辑权限</h5>
+                    </div>  
+                    <div class="span12">
+                        选择部门：
+                        <input type="hidden" name="DEPT_IDS" id="DEPT_IDS" value="">
+                        <textarea style="width:565px;overflow-y:auto;" name="DEPT_NAMES" id="DEPT_NAMES" rows="3"  class="SmallStatic text_style" wrap="yes" readonly></textarea>
+                        <span href="#" class="orgAdd power_btn" onClick="SelectDept('','DEPT_IDS','DEPT_NAMES','','form1','1')" title='添加管理员'>添加</span>
+                        <span href="#" class="orgClear power_btn" onClick="ClearUser('DEPT_IDS', 'DEPT_NAMES')" title='清空管理员'>清空</span>
+                    </div>
+                    <div class="span12">
+                        选择角色：
+                        <input type="hidden" name="PRIV_IDS" id="PRIV_IDS" value="">
+                        <textarea style="width:565px;overflow-y:auto;" name="PRIV_NAMES" id="PRIV_NAMES" rows="3"  class="SmallStatic text_style" wrap="yes" readonly></textarea>
+                        <span href="#" class="orgAdd power_btn" onClick="SelectPriv('','PRIV_IDS', 'PRIV_NAMES', '', 'form1', '1')" title="添加管理员">添加</span>
+                        <span href="#" class="orgClear power_btn" onClick="ClearUser('PRIV_IDS', 'PRIV_NAMES')" title="清空管理员">清空</span>
+                    </div> 
+                    <div class="span12">
+                        选择人员：
+                        <input type="hidden" name="USER_IDS" id="USER_IDS" value="">
+                        <textarea style="width:565px;overflow-y:auto;" name="USER_NAMES" id="USER_NAMES" rows="3"  class="SmallStatic text_style" wrap="yes" readonly></textarea>
+                        <span href="#" class="orgAdd power_btn" onClick="SelectUser('133','','USER_IDS', 'USER_NAMES', '', 'form1', '1')" title='添加管理员'>添加</span>
+                        <span href="#" class="orgClear power_btn" onClick="ClearUser('USER_IDS', 'USER_NAMES')" title='清空管理员'>清空</span>
+                    </div>
+                    <div class="span12" style="padding-left:70px;">
+                        <label class="checkbox" style="width:140px;"><input type="checkbox" name="add_new" id="add_new" value="on">应用到所有下级子栏目</label>
+                    </div> 
+
+
+                    <div class="span12" style="padding-bottom:13px;">
+                        <h5>内容删除权限</h5>
+                    </div>  
+                    <div class="span12">
+                        选择部门：
+                        <input type="hidden" name="DELE_DEPT_IDS" id="DELE_DEPT_IDS" value="">
+                        <textarea style="width:565px;overflow-y:auto;" name="DELE_DEPT_NAMES" id="DELE_DEPT_NAMES" rows="3" class="SmallStatic text_style" wrap="yes" readonly></textarea>
+                        <span href="#" class="orgAdd power_btn" onClick="SelectDept('','DELE_DEPT_IDS','DELE_DEPT_NAMES','','form1','1')" title='添加管理员'>添加</span>
+                        <span href="#" class="orgClear power_btn" onClick="ClearUser('DELE_DEPT_IDS', 'DELE_DEPT_NAMES')" title='清空管理员'>清空</span>
+                    </div>
+                    <div class="span12">
+                        选择角色：
+                        <input type="hidden" name="DELE_PRIV_IDS" id="DELE_PRIV_IDS" value="">
+                        <textarea style="width:565px;overflow-y:auto;" name="DELE_PRIV_NAMES" id="DELE_PRIV_NAMES" rows="3"  class="SmallStatic text_style" wrap="yes" readonly></textarea>
+                        <span href="#" class="orgAdd power_btn" onClick="SelectPriv('','DELE_PRIV_IDS', 'DELE_PRIV_NAMES', '', 'form1', '1')" title="添加管理员">添加</span>
+                        <span href="#" class="orgClear power_btn" onClick="ClearUser('DELE_PRIV_IDS', 'DELE_PRIV_NAMES')" title="清空管理员">清空</span>
+                    </div>
+                    <div class="span12">
+                        选择人员： 
+                        <input type="hidden" name="DELE_USER_IDS" id="DELE_USER_IDS" value="">
+                        <textarea style="width:565px;overflow-y:auto;" name="DELE_USER_NAMES" id="DELE_USER_NAMES" rows="3"  class="SmallStatic text_style" wrap="yes" readonly></textarea>
+                        <span href="#" class="orgAdd power_btn" onClick="SelectUser('133','','DELE_USER_IDS', 'DELE_USER_NAMES', '', 'form1', '1')" title='添加管理员'>添加</span>
+                        <span href="#" class="orgClear power_btn" onClick="ClearUser('DELE_USER_IDS', 'DELE_USER_NAMES')" title='清空管理员'>清空</span>
+                    </div>
+                    <div class="span12" style="padding-left:70px;">
+                        <label class="checkbox" style="width:140px;"><input type="checkbox" name="delate_new" id="delate_new" value="on">应用到所有下级子栏目</label>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <div class="text-center" style="width:100%; padding-top:15px;">
+                    <input type="hidden" name="portal_id" id="portal_id" value="">
+                    <input type="hidden" name="column_id" id="column_id" value="">
+                    <button class="btn btn-primary" type="button" style="cursor:pointer" onClick="powerManage.submitPower()">确定</button>&nbsp;&nbsp;
+                    <button class="btn" type="button" style="cursor:pointer" onclick="javascript:window.history.back(-1);">返回内容管理</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

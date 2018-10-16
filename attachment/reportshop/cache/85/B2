@@ -1,0 +1,234 @@
+<!--startprint--><style>
+<!--
+	  table { border-collapse:collapse; page-break-after:always }
+	  .gridlines td { border:0px dotted black }
+	  .b { text-align:center }
+	  .e { text-align:center }
+	  .f { text-align:right }
+	  .inlineStr { text-align:left }
+	  .n { text-align:right }
+	  .s { text-align:left }
+	  td.style0 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style1 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style2 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style3 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style4 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style5 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:11pt; background-color:transparent }
+	  td.style6 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style7 { padding-left:1px; padding-right:1px; vertical-align:middle; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style8 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:1px solid #000000 !important; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style9 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style10 { padding-left:1px; padding-right:1px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:1px solid #000000 !important; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  table.sheet0 col.col0 { width:72pt }
+	  table.sheet0 col.col1 { width:56.249980187842pt }
+	  table.sheet0 col.col2 { width:72pt }
+	  table.sheet0 col.col3 { width:72pt }
+	  table.sheet0 col.col4 { width:72pt }
+	  table.sheet0 col.col5 { width:72pt }
+	  table.sheet0 col.col6 { width:72pt }
+	  table.sheet0 col.col7 { width:72pt }
+	  table.sheet0 col.col8 { width:107.99996196066pt }
+	  table.sheet0 col.col9 { width:72pt }
+	  table.sheet0 tr { height:16.363636363636pt }
+	  table.sheet0 tr.row5 { height:14.35pt }
+	  table.sheet0 tr.row6 { height:17.35pt }
+	  table.sheet0 tr.row7 { height:17.35pt }
+	  table.sheet0 tr.row8 { height:17.35pt }
+	  table.sheet0 tr.row9 { height:17.35pt }
+	  table.sheet0 tr.row10 { height:18.85pt }
+	  table.sheet1 col.col0 { width:72pt }
+	  table.sheet1 col.col1 { width:72pt }
+	  table.sheet1 tr { height:16.363636363636pt }
+	  table.sheet2 col.col0 { width:72pt }
+	  table.sheet2 col.col1 { width:72pt }
+	  table.sheet2 tr { height:16.363636363636pt }
+-->
+  td.selected {cursor:pointer;}
+  td.selected2 {cursor:pointer;}
+  tr.selected {background-color:#D0DEEB;}
+</style>
+<img id="loading" src="/static/images/loading.gif" style="z-index:999;position:absolute;display:none;"><div id='showdiv' align='center' ><form name='my_form' method='post' enctype='multipart/form-data' action='' target=''><style>
+@page { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+body { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+</style>
+	<table border="0" style="border-collapse:collapse;table-layout:fixed;width:164.2499421485pt" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+		<col class="col0">
+		<col class="col1">
+		<col class="col2">
+		<col class="col3">
+		<col class="col4">
+		<col class="col5">
+		<col class="col6">
+		<col class="col7">
+		<col class="col8">
+		<col class="col9">
+		<tbody>
+		  <tr class="row0" id="row0">
+			<td class="column0 style2 null"></td>
+			<td class="column1 style2 null"></td>
+			<td class="column2 style2 null"></td>
+			<td class="column3 style2 null"></td>
+			<td class="column4 style2 null"></td>
+			<td class="column5 style2 null"></td>
+			<td class="column6 style2 null"></td>
+			<td class="column7 style2 null"></td>
+			<td class="column8 style8 null"></td>
+			<td class="column9">&nbsp;</td>
+		  </tr>
+		  <tr class="row1" id="row1">
+			<td class="column0 style3 s">主键</td>
+			<td class="column1 style3 s">主键2</td>
+			<td class="column2 style3 s">不重复</td>
+			<td class="column3 style3 s">不重复2</td>
+			<td class="column4 style3 s">必填</td>
+			<td class="column5 style3 s">数值型</td>
+			<td class="column6 style3 s">货币型</td>
+			<td class="column7 style3 s">日期型</td>
+			<td class="column8 style3 s">比例</td>
+			<td class="column9 style10 null"></td>
+		  </tr>
+		  <tr class="row2" id="row2">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style3 null"></td>
+			<td class="column2 style3 null"></td>
+			<td class="column3 style3 null"></td>
+			<td class="column4 style3 null"></td>
+			<td class="column5 style3 null"></td>
+			<td class="column6 style3 null"></td>
+			<td class="column7 style3 null"></td>
+			<td class="column8 style3 f">=F3/G3</td>
+			<td class="column9 style10 null"></td>
+		  </tr>
+		  <tr class="row3" id="row3">
+			<td class="column0 style3 null"></td>
+			<td class="column1 style3 null"></td>
+			<td class="column2 style3 null"></td>
+			<td class="column3 style3 null"></td>
+			<td class="column4 style3 null"></td>
+			<td class="column5 style3 null"></td>
+			<td class="column6 style3 null"></td>
+			<td class="column7 style3 null"></td>
+			<td class="column8 style3 f">=F4/G4</td>
+			<td class="column9 style10 null"></td>
+		  </tr>
+		  <tr class="row4" id="row4">
+			<td class="column0 style4 null"></td>
+			<td class="column1 style4 null"></td>
+			<td class="column2 style4 null"></td>
+			<td class="column3 style4 null"></td>
+			<td class="column4 style4 null"></td>
+			<td class="column5 style4 null"></td>
+			<td class="column6 style4 null"></td>
+			<td class="column7 style4 null"></td>
+			<td class="column8 style9 null"></td>
+			<td class="column9">&nbsp;</td>
+		  </tr>
+		  <tr class="row5" id="row5">
+			<td class="column0 style5 s">本模板演示系统提供的数据审核功能：</td>
+			<td class="column1">&nbsp;</td>
+			<td class="column2">&nbsp;</td>
+			<td class="column3">&nbsp;</td>
+			<td class="column4">&nbsp;</td>
+			<td class="column5">&nbsp;</td>
+			<td class="column6">&nbsp;</td>
+			<td class="column7">&nbsp;</td>
+			<td class="column8">&nbsp;</td>
+			<td class="column9">&nbsp;</td>
+		  </tr>
+		  <tr class="row6" id="row6">
+			<td class="column0 style5 s">1、主键：确保主键所有字段组合值在填报的所有数据中是唯一的</td>
+			<td class="column1">&nbsp;</td>
+			<td class="column2">&nbsp;</td>
+			<td class="column3">&nbsp;</td>
+			<td class="column4">&nbsp;</td>
+			<td class="column5 style6 null"></td>
+			<td class="column6">&nbsp;</td>
+			<td class="column7">&nbsp;</td>
+			<td class="column8">&nbsp;</td>
+			<td class="column9">&nbsp;</td>
+		  </tr>
+		  <tr class="row7" id="row7">
+			<td class="column0 style5 s">2、不重复：确保不重复所有字段组合值在当前填报的数据中是唯一的<br />
+<br />
+<br />
+<br />
+</td>
+			<td class="column1 style6 null"></td>
+			<td class="column2">&nbsp;</td>
+			<td class="column3">&nbsp;</td>
+			<td class="column4">&nbsp;</td>
+			<td class="column5">&nbsp;</td>
+			<td class="column6">&nbsp;</td>
+			<td class="column7">&nbsp;</td>
+			<td class="column8 style6 null"></td>
+			<td class="column9">&nbsp;</td>
+		  </tr>
+		  <tr class="row8" id="row8">
+			<td class="column0 style5 s">3、必填：确保必填字段必须填写</td>
+			<td class="column1 style6 null"></td>
+			<td class="column2">&nbsp;</td>
+			<td class="column3">&nbsp;</td>
+			<td class="column4 style6 null"></td>
+			<td class="column5 style7 null"></td>
+			<td class="column6">&nbsp;</td>
+			<td class="column7">&nbsp;</td>
+			<td class="column8">&nbsp;</td>
+			<td class="column9">&nbsp;</td>
+		  </tr>
+		  <tr class="row9" id="row9">
+			<td class="column0 style5 s">4、字段值仅接受与字段数据类型相一致的数据</td>
+			<td class="column1">&nbsp;</td>
+			<td class="column2 style6 null"></td>
+			<td class="column3">&nbsp;</td>
+			<td class="column4">&nbsp;</td>
+			<td class="column5">&nbsp;</td>
+			<td class="column6">&nbsp;</td>
+			<td class="column7">&nbsp;</td>
+			<td class="column8">&nbsp;</td>
+			<td class="column9">&nbsp;</td>
+		  </tr>
+		  <tr class="row10" id="row10">
+			<td class="column0 style5 s">5、通过定义验证公式可实现更加强大的数据验证功能</td>
+			<td class="column1">&nbsp;</td>
+			<td class="column2">&nbsp;</td>
+			<td class="column3">&nbsp;</td>
+			<td class="column4">&nbsp;</td>
+			<td class="column5">&nbsp;</td>
+			<td class="column6">&nbsp;</td>
+			<td class="column7">&nbsp;</td>
+			<td class="column8">&nbsp;</td>
+			<td class="column9">&nbsp;</td>
+		  </tr>
+		</tbody>
+	</table>
+<style>
+@page { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+body { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+</style>
+	<table border="0" style="border-collapse:collapse;table-layout:fixed;width:pt" cellpadding="0" cellspacing="0" id="sheet1" class="sheet1 gridlines">
+		<col class="col0">
+		<col class="col1">
+		<tbody>
+		  <tr class="row0" id="row0">
+			<td class="column0">&nbsp;</td>
+			<td class="column1">&nbsp;</td>
+		  </tr>
+		</tbody>
+	</table>
+<style>
+@page { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+body { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+</style>
+	<table border="0" style="border-collapse:collapse;table-layout:fixed;width:pt" cellpadding="0" cellspacing="0" id="sheet2" class="sheet2 gridlines">
+		<col class="col0">
+		<col class="col1">
+		<tbody>
+		  <tr class="row0" id="row0">
+			<td class="column0">&nbsp;</td>
+			<td class="column1">&nbsp;</td>
+		  </tr>
+		</tbody>
+	</table>
+</form></div><!--endprint--><div id="id_select" style="width: 250px;height:250px;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"></div><div id="_all_map" style="left:0px;top:0px;width: 100%;height:80%;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"><span style="font-size: 12px;float: right;cursor: pointer;" onclick=""><b>关闭</b></span></div>  </body>
+</html>
+<script language='javascript'>var obj = $("span[id^='id_select']", window.top.document); if($(obj).length > 0){obj.remove();}</script><script language='javascript'>$("#bottom", window.top.document).append("<span class='btn checkStatus' style='' id='id_select0' onclick='showSheet(this);'>Sheet1</span><span class='btn checkStatus' style='' id='id_select1' onclick='showSheet(this);'>Sheet2</span><span class='btn checkStatus' style='' id='id_select2' onclick='showSheet(this);'>Sheet3</span>");</script>

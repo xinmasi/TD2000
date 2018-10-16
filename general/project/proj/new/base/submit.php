@@ -1,0 +1,11 @@
+<?
+include_once("inc/auth.inc.php");
+include_once("inc/header.inc.php");
+include_once("./save_proj.php");
+?>
+<script>
+alert("<?=_('保存数据成功！')?>");
+parent.location="../index.php?PROJ_ID=<?=$PROJ_ID?>&EDIT_FLAG=<?=$EDIT_FLAG?>";
+//parent.parent.refresh_tree();
+//window.location.reload();
+</script>
