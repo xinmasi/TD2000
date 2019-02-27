@@ -28,7 +28,7 @@
         </div>
         <!-- 任务信息修改 -->
         <div class="tab-pane" id="Tzone" style="overflow-y:auto;height:90%">
-            <iframe name="content_frame" marginwidth=0 marginheight=0 width=100% height=450 src="../../proj/new/task/index.php?PROJ_ID=<?=$i_proj_id?>&EDIT_FLAG=1" frameborder=0></iframe>
+            <iframe name="content_frame" marginwidth=0 marginheight=0 width=100% height=800 src="../../proj/new/task/index.php?PROJ_ID=<?=$i_proj_id?>&EDIT_FLAG=1" frameborder=0></iframe>
         </div>
         <!-- 项目文档修改-->
         <div class="tab-pane" id="Fzone" style="overflow-y:auto;height:90%">

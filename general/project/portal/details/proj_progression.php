@@ -215,7 +215,7 @@ function look_flow(RUN_ID){
 <!-- 右侧主体内容区域 -->
     <?php
 		//逻辑切换后台需要转换回来
-		$by = isset($BY) ? $BY : "DESC";
+		$by = isset($BY) ? $BY : "ASC";
 		if($by == "DESC"){
 			$by = "ASC";
 			$forward = "down";
@@ -242,8 +242,7 @@ function look_flow(RUN_ID){
 									<strong>
 										<a href="index.php?PROJ_ID=<?= $PROJ_ID?>&BY=<?= $by?>&ORDER=TASK_NO"><?= _("编号") ?></a> 
 									</strong>
-								</td>
-								<td nowrap >
+								
 									<strong>
 										<?= _("任务名称") ?>
 									</strong>
@@ -284,7 +283,7 @@ function look_flow(RUN_ID){
 				</div>
 		   </div>
 			<div class="hide" id="loading" style="position:fixed; margin-top:-48px; margin-left:10px;">
-				<div class="alert alert-success fade in">正在接在</div>
+				<div class="alert alert-success fade in">正在接收...</div>
 			</div>		   
             <div class="rightbar_bottom">
                 <?php include_once("column.php"); ?>
@@ -435,7 +434,12 @@ function look_flow(RUN_ID){
 			$("#tree").append('	<tr ><td style="background:#efefef;" colspan="8"></td></tr>');
 		else
 		{
-			$("#tree").append("<tr><td>"+datas.TASK_NO+"</td><td><a href='proj_task.php?VALUE=2&TASK_ID="+datas.TASK_ID+"&PROJ_ID="+datas.PROJ_ID+"'>"+datas.TASK_NAME+"</a></td><td>"+datas.TASK_USER+"</td><td>"+datas.TASK_START_TIME+"</td><td>"+datas.TASK_TIME+"<?= _("天") ?></td><td>"+datas.TASK_END_TIME+"</td><td><a href='/general/project/proj/task/task_detail.php?PROJ_ID="+datas.PROJ_ID+"&TASK_ID="+datas.TASK_ID+"'  title='"+datas.TASK_LOG+"'><div class='progress progress-striped progress-info active' style='margin:0px' ><div class='bar' style='width:"+datas.TASK_PERCENT_COMPLETE+"%;'><span style='color:black'>"+datas.TASK_PERCENT_COMPLETE+"%</span></div></div></a></td></tr>");
+
+			var tempArray = datas.TASK_NO.split(".");;
+			var num = tempArray.length * 20;
+			var styleTd = "text-align: left; padding-left:" + num + "px;";
+			
+			$("#tree").append("<tr><td style='"+styleTd+"'>"+datas.TASK_NO+" <a href='proj_task.php?VALUE=2&TASK_ID="+datas.TASK_ID+"&PROJ_ID="+datas.PROJ_ID+"'>"+datas.TASK_NAME+"</a></td><td>"+datas.TASK_USER+"</td><td>"+datas.TASK_START_TIME+"</td><td>"+datas.TASK_TIME+"<?= _("天") ?></td><td>"+datas.TASK_END_TIME+"</td><td><a href='/general/project/proj/task/task_detail.php?PROJ_ID="+datas.PROJ_ID+"&TASK_ID="+datas.TASK_ID+"'  title='"+datas.TASK_LOG+"'><div class='progress progress-striped progress-info active' style='margin:0px' ><div class='bar' style='width:"+datas.TASK_PERCENT_COMPLETE+"%;'><span style='color:black'>"+datas.TASK_PERCENT_COMPLETE+"%</span></div></div></a></td></tr>");
 			if(datas.hasOwnProperty("SON"))
 			{
 				son(datas.SON);
@@ -453,7 +457,11 @@ function look_flow(RUN_ID){
 	{
 		for(var i=0;i<date.length;i++)
 		{
-			$("#tree").append("<tr><td>"+date[i].TASK_NO+"</td><td><a href='proj_task.php?VALUE=2&TASK_ID="+date[i].TASK_ID+"&PROJ_ID="+date[i].PROJ_ID+"'>"+date[i].TASK_NAME+"</a></td><td>"+date[i].TASK_USER+"</td><td>"+date[i].TASK_START_TIME+"</td><td>"+date[i].TASK_TIME+"<?= _("天") ?></td><td>"+date[i].TASK_END_TIME+"</td><td><a href='/general/project/proj/task/task_detail.php?PROJ_ID="+date[i].PROJ_ID+"&TASK_ID="+date[i].TASK_ID+"'  title='"+date[i].TASK_LOG+"'><div class='progress progress-striped progress-info active' style='margin:0px' ><div class='bar' style='width:"+date[i].TASK_PERCENT_COMPLETE+"%;'><span style='color:black'>"+date[i].TASK_PERCENT_COMPLETE+"%</span></div></div></a></td></tr>");
+			var tempArray = date[i].TASK_NO.split(".");;
+			var num = tempArray.length * 20;
+			var styleTd = "text-align: left; padding-left:" + num + "px;";
+			
+			$("#tree").append("<tr><td style='"+styleTd+"'>"+date[i].TASK_NO+" <a href='proj_task.php?VALUE=2&TASK_ID="+date[i].TASK_ID+"&PROJ_ID="+date[i].PROJ_ID+"'>"+date[i].TASK_NAME+"</a></td><td>"+date[i].TASK_USER+"</td><td>"+date[i].TASK_START_TIME+"</td><td>"+date[i].TASK_TIME+"<?= _("天") ?></td><td>"+date[i].TASK_END_TIME+"</td><td><a href='/general/project/proj/task/task_detail.php?PROJ_ID="+date[i].PROJ_ID+"&TASK_ID="+date[i].TASK_ID+"'  title='"+date[i].TASK_LOG+"'><div class='progress progress-striped progress-info active' style='margin:0px' ><div class='bar' style='width:"+date[i].TASK_PERCENT_COMPLETE+"%;'><span style='color:black'>"+date[i].TASK_PERCENT_COMPLETE+"%</span></div></div></a></td></tr>");
 			if(date[i].hasOwnProperty("SON"))
 			{
 				son(date[i].SON);

@@ -47,11 +47,11 @@ function del_task(PROJ_ID,TASK_ID,CAL_ID)
 </div>
 
 <div align="center" style="padding:10px;">
-	<table align="center" class="table table-bordered table-striped table-hover" style="margin-bottom:70px;">
+	<table align="center" class="table table-bordered  " style="margin-bottom:70px;">
 		<?php
 			if($PROJ_ID){
 				$count = 0;
-				  $query = "select CAL_ID,TASK_ID,TASK_NAME,TASK_START_TIME,TASK_STATUS,TASK_END_TIME,TASK_ACT_END_TIME,TASK_TIME,USER_NAME from PROJ_TASK LEFT JOIN USER ON (USER.USER_ID=PROJ_TASK.TASK_USER) WHERE PROJ_ID='$PROJ_ID' ORDER BY TASK_NO,TASK_START_TIME";
+				  $query = "select CAL_ID,TASK_ID,TASK_SORT,TASK_NO,TASK_NAME,TASK_START_TIME,TASK_STATUS,TASK_END_TIME,TASK_ACT_END_TIME,TASK_TIME,USER_NAME from PROJ_TASK LEFT JOIN USER ON (USER.USER_ID=PROJ_TASK.TASK_USER) WHERE PROJ_ID='$PROJ_ID' ORDER BY TASK_SORT,TASK_START_TIME";
 				  $cursor = exequery(TD::conn(), $query);
 				  while($ROW = mysql_fetch_array($cursor))
 				  {
@@ -59,10 +59,10 @@ function del_task(PROJ_ID,TASK_ID,CAL_ID)
 					
 					if($count == 1){
 					?>
-					<tr class="info" style="color:#2a70e9;">
-						<td colspan="6" ><strong>任务列表</strong></td>
+					<tr class="info" style="color:#2a70e9;font-size:18px;">
+						<td colspan="7" ><strong>任务列表</strong></td>
 					</tr>
-					<tr class="info" style="color:#2a70e9;">
+					<tr class="info" style="color:#2a70e9;font-size:18px;">
 						<td ><?=_("任务名称")?></td>
 						<td ><?=_("执行人")?></td>
 						<td ><?=_("开始")?></td>
@@ -73,11 +73,13 @@ function del_task(PROJ_ID,TASK_ID,CAL_ID)
 					<?
 					}$CAL_ID = $ROW["CAL_ID"];
 					 $TASK_ID = $ROW["TASK_ID"];
+					 $TASK_SORT = $ROW["TASK_SORT"];
+					 $TASK_NO = $ROW["TASK_NO"];
 					 $TASK_NAME = $ROW["TASK_NAME"];
 					 $USER_NAME = $ROW["USER_NAME"];
 					 $TASK_START_TIME = $ROW["TASK_START_TIME"];
 					 $TASK_STATUS = $ROW["TASK_STATUS"];
-						 $TASK_END_TIME = $ROW["TASK_END_TIME"];
+					 $TASK_END_TIME = $ROW["TASK_END_TIME"];
 					 $TASK_ACT_END_TIME = $ROW["TASK_ACT_END_TIME"];
 					 if(strtotime($TASK_ACT_END_TIME)>0 && $TASK_STATUS=='1')
 					 {
@@ -87,10 +89,15 @@ function del_task(PROJ_ID,TASK_ID,CAL_ID)
 					 }
 					 $TASK_TIME = $ROW["TASK_TIME"];
 					 
-					   	 $PRIV_NAME = get_code_name($PROJ_PRIV_ARRAY[$i],"PROJ_PRIV");
+					 
+					 $tempArray = explode(".", $TASK_NO);
+					 $num = count($tempArray) * 20;
+					 $StyleTd = "text-align: left; padding-left:".$num."px;";
+					 
+				   	 $PRIV_NAME = get_code_name($PROJ_PRIV_ARRAY[$i],"PROJ_PRIV");
 					 echo '
 						  <tr class="'.$TableLine.'">
-							<td >'.$TASK_NAME.'</td>
+							<td style="'.$StyleTd.'">'.$TASK_NO.'&nbsp;'.$TASK_NAME.'</td>
 							<td>'.$USER_NAME.'</td>
 							<td>'.$TASK_START_TIME.'</td>
 							<td>'.$TASK_TIME.' 天</td>

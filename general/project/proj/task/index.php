@@ -36,7 +36,7 @@ function show_log(TASK_ID)
 
 <?
 
-$QUERY = "select PROJ_TASK.*,USER.USER_NAME from PROJ_TASK LEFT JOIN USER ON(PROJ_TASK.TASK_USER=USER.USER_ID) WHERE PROJ_ID='$PROJ_ID' ORDER BY TASK_NO,TASK_START_TIME";
+$QUERY = "select PROJ_TASK.*,USER.USER_NAME from PROJ_TASK LEFT JOIN USER ON(PROJ_TASK.TASK_USER=USER.USER_ID) WHERE PROJ_ID='$PROJ_ID' ORDER BY TASK_SORT,TASK_START_TIME";
 $CUR = exequery(TD::conn(),$QUERY);
 $datas = array();
 while($ROW = mysql_fetch_array($CUR)){
@@ -85,7 +85,6 @@ if(empty($datas))
 	
 	<tr class="info">
 		<td><strong><?=_("标识")?></strong></td>
-		<td><strong><?=_("任务编号")?></strong></td>
 		<td><strong><?=_("任务名称")?></strong></td>
 		<td><strong><?=_("负责人")?></strong></td>
 		<td><strong><?=_("开始日期")?></strong></td>
@@ -108,10 +107,13 @@ if(empty($datas))
 							echo '<img src="'.MYOA_STATIC_SERVER.'/static/images/project/milestone.gif" title="'._("里程碑").'" />';
 						else
 							echo '-';
+						
+						$tempArray = explode(".", $datan["TASK_NO"]);
+						$num = count($tempArray) * 20;
+						$StyleTd = "text-align: left; padding-left:".$num."px;";
 					?>
 							</td>
-							<td nowrap align="center"><?=$datan["TASK_NO"]?></td>
-							<td nowrap align="left"><a href="#" onclick="showDetail('<?=$datan["TASK_ID"]?>')"><?=$datan["TASK_NAME"]?></td>
+							<td nowrap align="left" style="<?=$StyleTd?>"><a href="#" onclick="showDetail('<?=$datan["TASK_ID"]?>')"><?=$datan["TASK_NO"]?>&nbsp;<?=$datan["TASK_NAME"]?></td>
 							<td nowrap align="center"><?=$datan["USER_NAME"]?></td>
 							<td nowrap align="center"><?=$datan["TASK_START_TIME"]?></td>
 							<td nowrap align="center"><?=$datan["TASK_TIME"]?> <?=_("天")?></td>
@@ -137,10 +139,13 @@ if(empty($datas))
 				echo '<img src="'.MYOA_STATIC_SERVER.'/static/images/project/milestone.gif" title="'._("里程碑").'" />';
 			else
 				echo '-';
+			
+				$tempArray = explode(".", $data["TASK_NO"]);
+				$num = count($tempArray) * 20;
+				$StyleTd = "text-align: left; padding-left:".$num."px;";
 			?>
 					</td>
-					<td nowrap align="center"><?=$data["TASK_NO"]?></td>
-					<td nowrap align="left"><a href="#" onclick="showDetail('<?=$data["TASK_ID"]?>')"><?=$data["TASK_NAME"]?></td>
+					<td nowrap align="left" style="<?=$StyleTd?>"><a href="#" onclick="showDetail('<?=$data["TASK_ID"]?>')"><?=$data["TASK_NO"]?>&nbsp;<?=$data["TASK_NAME"]?></td>
 					<td nowrap align="center"><?=$data["USER_NAME"]?></td>
 					<td nowrap align="center"><?=$data["TASK_START_TIME"]?></td>
 					<td nowrap align="center"><?=$data["TASK_TIME"]?> <?=_("天")?></td>

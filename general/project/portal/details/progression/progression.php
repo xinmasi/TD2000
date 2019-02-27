@@ -21,7 +21,7 @@ if(isset($by)){
 	}
 }
 
-$ORDER = isset($order) ? $order : "TASK_NO";
+$ORDER = isset($order) ? $order : "TASK_SORT";
 function getTaskLog($TASK_ID,$LOG_SIZE=5)
 {
     $return_str = ''    ;

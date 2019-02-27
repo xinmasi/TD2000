@@ -53,12 +53,13 @@
         	 * 
         	 */
        	    $time =date("Y-m-d",time());
-       	 	$select_task = "SELECT * from proj_task where proj_id = '$i_proj_id' ORDER BY TASK_STATUS,TASK_END_TIME>'$time',TASK_ACT_END_TIME > TASK_END_TIME desc,TASK_START_TIME asc";
+       	 	$select_task = "SELECT * from proj_task where proj_id = '$i_proj_id' ORDER BY TASK_SORT,TASK_STATUS,TASK_END_TIME>'$time',TASK_ACT_END_TIME > TASK_END_TIME desc,TASK_START_TIME asc";
        	 	$res_cursor_time = exequery(TD::conn(),$select_task);
             while($a_row_task = mysql_fetch_array($res_cursor_time))
             {
             //------提取任务基本信息------
                 $i_task_id = $a_row_task["TASK_ID"];
+                $s_task_no = $a_row_task["TASK_NO"];
                 $s_task_name = $a_row_task["TASK_NAME"];
                 $s_task_start_time = $a_row_task["TASK_START_TIME"];  
                 $s_task_act_start_time = $a_row_task["TASK_START_TIME"];
@@ -117,9 +118,15 @@
                         $s_status_color = '#81b71b';
                     }
                 }
+                
+                
+                $tempArray = explode(".", $a_row_task["TASK_NO"]);
+                $num = count($tempArray) * 20;
+                $StyleTd = "text-align: left; padding-left:".$num."px;";
+                
         ?>
         <tr>
-            <td nowrap style="color:<?=$s_status_color?>;text-align:left"><?=$s_task_name?></td>
+            <td nowrap style="color:<?=$s_status_color?>; <?=$StyleTd ?>"><?=$s_task_no?> <?=$s_task_name?></td>
             <td nowrap style="color:<?=$s_status_color?>;"><?=$s_status_str?></td>
             <td nowrap style="color:<?=$s_status_color?>;"><?=$s_task_start_time?></td>
             <td nowrap style="color:<?=$s_status_color?>;"><?=$s_task_act_start_time?></td>

@@ -1,0 +1,342 @@
+<!--startprint--><style>
+<!--
+	  table { border-collapse:collapse; page-break-after:always }
+	  .gridlines td { border:0px dotted black }
+	  .b { text-align:center }
+	  .e { text-align:center }
+	  .f { text-align:right }
+	  .inlineStr { text-align:left }
+	  .n { text-align:right }
+	  .s { text-align:left }
+	  td.style0 { padding-left:2px; padding-right:2px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style1 { padding-left:2px; padding-right:2px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style2 { padding-left:2px; padding-right:2px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:none #000000; border-left:none #000000; border-right:none #000000; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:15pt; background-color:transparent }
+	  td.style3 { padding-left:2px; padding-right:2px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:#CCCCFF }
+	  td.style4 { padding-left:2px; padding-right:2px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style5 { padding-left:2px; padding-right:2px; vertical-align:bottom; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style6 { padding-left:2px; padding-right:2px; vertical-align:middle; text-align:center; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; font-weight:bold; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:#CCCCFF }
+	  td.style7 { padding-left:2px; padding-right:2px; vertical-align:middle; text-align:right; border-bottom:1px solid #000000 !important; border-top:1px solid #000000 !important; border-left:1px solid #000000 !important; border-right:1px solid #000000 !important; color:#000000; font-family:'微软雅黑'; font-size:12pt; background-color:transparent }
+	  td.style8 { padding-left:2px; padding-right:2px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style9 { padding-left:2px; padding-right:2px; vertical-align:middle; border-bottom:none #000000; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style10 { padding-left:2px; padding-right:2px; vertical-align:middle; border-bottom:none #000000; border-top:1px solid #000000 !important; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style11 { padding-left:2px; padding-right:2px; vertical-align:middle; border-bottom:1px solid #000000 !important; border-top:none #000000; border-left:none #000000; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  td.style12 { padding-left:2px; padding-right:2px; vertical-align:bottom; border-bottom:none #000000; border-top:none #000000; border-left:1px solid #000000 !important; border-right:none #000000; color:#000000; font-family:'宋体'; font-size:12pt; background-color:transparent }
+	  table.sheet0 col.col0 { width:130.49995403579pt }
+	  table.sheet0 col.col1 { width:56.99997992368pt }
+	  table.sheet0 col.col2 { width:72.749974376275pt }
+	  table.sheet0 col.col3 { width:77.249972791303pt }
+	  table.sheet0 col.col4 { width:77.249972791303pt }
+	  table.sheet0 col.col5 { width:56.99997992368pt }
+	  table.sheet0 col.col6 { width:56.99997992368pt }
+	  table.sheet0 col.col7 { width:56.99997992368pt }
+	  table.sheet0 col.col8 { width:56.99997992368pt }
+	  table.sheet0 col.col9 { width:56.99997992368pt }
+	  table.sheet0 col.col10 { width:56.99997992368pt }
+	  table.sheet0 col.col11 { width:79.672104pt }
+	  table.sheet0 col.col12 { width:79.672104pt }
+	  table.sheet0 col.col13 { width:79.672104pt }
+	  table.sheet0 col.col14 { width:79.672104pt }
+	  table.sheet0 col.col15 { width:79.672104pt }
+	  table.sheet0 col.col16 { width:79.672104pt }
+	  table.sheet0 col.col17 { width:79.672104pt }
+	  table.sheet0 col.col18 { width:79.672104pt }
+	  table.sheet0 col.col19 { width:79.672104pt }
+	  table.sheet0 col.col20 { width:79.672104pt }
+	  table.sheet0 col.col21 { width:79.672104pt }
+	  table.sheet0 col.col22 { width:79.672104pt }
+	  table.sheet0 col.col23 { width:79.672104pt }
+	  table.sheet0 col.col24 { width:79.672104pt }
+	  table.sheet0 col.col25 { width:79.672104pt }
+	  table.sheet0 col.col26 { width:79.672104pt }
+	  table.sheet0 col.col27 { width:79.672104pt }
+	  table.sheet0 col.col28 { width:79.672104pt }
+	  table.sheet0 col.col29 { width:79.672104pt }
+	  table.sheet0 col.col30 { width:79.672104pt }
+	  table.sheet0 col.col31 { width:79.672104pt }
+	  table.sheet0 col.col32 { width:79.672104pt }
+	  table.sheet0 col.col33 { width:79.672104pt }
+	  table.sheet0 col.col34 { width:79.672104pt }
+	  table.sheet0 col.col35 { width:79.672104pt }
+	  table.sheet0 col.col36 { width:79.672104pt }
+	  table.sheet0 col.col37 { width:79.672104pt }
+	  table.sheet0 col.col38 { width:79.672104pt }
+	  table.sheet0 col.col39 { width:79.672104pt }
+	  table.sheet0 col.col40 { width:79.672104pt }
+	  table.sheet0 col.col41 { width:79.672104pt }
+	  table.sheet0 col.col42 { width:79.672104pt }
+	  table.sheet0 col.col43 { width:79.672104pt }
+	  table.sheet0 col.col44 { width:79.672104pt }
+	  table.sheet0 col.col45 { width:79.672104pt }
+	  table.sheet0 col.col46 { width:79.672104pt }
+	  table.sheet0 col.col47 { width:79.672104pt }
+	  table.sheet0 col.col48 { width:79.672104pt }
+	  table.sheet0 col.col49 { width:79.672104pt }
+	  table.sheet0 col.col50 { width:79.672104pt }
+	  table.sheet0 col.col51 { width:79.672104pt }
+	  table.sheet0 col.col52 { width:79.672104pt }
+	  table.sheet0 col.col53 { width:79.672104pt }
+	  table.sheet0 tr { height:16.363636363636pt }
+	  table.sheet0 tr.row0 { height:30.95pt }
+	  table.sheet0 tr.row1 { height:21.9pt }
+	  table.sheet0 tr.row2 { height:21.9pt }
+	  table.sheet0 tr.row3 { height:27.9pt }
+	  table.sheet0 tr.row4 { height:27.9pt }
+-->
+  td.selected {cursor:pointer;}
+  td.selected2 {cursor:pointer;}
+  tr.selected {background-color:#D0DEEB;}
+</style>
+<img id="loading" src="/static/images/loading.gif" style="z-index:999;position:absolute;display:none;"><div id='showdiv' align='center' ><form name='my_form' method='post' enctype='multipart/form-data' action='' target=''><style>
+@page { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+body { left-margin: 0.7in; right-margin: 0.7in; top-margin: 0.75in; bottom-margin: 0.75in; }
+</style>
+	<table border="0" style="border-collapse:collapse;table-layout:fixed;width:756.74973346043pt" cellpadding="0" cellspacing="0" id="sheet0" class="sheet0 gridlines">
+		<col class="col0">
+		<col class="col1">
+		<col class="col2">
+		<col class="col3">
+		<col class="col4">
+		<col class="col5">
+		<col class="col6">
+		<col class="col7">
+		<col class="col8">
+		<col class="col9">
+		<col class="col10">
+		<col class="col11">
+		<col class="col12">
+		<col class="col13">
+		<col class="col14">
+		<col class="col15">
+		<col class="col16">
+		<col class="col17">
+		<col class="col18">
+		<col class="col19">
+		<col class="col20">
+		<col class="col21">
+		<col class="col22">
+		<col class="col23">
+		<col class="col24">
+		<col class="col25">
+		<col class="col26">
+		<col class="col27">
+		<col class="col28">
+		<col class="col29">
+		<col class="col30">
+		<col class="col31">
+		<col class="col32">
+		<col class="col33">
+		<col class="col34">
+		<col class="col35">
+		<col class="col36">
+		<col class="col37">
+		<col class="col38">
+		<col class="col39">
+		<col class="col40">
+		<col class="col41">
+		<col class="col42">
+		<col class="col43">
+		<col class="col44">
+		<col class="col45">
+		<col class="col46">
+		<col class="col47">
+		<col class="col48">
+		<col class="col49">
+		<col class="col50">
+		<col class="col51">
+		<col class="col52">
+		<col class="col53">
+		<tbody>
+		  <tr class="row0" id="row0">
+			<td class="column0 style2 s style2" colspan="52">各部门全年收入分析</td>
+			<td class="column52 style11 s">（单位：万元）</td>
+			<td class="column53">&nbsp;</td>
+		  </tr>
+		  <tr class="row1" id="row1">
+			<td class="column0 style3 s style3" rowspan="2">部门名称</td>
+			<td class="column1 style3 s style3" colspan="4">一月</td>
+			<td class="column5 style3 s style3" colspan="4">二月</td>
+			<td class="column9 style3 s style3" colspan="4">三月</td>
+			<td class="column13 style3 s style3" colspan="4">四月</td>
+			<td class="column17 style3 s style3" colspan="4">五月</td>
+			<td class="column21 style3 s style3" colspan="4">六月</td>
+			<td class="column25 style3 s style3" colspan="4">七月</td>
+			<td class="column29 style3 s style3" colspan="4">八月</td>
+			<td class="column33 style3 s style3" colspan="4">九月</td>
+			<td class="column37 style3 s style3" colspan="4">十月</td>
+			<td class="column41 style3 s style3" colspan="4">十一月</td>
+			<td class="column45 style3 s style3" colspan="4">十二月</td>
+			<td class="column49 style3 s style3" colspan="4">合计</td>
+			<td class="column53 style12 null"></td>
+		  </tr>
+		  <tr class="row2" id="row2">
+			<td class="column1 style6 s">应收金额</td>
+			<td class="column2 style6 s">实到金额</td>
+			<td class="column3 style6 s">已确认金额</td>
+			<td class="column4 style6 s">待确认金额</td>
+			<td class="column5 style6 s">应收金额</td>
+			<td class="column6 style6 s">实到金额</td>
+			<td class="column7 style6 s">已确认金额</td>
+			<td class="column8 style6 s">待确认金额</td>
+			<td class="column9 style6 s">应收金额</td>
+			<td class="column10 style6 s">实到金额</td>
+			<td class="column11 style6 s">已确认金额</td>
+			<td class="column12 style6 s">待确认金额</td>
+			<td class="column13 style6 s">应收金额</td>
+			<td class="column14 style6 s">实到金额</td>
+			<td class="column15 style6 s">已确认金额</td>
+			<td class="column16 style6 s">待确认金额</td>
+			<td class="column17 style6 s">应收金额</td>
+			<td class="column18 style6 s">实到金额</td>
+			<td class="column19 style6 s">已确认金额</td>
+			<td class="column20 style6 s">待确认金额</td>
+			<td class="column21 style6 s">应收金额</td>
+			<td class="column22 style6 s">实到金额</td>
+			<td class="column23 style6 s">已确认金额</td>
+			<td class="column24 style6 s">待确认金额</td>
+			<td class="column25 style6 s">应收金额</td>
+			<td class="column26 style6 s">实到金额</td>
+			<td class="column27 style6 s">已确认金额</td>
+			<td class="column28 style6 s">待确认金额</td>
+			<td class="column29 style6 s">应收金额</td>
+			<td class="column30 style6 s">实到金额</td>
+			<td class="column31 style6 s">已确认金额</td>
+			<td class="column32 style6 s">待确认金额</td>
+			<td class="column33 style6 s">应收金额</td>
+			<td class="column34 style6 s">实到金额</td>
+			<td class="column35 style6 s">已确认金额</td>
+			<td class="column36 style6 s">待确认金额</td>
+			<td class="column37 style6 s">应收金额</td>
+			<td class="column38 style6 s">实到金额</td>
+			<td class="column39 style6 s">已确认金额</td>
+			<td class="column40 style6 s">待确认金额</td>
+			<td class="column41 style6 s">应收金额</td>
+			<td class="column42 style6 s">实到金额</td>
+			<td class="column43 style6 s">已确认金额</td>
+			<td class="column44 style6 s">待确认金额</td>
+			<td class="column45 style6 s">应收金额</td>
+			<td class="column46 style6 s">实到金额</td>
+			<td class="column47 style6 s">已确认金额</td>
+			<td class="column48 style6 s">待确认金额</td>
+			<td class="column49 style6 s">应收金额</td>
+			<td class="column50 style6 s">实到金额</td>
+			<td class="column51 style6 s">已确认金额</td>
+			<td class="column52 style6 s">待确认金额</td>
+			<td class="column53 style12 null"></td>
+		  </tr>
+		  <tr class="row3" id="row3">
+			<td class="column0 style4 null"></td>
+			<td class="column1 style7 null"></td>
+			<td class="column2 style7 null"></td>
+			<td class="column3 style7 null"></td>
+			<td class="column4 style7 null"></td>
+			<td class="column5 style7 null"></td>
+			<td class="column6 style7 null"></td>
+			<td class="column7 style7 null"></td>
+			<td class="column8 style7 null"></td>
+			<td class="column9 style7 null"></td>
+			<td class="column10 style7 null"></td>
+			<td class="column11 style7 null"></td>
+			<td class="column12 style7 null"></td>
+			<td class="column13 style7 null"></td>
+			<td class="column14 style7 null"></td>
+			<td class="column15 style7 null"></td>
+			<td class="column16 style7 null"></td>
+			<td class="column17 style7 null"></td>
+			<td class="column18 style7 null"></td>
+			<td class="column19 style7 null"></td>
+			<td class="column20 style7 null"></td>
+			<td class="column21 style7 null"></td>
+			<td class="column22 style7 null"></td>
+			<td class="column23 style7 null"></td>
+			<td class="column24 style7 null"></td>
+			<td class="column25 style7 null"></td>
+			<td class="column26 style7 null"></td>
+			<td class="column27 style7 null"></td>
+			<td class="column28 style7 null"></td>
+			<td class="column29 style7 null"></td>
+			<td class="column30 style7 null"></td>
+			<td class="column31 style7 null"></td>
+			<td class="column32 style7 null"></td>
+			<td class="column33 style7 null"></td>
+			<td class="column34 style7 null"></td>
+			<td class="column35 style7 null"></td>
+			<td class="column36 style7 null"></td>
+			<td class="column37 style7 null"></td>
+			<td class="column38 style7 null"></td>
+			<td class="column39 style7 null"></td>
+			<td class="column40 style7 null"></td>
+			<td class="column41 style7 null"></td>
+			<td class="column42 style7 null"></td>
+			<td class="column43 style7 null"></td>
+			<td class="column44 style7 null"></td>
+			<td class="column45 style7 null"></td>
+			<td class="column46 style7 null"></td>
+			<td class="column47 style7 null"></td>
+			<td class="column48 style7 null"></td>
+			<td class="column49 style7 null"></td>
+			<td class="column50 style7 null"></td>
+			<td class="column51 style7 null"></td>
+			<td class="column52 style7 null"></td>
+			<td class="column53 style12 null"></td>
+		  </tr>
+		  <tr class="row4" id="row4">
+			<td class="column0 style4 s">总计</td>
+			<td class="column1 style7 f">=SUM(B$4:B4)</td>
+			<td class="column2 style7 f">=SUM(C$4:C4)</td>
+			<td class="column3 style7 f">=SUM(D$4:D4)</td>
+			<td class="column4 style7 f">=SUM(E$4:E4)</td>
+			<td class="column5 style7 f">=SUM(F$4:F4)</td>
+			<td class="column6 style7 f">=SUM(G$4:G4)</td>
+			<td class="column7 style7 f">=SUM(H$4:H4)</td>
+			<td class="column8 style7 f">=SUM(I$4:I4)</td>
+			<td class="column9 style7 f">=SUM(J$4:J4)</td>
+			<td class="column10 style7 f">=SUM(K$4:K4)</td>
+			<td class="column11 style7 f">=SUM(L$4:L4)</td>
+			<td class="column12 style7 f">=SUM(M$4:M4)</td>
+			<td class="column13 style7 f">=SUM(N$4:N4)</td>
+			<td class="column14 style7 f">=SUM(O$4:O4)</td>
+			<td class="column15 style7 f">=SUM(P$4:P4)</td>
+			<td class="column16 style7 f">=SUM(Q$4:Q4)</td>
+			<td class="column17 style7 f">=SUM(R$4:R4)</td>
+			<td class="column18 style7 f">=SUM(S$4:S4)</td>
+			<td class="column19 style7 f">=SUM(T$4:T4)</td>
+			<td class="column20 style7 f">=SUM(U$4:U4)</td>
+			<td class="column21 style7 f">=SUM(V$4:V4)</td>
+			<td class="column22 style7 f">=SUM(W$4:W4)</td>
+			<td class="column23 style7 f">=SUM(X$4:X4)</td>
+			<td class="column24 style7 f">=SUM(Y$4:Y4)</td>
+			<td class="column25 style7 f">=SUM(Z$4:Z4)</td>
+			<td class="column26 style7 f">=SUM(AA$4:AA4)</td>
+			<td class="column27 style7 f">=SUM(AB$4:AB4)</td>
+			<td class="column28 style7 f">=SUM(AC$4:AC4)</td>
+			<td class="column29 style7 f">=SUM(AD$4:AD4)</td>
+			<td class="column30 style7 f">=SUM(AE$4:AE4)</td>
+			<td class="column31 style7 f">=SUM(AF$4:AF4)</td>
+			<td class="column32 style7 f">=SUM(AG$4:AG4)</td>
+			<td class="column33 style7 f">=SUM(AH$4:AH4)</td>
+			<td class="column34 style7 f">=SUM(AI$4:AI4)</td>
+			<td class="column35 style7 f">=SUM(AJ$4:AJ4)</td>
+			<td class="column36 style7 f">=SUM(AK$4:AK4)</td>
+			<td class="column37 style7 f">=SUM(AL$4:AL4)</td>
+			<td class="column38 style7 f">=SUM(AM$4:AM4)</td>
+			<td class="column39 style7 f">=SUM(AN$4:AN4)</td>
+			<td class="column40 style7 f">=SUM(AO$4:AO4)</td>
+			<td class="column41 style7 f">=SUM(AP$4:AP4)</td>
+			<td class="column42 style7 f">=SUM(AQ$4:AQ4)</td>
+			<td class="column43 style7 f">=SUM(AR$4:AR4)</td>
+			<td class="column44 style7 f">=SUM(AS$4:AS4)</td>
+			<td class="column45 style7 f">=SUM(AT$4:AT4)</td>
+			<td class="column46 style7 f">=SUM(AU$4:AU4)</td>
+			<td class="column47 style7 f">=SUM(AV$4:AV4)</td>
+			<td class="column48 style7 f">=SUM(AW$4:AW4)</td>
+			<td class="column49 style7 f">=SUM(AX$4:AX4)</td>
+			<td class="column50 style7 f">=SUM(AY$4:AY4)</td>
+			<td class="column51 style7 f">=SUM(AZ$4:AZ4)</td>
+			<td class="column52 style7 f">=SUM(BA$4:BA4)</td>
+			<td class="column53 style12 null"></td>
+		  </tr>
+		</tbody>
+	</table>
+</form></div><!--endprint--><div id="id_select" style="width: 250px;height:250px;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"></div><div id="_all_map" style="left:0px;top:0px;width: 100%;height:80%;background-color: #ffffff;overflow:auto;z-index: 1999;position: absolute;display:none;"><span style="font-size: 12px;float: right;cursor: pointer;" onclick=""><b>关闭</b></span></div>  </body>
+</html>
+<script language='javascript'>var obj = $("span[id^='id_select']", window.top.document); if($(obj).length > 0){obj.remove();}</script>
