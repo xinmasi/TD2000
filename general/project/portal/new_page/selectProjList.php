@@ -5,8 +5,18 @@ include_once("inc/utility.php");
 include_once("inc/check_type.php");
 include_once("inc/utility_org.php");
 include_once("inc/utility_project.php");
-$PROJ_STATUS = intval($_GET['PROJ_STATUS']);
+$PROJ_STATUS = $_REQUEST['PROJ_STATUS'];
 $LOGIN_USER_ID = $_SESSION['LOGIN_USER_ID'];
+
+$projDeptName = $_REQUEST['projDeptName'];
+$deptId = $_REQUEST['deptId'];
+$leaderName = $_REQUEST['leaderName'];//项目负责人
+$leaderId = $_REQUEST['leaderId'];
+$projName = $_REQUEST['projName'];
+$projType = $_REQUEST['projType'];
+$startTime = $_REQUEST['startTime'];
+$endTime = $_REQUEST['endTime'];
+
 // $limit = $limit ? $limit : 9;
 // $start = $start ? $start : 0;
 
@@ -27,50 +37,90 @@ function splitStr($str,$c)
 }
 
 
-$fields = " p.PROJ_ID,p.PROJ_NUM , p.PROJ_NAME, p.PROJ_LEADER, p.PROJ_START_TIME, p.PROJ_END_TIME, p.PROJ_UPDATE_TIME, p.PROJ_PERCENT_COMPLETE, p.PROJ_LEVEL, p.NEW_CHANGE, p.PROJ_VIEWER, p.PROJ_TYPE, p.PROJ_OWNER, p.PROJ_MANAGER, p.PROJ_STATUS ";
+$fields = " p.PROJ_ID,p.PROJ_NUM , p.PROJ_NAME, p.PROJ_LEADER, p.PROJ_START_TIME, p.PROJ_END_TIME, p.PROJ_UPDATE_TIME, p.PROJ_PERCENT_COMPLETE, p.PROJ_LEVEL, p.NEW_CHANGE, p.PROJ_VIEWER, p.PROJ_TYPE, p.PROJ_OWNER, p.PROJ_MANAGER, p.PROJ_STATUS,d.DEPT_NAME ";
 $auth_sql = project_auth_sql();
 
 $QUERY = "";
 
-if(isset($find)){
-
-	if(!isset($PROJ_NUM_M)){
-		$PROJ_NUM = isset($PROJ_NUM)?" AND PROJ_NUM = '" . $PROJ_NUM ."'": "";
-	}else{
-		$PROJ_NUM = isset($PROJ_NUM)?" AND PROJ_NUM like '%" . splitStr($PROJ_NUM,'%') . "%'": "";
+$queryDept = "";
+if(isset($projDeptName)  && $projDeptName != ""){
+	$deptArray = explode(",",$projDeptName);
+	$queryDept .= " AND (";
+	$i=1;
+	foreach ($deptArray as $dept){
+		if(isset($dept) && $dept != ""){
+			$queryDept .= " d.DEPT_NAME LIKE '%$dept%' ";
+		}
+		$i++;
+		if ($i < sizeof($deptArray)) 
+			$queryDept .= " OR ";
 	}
-	if(!isset($PROJ_NAME_M)){
-		$PROJ_NAME = isset($PROJ_NAME)?" AND PROJ_NAME = '" . $PROJ_NAME ."'": "";
-	}else{
-		$PROJ_NAME = isset($PROJ_NAME)?" AND PROJ_NAME like '%" . splitStr($PROJ_NAME,'%') . "%'": "";
-    }
-    $PROJ_TYPE = isset($PROJ_TYPE)?" AND PROJ_TYPE = '" . $PROJ_TYPE ."'": "";
-    $PROJ_START_TIME = isset($PROJ_START_TIME) ? " AND PROJ_START_TIME >= '" . $PROJ_START_TIME . "'":"";
-    $PROJ_END_TIME = isset($PROJ_END_TIME)?" AND PROJ_END_TIME <= '" . $PROJ_END_TIME . "'":"";
+	$queryDept .= " ) ";
+}
+
+$queryLeader = "";
+if(isset($leaderName)  && $leaderName != ""){
+	$deptArray = explode(",",$leaderName);
+	$queryLeader .= " AND (";
+	$i=1;
+	foreach ($deptArray as $dept){
+		if(isset($dept) && $dept != ""){
+			$queryLeader .= " u.USER_NAME LIKE '%$dept%' ";
+		}
+		$i++;
+		if ($i < sizeof($deptArray))
+			$queryLeader .= " OR ";
+	}
+	$queryLeader .= " ) ";
+}
+
+$queryName = "";
+if(isset($projName)  && $projName != "" ){
+	$queryName .= " AND PROJ_NAME like '%" . $projName ."%'";
+}
+
+// if(!isset($PROJ_NUM_M)){
+// 		$PROJ_NUM = isset($PROJ_NUM)?" AND PROJ_NUM = '" . $PROJ_NUM ."'": "";
+// }else{
+// 		$PROJ_NUM = isset($PROJ_NUM)?" AND PROJ_NUM like '%" . splitStr($PROJ_NUM,'%') . "%'": "";
+// }
+// if(!isset($PROJ_NAME_M)){
+// 		$PROJ_NAME = isset($PROJ_NAME)?" AND PROJ_NAME = '" . $PROJ_NAME ."'": "";
+// }else{
+// 		$PROJ_NAME = isset($PROJ_NAME)?" AND PROJ_NAME like '%" . splitStr($PROJ_NAME,'%') . "%'": "";
+// }
+$PROJ_TYPE = isset($projType) && $projType != "" ?" AND PROJ_TYPE = '" . $projType ."'": "";
+$PROJ_START_TIME = isset($startTime)  && $startTime != "" ? " AND PROJ_START_TIME >= '" . $startTime . "'":"";
+$PROJ_END_TIME = isset($endTime)  && $endTime != "" ?" AND PROJ_END_TIME <= '" . $endTime . "'":"";
     
     ////$PROJ_LEVEL = isset($PROJ_LEVEL)?" AND PROJ_LEVEL = '" . $PROJ_LEVEL ."'": "";
-    if(isset($PROJ_LEVEL)){
-        $PROJ_LEVEL = str_split($PROJ_LEVEL);
-        $PROJ_LEVELS = "";
-        //and (FIND_IN_SET('b',PROJ_LEVEL) || FIND_IN_SET('a',PROJ_LEVEL));
-        foreach($PROJ_LEVEL as $KEY => $VAL){
-            $PROJ_LEVELS .= " FIND_IN_SET('$VAL',PROJ_LEVEL) ||";
-        }
-        $PROJ_LEVELS = rtrim($PROJ_LEVELS,'||');
-        $PROJ_LEVEL = " AND ( " . $PROJ_LEVELS . " ) ";
-    }else{
-        $PROJ_LEVEL = "";
-    }
+// if(isset($PROJ_LEVEL)){
+//         $PROJ_LEVEL = str_split($PROJ_LEVEL);
+//         $PROJ_LEVELS = "";
+//         //and (FIND_IN_SET('b',PROJ_LEVEL) || FIND_IN_SET('a',PROJ_LEVEL));
+//         foreach($PROJ_LEVEL as $KEY => $VAL){
+//             $PROJ_LEVELS .= " FIND_IN_SET('$VAL',PROJ_LEVEL) ||";
+//         }
+//         $PROJ_LEVELS = rtrim($PROJ_LEVELS,'||');
+//         $PROJ_LEVEL = " AND ( " . $PROJ_LEVELS . " ) ";
+// }else{
+//         $PROJ_LEVEL = "";
+// }
     
-    
-    $QUERY .= $PROJ_NUM . $PROJ_NAME . $PROJ_TYPE . $PROJ_LEVEL .$PROJ_START_TIME . $PROJ_END_TIME;
+$projStatus = " 1=1 ";
+if(isset($PROJ_STATUS)  && $PROJ_STATUS != "" ){
+    	$projStatus = " PROJ_STATUS = '" . $PROJ_STATUS ."'";
+    	if($PROJ_STATUS == 1)//9为临时位  当审批未通过所占用 除了<项目审批> 中不取状态9 其他地方均吧状态9作为状态1
+    		$projStatus = " (PROJ_STATUS = '$PROJ_STATUS' or PROJ_STATUS = '9') ";
 }
+    
+$QUERY .= $projStatus.$queryDept.$queryLeader.$queryName. $PROJ_TYPE  .$PROJ_START_TIME . $PROJ_END_TIME;
+
    
 
-$a_proj_all = "select $fields FROM PROJ_PROJECT as p where PROJ_STATUS = '$PROJ_STATUS' $QUERY $auth_sql order by PROJ_START_TIME desc,PROJ_ID desc";
-//9为临时位  当审批未通过所占用 除了<项目审批> 中不取状态9 其他地方均吧状态9作为状态1
-if($PROJ_STATUS == 1)
-	$a_proj_all = "select $fields FROM PROJ_PROJECT as p where (PROJ_STATUS = '$PROJ_STATUS' or PROJ_STATUS = '9') $QUERY $auth_sql order by PROJ_START_TIME desc,PROJ_ID desc";
+$a_proj_all = "select ".$fields." FROM PROJ_PROJECT as p LEFT JOIN USER AS u ON u.USER_ID = p.PROJ_LEADER
+LEFT JOIN DEPARTMENT AS d ON u.DEPT_ID = d.DEPT_ID where ".$QUERY.$auth_sql."order by PROJ_START_TIME desc,PROJ_ID desc";
+
 
 
 
@@ -168,4 +218,5 @@ $a_new_array = array_merge($timeout_project,$doing_project);
 $a_line = array('count' => $i_count, 'data' => $a_new_array);
 $s_to_json = array_to_json( $a_line );
 ob_clean();
-echo $s_to_json;
+// echo $s_to_json;
+?>

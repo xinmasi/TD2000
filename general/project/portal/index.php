@@ -14,6 +14,11 @@ include_once("inc/header.inc.php");
  * @author zfc
  *
  */
+
+
+include_once("./new_page/selectProjList.php");
+$projList = $a_new_array;
+
 ?>
 
 <!DOCTYPE html>
@@ -57,27 +62,30 @@ include_once("inc/header.inc.php");
 	
 </style>
 </head>
+
 <body>
+
+
     <?php include_once("./new_page/proj_menu.php"); ?>
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="span10">
         <form class="form-inline" id="proj_form">
           <label class="control-label" for="department">部门：</label>
-	          	<input type="hidden" name="projDept" id="projDept" value="<?=$s_dept_id?>" />
-		        <input  name="projDeptName" id="projDeptName"  type="text" value="<?=$s_dept?>" style="width:120px"/>
+	          	<input type="hidden" name="projDept" id="projDept" value="<?=$deptId?>" />
+		        <input  name="projDeptName" id="projDeptName"  type="text" value="<?=$projDeptName?>" style="width:120px"/>
 		        <a href="javascript:;" class="orgAdd" onClick="SelectDept('','projDept','projDeptName')"><?=_("选择")?></a>&nbsp;
           
           <label class="control-label" for="person">负责人：</label>
           
-	          	<input type="text" name="leaderName" id="leaderName" style="width:100px"  value="<?=$s_leader?>" >
-		        <a href="javascript:;" class="orgAdd" onClick="SelectUserSingle('65','','leaderId', 'leaderName')"><?=_("选择")?></a>
-		        <input type="hidden" name="leaderId" id="leaderId" value="<?=$s_leader_id?>">&nbsp;
+	          	<input type="text" name="leaderName" id="leaderName" style="width:100px"  value="<?=$leaderName?>" >
+		        <a href="javascript:;" class="orgAdd" onClick="SelectUser('65','','leaderId', 'leaderName')"><?=_("选择")?></a>
+		        <input type="hidden" name="leaderId" id="leaderId" value="<?=$leaderId?>">&nbsp;
           
           <label class="control-label" for="name">项目名称：</label>
-          <input type="text" id="projName" name="projName" style="width:120px">&nbsp;
+          <input type="text" id="projName" name="projName" style="width:120px" value="<?=$projName?>">&nbsp;
           <label class="control-label" for="state">状态：</label>
-          <select id="projStatus" name="projStatus" style="width:120px">
+          <select id="PROJ_STATUS" name="PROJ_STATUS" style="width:120px" >
           	<option value=""></option>
             <option value="0">立项中</option>
             <option value="1">审批中</option>
@@ -88,7 +96,7 @@ include_once("inc/header.inc.php");
           
           <label class="control-label" for="type">项目类别：</label>
           
-          <select id="type" name="PROJ_TYPE" style="width:120px">
+          <select  name="projType" id="projType" style="width:120px">
           		<option></option>
           		<?php
                 				$query = "SELECT CODE_NO,CODE_NAME FROM SYS_CODE WHERE PARENT_NO='PROJ_TYPE'";
@@ -99,16 +107,16 @@ include_once("inc/header.inc.php");
 											$CODE_NO = $ROW['CODE_NO'];
 											$CODE_NAME = $ROW['CODE_NAME'];
 											echo "<option value= '$CODE_NO' > $CODE_NAME </option>";
-										}
+										}                                                                                                                              
                                     }
 									
                 ?>
           </select> 
         
           <label class="control-label" >开始时间：</label>
-          <input type="text" style="width:80px" value="2018-08-23">
+          <input type="text" style="width:80px" id="startTime" name="startTime" value="<?=$startTime ?>">
           <label class="control-label" >结束时间：</label>
-          <input type="text" style="width:80px">
+          <input type="text" style="width:80px" id="endTime"  name="endTime" value="<?=$endTime ?>">
           <input type="hidden" name="pageIndex" value="<?=$pageIndex?>">
           <button type="submit" class="btn">查询</button>
         </form>
@@ -136,101 +144,63 @@ include_once("inc/header.inc.php");
         </tr>
       </thead>
       <tbody id="projectList">
-        <tr>
-          <td>1</td>
-          <td>部门名称</td>
-          <td>负责人</td>
-          <td>项目编号</td>
-          <td>项目名称</td>
-          <td>项目类别</td>
-          <td>立项时间</td>
-          <td>开始时间</td>
-          <td>结束时间</td>
-          <td>
-            <div class="progress">
-              <div class="bar bar-success" style="width: 60%;"></div>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>部门名称</td>
-          <td>负责人</td>
-          <td>项目编号</td>
-          <td>项目名称</td>
-          <td>项目类别</td>
-          <td>状态</td>
-          <td>立项时间</td>
-          <td>开始时间</td>
-          <td>结束时间</td>
-          <td>
-            <div class="progress">
-              <div class="bar" style="width: 50%;"></div>
-            </div>
-          </td>
-        </tr>
+        
+        <?php 
+   			$i = 0;
+	   		foreach($projList as $p){
+		   		$i++;
+		?>
+	   		
+		   		<tr >
+			          <td><?=$i?></td>
+			          <td><?=$p['DEPT_NAME']?></td>
+			          <td><?=$p['PROJ_LEADER']?></td>
+			          <td><?=$p['PROJ_NUM']?></td>
+			          <td onclick="javascript:open_project('<?=$p['PROJ_ID']?>',1)" style="cursor:pointer;"><?=$p['PROJ_NAME']?></td>
+			          <td><?=$p['PROJ_TYPE']?></td>
+					  <td>
+					 	<?php 
+					 		if ($p['PROJ_STATUS'] == '0'){
+					 			echo "立项中";
+					 		}else if($p['PROJ_STATUS'] == '1'){
+					 			echo "审批中";
+					 		}else if($p['PROJ_STATUS'] == '2'){
+					 			echo "办理中";
+					 		}else if($p['PROJ_STATUS'] == '3'){
+					 			echo "已办结";
+					 		}else if($p['PROJ_STATUS'] == '4'){
+					 			echo "挂起中";
+					 		}
+			   			?>   
+						
+					  </td>
+			          <td>立项时间</td>
+			          <td><?=$p['PROJ_START_TIME']?></td>
+			          <td><?=$p['PROJ_END_TIME']?></td>
+			          <td>
+			            <div class="progress">
+			              <div class="bar bar-success" style="width: <?=$p['PROJ_PERCENT_COMPLETE']?>%;"></div>
+			            </div>
+			          </td>
+				</tr>
+	   		
+	   	<?php 
+	   		}
+   		?>   
+        
+       
       </tbody>
     </table>
   </div>
 </body>
 </html>
-<script id="myTemplate" type="text/x-jquery-tmpl">
-	<tr >
-          <td>1</td>
-          <td>部门名称</td>
-          <td>${PROJ_LEADER}</td>
-          <td>${PROJ_NUM}</td>
-          <td onclick="javascript:open_project('${PROJ_ID}',1)" style="cursor:pointer;">${PROJ_NAME}</td>
-          <td>${PROJ_TYPE}</td>
-		  <td>
-			{{if PROJ_STATUS == '0'}}
-            	立项中
-            {{else PROJ_STATUS == '1'}}
-            	审批中
-            {{else PROJ_STATUS == '2'}}
-            	办理中
-            {{else PROJ_STATUS == '3'}}
-            	已办结
-            {{else PROJ_STATUS == '4'}}
-            	挂起中	
-            {{else}}
-            {{/if}}
-		  </td>
-          <td>立项时间</td>
-          <td>${PROJ_START_TIME}</td>
-          <td>${PROJ_END_TIME}</td>
-          <td>
-            <div class="progress">
-              <div class="bar bar-success" style="width: ${PROJ_PERCENT_COMPLETE}%;"></div>
-            </div>
-          </td>
-        </tr>
-</script>
 
 
 <script type="text/javascript">
 
-	var now_proj_status = <?=isset($PROJ_STATUS) ? intval($PROJ_STATUS) : 2;?>;
-	var url = "";
-	var page = 1;
+	$("#PROJ_STATUS").val(<?=$PROJ_STATUS ?>);
+	$("#projType").val(<?=$projType ?>);
 
-	$.getJSON("proj_list.php?PROJ_STATUS=" + now_proj_status + url )
-	.success(function(data){
-	    if(data.count > 0){
-	    	$("#projectList").empty();
-	        $('#myTemplate').tmpl(data.data).appendTo('#projectList');
-	    }else{
-	
-	        $("#loading").text("没有更多的数据").show();
-	    }
-	})
-	.fail(function( jqxhr, textStatus, error ) {
-	    //加载失败点击重新加载
-	    $("#loading").html("加载失败... <a href='#' onclick='load_tmpl()'>点击这里重新载入</a> [" + error + "]").show(speed);
-	});
-
-</script>
-<script type="text/javascript">
 	var obj_op = false;
 	var now_proj_status = <?=isset($PROJ_STATUS) ? intval($PROJ_STATUS) : 2;?>;
 	var url = "";
