@@ -21,6 +21,20 @@ $projList = $a_new_array;
 
 ?>
 
+<?php
+                				$query = "SELECT CODE_NO,CODE_NAME FROM SYS_CODE WHERE PARENT_NO='PROJ_TYPE'";
+                                $cursor = exequery(TD::conn(), $query);
+                                $typeMap = array();
+                                $typeSqlArray = array();
+                                $i = 0;
+                                while($ROW = mysql_fetch_array($cursor)){ 
+								    $typeMap[$ROW['CODE_NO']] = $ROW['CODE_NAME'];
+                                	$typeSqlArray[$i] = $ROW;
+                                	$i++;
+                                 }
+									
+?>
+
 <!DOCTYPE html>
 <html lang="cn">
 <head>
@@ -99,9 +113,9 @@ $projList = $a_new_array;
           <select  name="projType" id="projType" style="width:120px">
           		<option></option>
           		<?php
-                				$query = "SELECT CODE_NO,CODE_NAME FROM SYS_CODE WHERE PARENT_NO='PROJ_TYPE'";
-                                $cursor = exequery(TD::conn(), $query);
-                                    while($ROW = mysql_fetch_array($cursor))
+//                 				$query = "SELECT CODE_NO,CODE_NAME FROM SYS_CODE WHERE PARENT_NO='PROJ_TYPE'";
+//                                 $cursor = exequery(TD::conn(), $query);
+                                    foreach ( $typeSqlArray as $ROW)
                                     { 
 								        if($ROW['CODE_NO'] != $i_type_id){
 											$CODE_NO = $ROW['CODE_NO'];
@@ -113,9 +127,9 @@ $projList = $a_new_array;
                 ?>
           </select> 
         
-          <label class="control-label" >开始时间：</label>
+          <label class="control-label" >立项时间：</label>
           <input type="text" style="width:80px" id="startTime" name="startTime" value="<?=$startTime ?>">
-          <label class="control-label" >结束时间：</label>
+          <label class="control-label" >计划结束时间：</label>
           <input type="text" style="width:80px" id="endTime"  name="endTime" value="<?=$endTime ?>">
           <input type="hidden" name="pageIndex" value="<?=$pageIndex?>">
           <button type="submit" class="btn">查询</button>
@@ -138,8 +152,7 @@ $projList = $a_new_array;
           <th>项目类别</th>
           <th>状态</th>
           <th>立项时间</th>
-          <th>开始时间</th>
-          <th>结束时间</th>
+          <th>计划结束时间</th>
           <th>项目进度</th>
         </tr>
       </thead>
@@ -152,12 +165,12 @@ $projList = $a_new_array;
 		?>
 	   		
 		   		<tr >
-			          <td><?=$i?></td>
+			          <td><?=$i?><?php echo $typeMap[i] ?></td>
 			          <td><?=$p['DEPT_NAME']?></td>
 			          <td><?=$p['PROJ_LEADER']?></td>
 			          <td><?=$p['PROJ_NUM']?></td>
 			          <td onclick="javascript:open_project('<?=$p['PROJ_ID']?>',1)" style="cursor:pointer;"><?=$p['PROJ_NAME']?></td>
-			          <td><?=$p['PROJ_TYPE']?></td>
+			          <td><?=$typeMap[$p['PROJ_TYPE']]?></td>
 					  <td>
 					 	<?php 
 					 		if ($p['PROJ_STATUS'] == '0'){
@@ -174,7 +187,6 @@ $projList = $a_new_array;
 			   			?>   
 						
 					  </td>
-			          <td>立项时间</td>
 			          <td><?=$p['PROJ_START_TIME']?></td>
 			          <td><?=$p['PROJ_END_TIME']?></td>
 			          <td>
