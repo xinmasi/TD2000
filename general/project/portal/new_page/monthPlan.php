@@ -14,6 +14,7 @@ include_once("inc/header.inc.php");
  * @author zfc
  *
  */
+include_once("./monthPlanSelect.php");
 ?>
 <!DOCTYPE html>
 <html lang="cn">
@@ -185,6 +186,15 @@ include_once("inc/header.inc.php");
     <div id="tableMain">
       <ul id="dataTree" class="ztree"></ul>
     </div>
+    
+    <?php 
+    	foreach ($date as $obj){
+    		echo $obj["PROJ_NAME"];
+    	}
+    	
+    	echo PHP_VERSION;
+    ?>
+    
     <h4>日常事务安排 </h4>
     <table class="table table-bordered table-striped">
         <thead>
@@ -221,7 +231,7 @@ include_once("inc/header.inc.php");
             <td>部门</td>
             <td>事务类别</td>
             <td>开始时间</td>
-            <td>结束时间</td>
+            <td>结束时间<?=$typeSqlArray?></td>
             <td>
               <div class="progress">
                 <div class="bar" style="width: 50%;"></div>
@@ -258,7 +268,7 @@ include_once("inc/header.inc.php");
           var icoObj = $("#" + treeNode.tId + "_ico");
           var spanObj = $("#" + treeNode.tId + "_span");
           aObj.attr('title', '');
-          var objname = '<div class="diy">' + (treeNode.CONTACT_USER == null ? '&nbsp;' : treeNode.CONTACT_USER) + '</div>';
+          var objname = '<div class="diy">' + (treeNode.PROJ_NAME == null ? '&nbsp;' : treeNode.PROJ_NAME) + '</div>';
           aObj.append(objname);
           aObj.append('<div class="diy swich"></div>');
           var div = $(liObj).find('div').eq(1);
@@ -283,7 +293,8 @@ include_once("inc/header.inc.php");
        * 查询数据
        */
       function query() {
-          var data = [
+          var data = <?=$jsonDate?>;
+              [
           {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","CONTACT_PHONE":"18888888888","addFlag":true,"ORG_ID":1,"id":"o1","pId":"onull","open":true,"name":"3.编码落地","modFlag":true,"CORP_CAT":"港口-天然液化气,港口-液化石油气","TYPE":"org","delFlag":true},
           {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":null,"SECTOR_ID":1,"ORG_ID":1,"id":"s1","pId":"o1","name":"3.1前端开发","modFlag":true,"PARENT_ID":null,"CORP_CAT":"港口-天然液化气","TYPE":"sector","delFlag":true},
           {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":"0","SECTOR_ID":2,"ORG_ID":1,"id":"s2","pId":"s1","name":"3.1.1应用模块分析","modFlag":true,"PARENT_ID":1,"CORP_CAT":"港口-集装箱","TYPE":"sector","delFlag":true},

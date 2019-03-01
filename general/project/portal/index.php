@@ -22,17 +22,16 @@ $projList = $a_new_array;
 ?>
 
 <?php
-                				$query = "SELECT CODE_NO,CODE_NAME FROM SYS_CODE WHERE PARENT_NO='PROJ_TYPE'";
-                                $cursor = exequery(TD::conn(), $query);
-                                $typeMap = array();
-                                $typeSqlArray = array();
-                                $i = 0;
-                                while($ROW = mysql_fetch_array($cursor)){ 
-								    $typeMap[$ROW['CODE_NO']] = $ROW['CODE_NAME'];
-                                	$typeSqlArray[$i] = $ROW;
-                                	$i++;
-                                 }
-									
+	$query = "SELECT CODE_NO,CODE_NAME FROM SYS_CODE WHERE PARENT_NO='PROJ_TYPE'";
+	$cursor = exequery(TD::conn(), $query);
+	$typeMap = array();
+	$typeSqlArray = array();
+	$i = 0;
+	while($ROW = mysql_fetch_array($cursor)){
+		$typeMap[$ROW['CODE_NO']] = $ROW['CODE_NAME'];
+		$typeSqlArray[$i] = $ROW;
+		$i++;
+	}
 ?>
 
 <!DOCTYPE html>
@@ -68,10 +67,11 @@ $projList = $a_new_array;
 	    text-align:center;
 		
 	}
-	.countProj b{
+	.countProj a{
 		font-weight: bold;
 		font-size:20px;
 		color:#1E90FF;
+		cursor:pointer;
 	}
 	
 </style>
@@ -139,7 +139,7 @@ $projList = $a_new_array;
         <button type="submit" class="btn btn-success">新建项目</button>
       </div>
     </div>
-    <p class="countProj">项目总数<b>83</b>个，立项中<b>10</b>个，审批中<b style="color:#FF8000">3</b>个，办理中<b>10</b>个(其中<b style="color:#FF8000">2</b>个已延期)，挂起中<b>2</b>个，已办结<b>8</b>个</p>
+    <p class="countProj">项目总数<a onclick="selectStatus('')"><?=$statusArray[8] ?></a>个(其中<a onclick="selectStatus(20)" style="color:#FF8000"><?=$statusArray[7] ?></a></a>个已延期)，立项中<a onclick="selectStatus(0)"><?=$statusArray[0] ?></a>个，审批中<a style="color:#FF8000" onclick="selectStatus(1)"><?=$statusArray[1] ?></a></a>个，办理中<a onclick="selectStatus(2)"><?=$statusArray[2] ?></a>个，挂起中<a onclick="selectStatus(4)"><?=$statusArray[4] ?></a>个，已办结<a onclick="selectStatus(3)"><?=$statusArray[3] ?></a>个</p>
    	<p id="loading"></p>
     <table class="table table-bordered table-striped">
       <thead>
@@ -151,9 +151,10 @@ $projList = $a_new_array;
           <th>项目名称</th>
           <th>项目类别</th>
           <th>状态</th>
+          <th>级别</th>
           <th>立项时间</th>
           <th>计划结束时间</th>
-          <th>项目进度</th>
+          <th width="15%">项目进度</th>
         </tr>
       </thead>
       <tbody id="projectList">
@@ -169,7 +170,7 @@ $projList = $a_new_array;
 			          <td><?=$p['DEPT_NAME']?></td>
 			          <td><?=$p['PROJ_LEADER']?></td>
 			          <td><?=$p['PROJ_NUM']?></td>
-			          <td onclick="javascript:open_project('<?=$p['PROJ_ID']?>',1)" style="cursor:pointer;"><?=$p['PROJ_NAME']?></td>
+			          <td onclick="javascript:open_project('<?=$p['PROJ_ID']?>',1)" style="cursor:pointer;color:#1E90FF;"><?=$p['PROJ_NAME']?></td>
 			          <td><?=$typeMap[$p['PROJ_TYPE']]?></td>
 					  <td>
 					 	<?php 
@@ -187,6 +188,7 @@ $projList = $a_new_array;
 			   			?>   
 						
 					  </td>
+					  <td><?=$p['PROJ_LEVEL']?>级</td>
 			          <td><?=$p['PROJ_START_TIME']?></td>
 			          <td><?=$p['PROJ_END_TIME']?></td>
 			          <td>
@@ -199,7 +201,6 @@ $projList = $a_new_array;
 	   	<?php 
 	   		}
    		?>   
-        
        
       </tbody>
     </table>
@@ -236,7 +237,11 @@ $projList = $a_new_array;
 	    }
 	    obj_op = window.open(URL,"project_detail_"+PROJ_ID,"height="+myheight+",width="+mywidth+",status=1,toolbar=no,menubar=no,location=no,scrollbars=yes,top="+mytop+",left="+myleft+",resizable=yes");
 	}
-	
+
+	function selectStatus(projStatus){
+		$("#PROJ_STATUS").val(projStatus);
+		$("#proj_form").submit();
+	}
 	
 </script>
 

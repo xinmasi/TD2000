@@ -17,6 +17,7 @@ $projType = $_REQUEST['projType'];
 $startTime = $_REQUEST['startTime'];
 $endTime = $_REQUEST['endTime'];
 
+$statusArray = array("0"=>0,"1"=>0,"1"=>0,"2"=>0,"3"=>0,"4"=>0,"7"=>0,"8"=>0);
 // $limit = $limit ? $limit : 9;
 // $start = $start ? $start : 0;
 
@@ -37,7 +38,8 @@ function splitStr($str,$c)
 }
 
 
-$fields = " p.PROJ_ID,p.PROJ_NUM , p.PROJ_NAME, p.PROJ_LEADER, p.PROJ_START_TIME, p.PROJ_END_TIME, p.PROJ_UPDATE_TIME, p.PROJ_PERCENT_COMPLETE, p.PROJ_LEVEL, p.NEW_CHANGE, p.PROJ_VIEWER, p.PROJ_TYPE, p.PROJ_OWNER, p.PROJ_MANAGER, p.PROJ_STATUS,d.DEPT_NAME ";
+$fields = " p.PROJ_ID,p.PROJ_NUM , p.PROJ_NAME, p.PROJ_LEADER, p.PROJ_START_TIME, p.PROJ_END_TIME, p.PROJ_UPDATE_TIME, 
+		p.PROJ_PERCENT_COMPLETE, p.PROJ_LEVEL, p.NEW_CHANGE, p.PROJ_VIEWER, p.PROJ_TYPE, p.PROJ_OWNER, p.PROJ_MANAGER, p.PROJ_STATUS,d.DEPT_NAME ";
 $auth_sql = project_auth_sql();
 
 $QUERY = "";
@@ -195,12 +197,16 @@ while ($a_row = mysql_fetch_assoc($a_proj_cursor))
     if($YJ > 0 )
     {
         $a_row['XMYJ'] = $YJ -1;
+        $statusArray[7] += 1;
     }else
     {
         $a_row['XMYJ'] = -1;
     }
     
     $a_new_array[] = $a_row;
+    
+    $statusArray[$a_row['PROJ_STATUS']] += 1;
+    $statusArray[8] += 1;
 }
 $timeout_project = $doing_project = array();
 foreach($a_new_array as $new_array)
