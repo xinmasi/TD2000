@@ -179,16 +179,17 @@ Message("",_("保存成功！"));
 <script>
     function close_guide()
     {
-        if(window.parent && window.parent == window)
-        {
-            window.open('','_self','');
-            window.close();
-        }
-        else
-        {
-            parent.hide_mask();
-            parent.$("#li_<?=$proj_status?>")[0].click();
-        }
+    	window.location.href = "../index.php";
+//         if(window.parent && window.parent == window)
+//         {
+//             window.open('','_self','');
+//             window.close();
+//         }
+//         else
+//         {
+//             parent.hide_mask();
+    	//	            parent.$("#li_<?=$proj_status?>")[0].click();
+//         }
     }
     //发起流程
     var flow_run_proj = false;

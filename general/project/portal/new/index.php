@@ -83,7 +83,8 @@ $(function()
                     'class' : 'blue',
                     'action': function()
                     {
-                        parent.hide_mask();
+//                         parent.hide_mask();
+                        history.go(-1);
                     }
                 },
                 '继续填写'  : {
@@ -430,7 +431,9 @@ select.BigSelect:hover{
             if($priv != 1)//
             {
             ?>
+            <!-- 
             <button class="btn btn-large btn-primary hide" type="button" onClick="submit_proj(1)" id="sure_approve"><?=_("确认审批")?></button>
+             -->
             <?php
             }
             ?>

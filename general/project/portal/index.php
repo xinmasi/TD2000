@@ -47,6 +47,7 @@ $projList = $a_new_array;
 	<script src="<?=MYOA_JS_SERVER?>/static/js/bootstrap/js/bootstrap.min.js<?=$GZIP_POSTFIX?>"></script>
 	<script src="<?=MYOA_JS_SERVER?>/static/js/jquery-1.10.2/template/jquery.tmpl.min.js"></script>
 	<script src="/module/DatePicker/WdatePicker.js">/*时间控件*/</script>
+	<link href="/module/DatePicker/skin/WdatePicker.css" rel="stylesheet" type="text/css">
 
 	<link rel="stylesheet" type="text/css" href="<?=MYOA_STATIC_SERVER?>/static/modules/project/js/backtop/jquery.backTop.css" />
 	<script src="<?=MYOA_STATIC_SERVER?>/static/modules/project/js/backtop/jquery.backTop.js"></script>
@@ -128,15 +129,15 @@ $projList = $a_new_array;
           </select> 
         
           <label class="control-label" >立项时间：</label>
-          <input type="text" style="width:80px" id="startTime" name="startTime" value="<?=$startTime ?>">
+          <input type="text" style="width:80px" id="startTime" name="startTime" value="<?=$startTime ?>" onclick="WdatePicker()">
           <label class="control-label" >计划结束时间：</label>
-          <input type="text" style="width:80px" id="endTime"  name="endTime" value="<?=$endTime ?>">
+          <input type="text" style="width:80px" id="endTime"  name="endTime" value="<?=$endTime ?>" onclick="WdatePicker()">
           <input type="hidden" name="pageIndex" value="<?=$pageIndex?>">
           <button type="submit" class="btn">查询</button>
         </form>
       </div>
       <div class="span2">
-        <button type="submit" class="btn btn-success">新建项目</button>
+        <button type="button" class="btn btn-success"><a href="new/index.php" style="color:#fff;">新建项目</a></button>
       </div>
     </div>
     <p class="countProj">项目总数<a onclick="selectStatus('')"><?=$statusArray[8] ?></a>个(其中<a onclick="selectStatus(20)" style="color:#FF8000"><?=$statusArray[7] ?></a></a>个已延期)，立项中<a onclick="selectStatus(0)"><?=$statusArray[0] ?></a>个，审批中<a style="color:#FF8000" onclick="selectStatus(1)"><?=$statusArray[1] ?></a></a>个，办理中<a onclick="selectStatus(2)"><?=$statusArray[2] ?></a>个，挂起中<a onclick="selectStatus(4)"><?=$statusArray[4] ?></a>个，已办结<a onclick="selectStatus(3)"><?=$statusArray[3] ?></a>个</p>
@@ -170,7 +171,9 @@ $projList = $a_new_array;
 			          <td><?=$p['DEPT_NAME']?></td>
 			          <td><?=$p['PROJ_LEADER']?></td>
 			          <td><?=$p['PROJ_NUM']?></td>
-			          <td onclick="javascript:open_project('<?=$p['PROJ_ID']?>',1)" style="cursor:pointer;color:#1E90FF;"><?=$p['PROJ_NAME']?></td>
+			          <td style="cursor:pointer;color:#1E90FF;">
+			          			<a href="details/?PROJ_ID=<?=$p['PROJ_ID']?>" target="_blank"><?=$p['PROJ_NAME']?></a>
+		          			</td>
 			          <td><?=$typeMap[$p['PROJ_TYPE']]?></td>
 					  <td>
 					 	<?php 
@@ -214,29 +217,6 @@ $projList = $a_new_array;
 	$("#PROJ_STATUS").val(<?=$PROJ_STATUS ?>);
 	$("#projType").val(<?=$projType ?>);
 
-	var obj_op = false;
-	var now_proj_status = <?=isset($PROJ_STATUS) ? intval($PROJ_STATUS) : 2;?>;
-	var url = "";
-	var page = 1;
-	
-	function open_project(PROJ_ID,FORMAT)
-	{
-	    if(obj_op)
-	        obj_op.close();
-	    URL="details/?PROJ_ID="+PROJ_ID;
-	    myleft=(screen.availWidth-780)/2;
-	    mytop=100;
-	    mywidth=780;
-	    myheight=500;
-	    if(FORMAT == "1")
-	    {
-	        myleft=0;
-	        mytop=0;
-	        mywidth=screen.availWidth-25;
-	        myheight=screen.availHeight-70;
-	    }
-	    obj_op = window.open(URL,"project_detail_"+PROJ_ID,"height="+myheight+",width="+mywidth+",status=1,toolbar=no,menubar=no,location=no,scrollbars=yes,top="+mytop+",left="+myleft+",resizable=yes");
-	}
 
 	function selectStatus(projStatus){
 		$("#PROJ_STATUS").val(projStatus);

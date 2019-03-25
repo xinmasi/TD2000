@@ -159,8 +159,8 @@ include_once("./monthPlanSelect.php");
     <?php include_once("./proj_menu.php"); ?>
   <div class="container-fluid">
     <form class="form-inline">
-      <label class="control-label" for="month">月份：</label>
-      <input type="text" id="month" name="month" style="width:100px;" onfocus="selectMonth()" value="<?=$month?>"/>
+      <label class="control-label" for="month">日期：</label>
+      <input type="text" id="month" name="month" style="width:100px;" onfocus="WdatePicker()" value="<?=$month?>"/>
       
      	  <label class="control-label" for="department">部门：</label>
 	          	<input type="hidden" name="projDept" id="projDept" value="<?=$deptId?>" />
@@ -173,11 +173,13 @@ include_once("./monthPlanSelect.php");
 		        <a href="javascript:;" class="orgAdd" onClick="SelectUser('65','','leaderId', 'leaderName')"><?=_("选择")?></a>
 		        <input type="hidden" name="leaderId" id="leaderId" value="<?=$leaderId?>">&nbsp;
       			<input type="hidden" name="pageIndex" value="<?=$pageIndex?>">
-      			<input type="hidden" name="dateType" value="month">
+      			<input type="hidden" name="dateType" value="day">
       			
       <button type="submit" class="btn">查询</button>
     </form>
-    <h4>项目计划 <a href="/general/project/portal/new_page/monthPlanDetail.php?pageIndex=2&dateType=month" class="pull-right">计划详情查看 >></a></h4>
+    <h4>项目计划 
+    <!--     <a href="" class="pull-right">计划详情查看 >></a> -->
+    </a></h4>
     <div id="tableMain">
       <ul id="dataTree" class="ztree"></ul>
     </div>

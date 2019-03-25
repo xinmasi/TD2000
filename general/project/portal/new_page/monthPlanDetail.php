@@ -127,9 +127,23 @@ include_once("./monthPlanSelect.php");
       width: 6%;
   }
   .ztree div.diy:nth-child(7) {
-      width: 40%;
+      width: 8%;
   }
-
+  .ztree div.diy:nth-child(8) {
+      width: 8%;
+  }
+  .ztree div.diy:nth-child(9) {
+      width: 8%;
+  }
+  .ztree div.diy:nth-child(10) {
+      width: 8%;
+  }
+  .ztree div.diy:nth-child(11) {
+      width: 8%;
+  }
+  .ztree div.diy:nth-child(12) {
+      width: 8%;
+  }
 
   .ztree div.diy:first-child {
       text-align: left;
@@ -177,7 +191,7 @@ include_once("./monthPlanSelect.php");
       			
       <button type="submit" class="btn">查询</button>
     </form>
-    <h4>项目计划 <a href="/general/project/portal/new_page/monthPlanDetail.php?pageIndex=2&dateType=month" class="pull-right">计划详情查看 >></a></h4>
+    <h4>项目计划 <a href="javascript:history.go(-1);" class="pull-right"> 《《返回 </a></h4>
     <div id="tableMain">
       <ul id="dataTree" class="ztree"></ul>
     </div>
@@ -187,51 +201,6 @@ include_once("./monthPlanSelect.php");
 //     	echo $query;
     ?>
     
-    <h4>日常事务安排 </h4>
-    <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>事务内容</th>
-            <th>参与人</th>
-            <th>所属人</th>
-            <th>部门</th>
-            <th>事务类别</th>
-            <th>开始时间</th>
-            <th>结束时间</th>
-            <th>当前进度</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>事务内容</td>
-            <td>参与人</td>
-            <td>所属人</td>
-            <td>部门</td>
-            <td>事务类别</td>
-            <td>开始时间</td>
-            <td>结束时间</td>
-            <td>
-              <div class="progress">
-                <div class="bar bar-success" style="width: 60%;"></div>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>事务内容</td>
-            <td>参与人</td>
-            <td>所属人</td>
-            <td>部门</td>
-            <td>事务类别</td>
-            <td>开始时间</td>
-            <td>结束时间<?=$typeSqlArray?></td>
-            <td>
-              <div class="progress">
-                <div class="bar" style="width: 50%;"></div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
   </div>
   <script src="/static/modules/project/js/jquery.min.js"></script>
   <script src="/static/modules/project/js/jquery.ztree.all.min.js"></script>
@@ -277,7 +246,12 @@ include_once("./monthPlanSelect.php");
           var corpCat = '<div title="' + treeNode.CORP_CAT + '">' + treeNode.CORP_CAT + '</div>';
           editStr += '<div class="diy">'+ treeNode.TASK_START_TIME +'</div>';
           editStr += '<div class="diy">'+ treeNode.TASK_END_TIME +'</div>';
-          editStr += '<div class="diy">' + formatHandle(treeNode) + '</div>';
+          editStr += '<div class="diy">' + treeNode.TASK_PERCENT_COMPLETE + '%</div>';
+          editStr += '<div class="diy"></div>';
+          editStr += '<div class="diy"></div>';
+          editStr += '<div class="diy"></div>';
+          editStr += '<div class="diy"></div>';
+          editStr += '<div class="diy"></div>';
           aObj.append(editStr);
       }
       /**
@@ -294,7 +268,8 @@ include_once("./monthPlanSelect.php");
           $.fn.zTree.init($("#dataTree"), setting, zTreeNodes);
           //添加表头
           var li_head = ' <li class="head"><a><div class="diy">所属项目</div><div class="diy">任务计划名称</div><div class="diy">负责人</div>' +
-              '<div class="diy">部门</div><div class="diy">开始时间</div><div class="diy">结束时间</div><div class="diy" id="headPercent">任务进度</div></a></li>';
+              '<div class="diy">部门</div><div class="diy">开始时间</div><div class="diy">结束时间</div><div class="diy" >任务进度</div>'+
+              '<div class="diy">计划分值</div><div class="diy">完成积分</div><div class="diy">个人检视说明</div><div class="diy">领导检视回应</div><div class="diy">确认人</div>  </a></li>';
           var rows = $("#dataTree").find('li');
           if (rows.length > 0) {
               rows.eq(0).before(li_head)

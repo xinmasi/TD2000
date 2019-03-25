@@ -14,6 +14,7 @@ include_once("inc/header.inc.php");
  * @author zfc
  *
  */
+include_once("./monthPlanSelect.php");
 ?>
 <!DOCTYPE html>
 <html lang="cn">
@@ -34,6 +35,9 @@ include_once("inc/header.inc.php");
 	  
 	<script src="<?=MYOA_JS_SERVER?>/static/js/module.js?v=<?=MYOA_SYS_VERSION?>"></script>
   	<link rel="stylesheet" href="<?=MYOA_STATIC_SERVER?>/static/modules/project/css/zTreeStyle.min.css">
+  
+  	
+  
   
   <style>
   .progress{
@@ -105,29 +109,27 @@ include_once("inc/header.inc.php");
       overflow: hidden;
   }
   .ztree div.diy:nth-child(1) {
-      width: 10%;
+      width: 16%;
   }
   .ztree div.diy:nth-child(2) {
       width: 20%;
   }
   .ztree div.diy:nth-child(3) {
-      width: 5%;
+      width: 6%;
   }
   .ztree div.diy:nth-child(4) {
-      width: 5%;
+      width: 6%;
   }
   .ztree div.diy:nth-child(5) {
-      width: 5%;
+      width: 6%;
   }
   .ztree div.diy:nth-child(6) {
-      width: 5%;
+      width: 6%;
   }
   .ztree div.diy:nth-child(7) {
-      width: 5%;
+      width: 40%;
   }
-  .ztree div.diy:nth-child(8) {
-      width: 45%;
-  }
+
 
   .ztree div.diy:first-child {
       text-align: left;
@@ -157,30 +159,36 @@ include_once("inc/header.inc.php");
     <?php include_once("./proj_menu.php"); ?>
   <div class="container-fluid">
     <form class="form-inline">
-      <label class="control-label" for="month">月份：</label>
-      <select id="month">
-        <option>2019-01</option>
-        <option>2018-12</option>
-        <option>2018-11</option>
-      </select>
-      <label class="control-label" for="department">部门：</label>
-      <select id="department">
-        <option>营销中心</option>
-        <option>运营中心</option>
-        <option>研发中心</option>
-      </select>
-      <label class="control-label" for="person">负责人：</label>
-      <select id="person">
-        <option>申辉</option>
-        <option>xxx</option>
-        <option>xxx</option>
-      </select>
+      <label class="control-label" for="month">周次：</label>
+      <input type="text" id="month" name="month" style="width:100px;" onfocus="selectMonth()" value="<?=$month?>"/>
+      
+     	  <label class="control-label" for="department">部门：</label>
+	          	<input type="hidden" name="projDept" id="projDept" value="<?=$deptId?>" />
+		        <input  name="projDeptName" id="projDeptName"  type="text" value="<?=$projDeptName?>" style="width:120px"/>
+		        <a href="javascript:;" class="orgAdd" onClick="SelectDept('','projDept','projDeptName')"><?=_("选择")?></a>&nbsp;
+          
+          <label class="control-label" for="person">负责人：</label>
+          
+	          	<input type="text" name="leaderName" id="leaderName" style="width:100px"  value="<?=$leaderName?>" >
+		        <a href="javascript:;" class="orgAdd" onClick="SelectUser('65','','leaderId', 'leaderName')"><?=_("选择")?></a>
+		        <input type="hidden" name="leaderId" id="leaderId" value="<?=$leaderId?>">&nbsp;
+      			<input type="hidden" name="pageIndex" value="<?=$pageIndex?>">
+      			<input type="hidden" name="dateType" value="week">
+      			
       <button type="submit" class="btn">查询</button>
     </form>
-    <h4>项目计划 <a href="" class="pull-right">计划详情查看 >></a></h4>
+    <h4>项目计划 
+<!--     <a href="" class="pull-right">计划详情查看 >></a> -->
+    </h4>
     <div id="tableMain">
       <ul id="dataTree" class="ztree"></ul>
     </div>
+    
+    <?php 
+    	
+//     	echo $query;
+    ?>
+    
     <h4>日常事务安排 </h4>
     <table class="table table-bordered table-striped">
         <thead>
@@ -217,7 +225,7 @@ include_once("inc/header.inc.php");
             <td>部门</td>
             <td>事务类别</td>
             <td>开始时间</td>
-            <td>结束时间</td>
+            <td>结束时间<?=$typeSqlArray?></td>
             <td>
               <div class="progress">
                 <div class="bar" style="width: 50%;"></div>
@@ -254,7 +262,7 @@ include_once("inc/header.inc.php");
           var icoObj = $("#" + treeNode.tId + "_ico");
           var spanObj = $("#" + treeNode.tId + "_span");
           aObj.attr('title', '');
-          var objname = '<div class="diy">' + (treeNode.CONTACT_USER == null ? '&nbsp;' : treeNode.CONTACT_USER) + '</div>';
+          var objname = '<div class="diy">' + (treeNode.PROJ_NAME == null ? '&nbsp;' : treeNode.PROJ_NAME) + '</div>';
           aObj.append(objname);
           aObj.append('<div class="diy swich"></div>');
           var div = $(liObj).find('div').eq(1);
@@ -266,12 +274,11 @@ include_once("inc/header.inc.php");
           var spaceStr = "<span style='height:1px;display: inline-block;width:" + (spaceWidth * treeNode.level) + "px'></span>";
           switchObj.before(spaceStr);
           var editStr = '';
-          editStr += '<div class="diy">' + (treeNode.SECTOR_NAME == null ? '&nbsp;' : treeNode.SECTOR_NAME) + '</div>';
-          editStr += '<div class="diy">' + (treeNode.CONTACT_USER == null ? '&nbsp;' : treeNode.CONTACT_USER) + '</div>';
+          editStr += '<div class="diy">' + (treeNode.USER_NAME == null ? '&nbsp;' : treeNode.USER_NAME) + '</div>';
+          editStr += '<div class="diy">' + (treeNode.DEPT_NAME == null ? '&nbsp;' : treeNode.DEPT_NAME) + '</div>';
           var corpCat = '<div title="' + treeNode.CORP_CAT + '">' + treeNode.CORP_CAT + '</div>';
-          editStr += '<div class="diy">业务项目</div>';
-          editStr += '<div class="diy">2019-01-01</div>';
-          editStr += '<div class="diy">2019-01-20</div>';
+          editStr += '<div class="diy">'+ treeNode.TASK_START_TIME +'</div>';
+          editStr += '<div class="diy">'+ treeNode.TASK_END_TIME +'</div>';
           editStr += '<div class="diy">' + formatHandle(treeNode) + '</div>';
           aObj.append(editStr);
       }
@@ -279,24 +286,17 @@ include_once("inc/header.inc.php");
        * 查询数据
        */
       function query() {
-          var data = [
-          {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","CONTACT_PHONE":"18888888888","addFlag":true,"ORG_ID":1,"id":"o1","pId":"onull","open":true,"name":"3.编码落地","modFlag":true,"CORP_CAT":"港口-天然液化气,港口-液化石油气","TYPE":"org","delFlag":true},
-          {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":null,"SECTOR_ID":1,"ORG_ID":1,"id":"s1","pId":"o1","name":"3.1前端开发","modFlag":true,"PARENT_ID":null,"CORP_CAT":"港口-天然液化气","TYPE":"sector","delFlag":true},
-          {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":"0","SECTOR_ID":2,"ORG_ID":1,"id":"s2","pId":"s1","name":"3.1.1应用模块分析","modFlag":true,"PARENT_ID":1,"CORP_CAT":"港口-集装箱","TYPE":"sector","delFlag":true},
-          {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":"0","SECTOR_ID":3,"ORG_ID":1,"id":"s3","pId":"s1","name":"3.1.2其他模块分析","modFlag":true,"PARENT_ID":1,"CORP_CAT":"港口-集装箱","TYPE":"sector","delFlag":true},
-          {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":"0","SECTOR_ID":4,"ORG_ID":1,"id":"s4","pId":"s2","name":"3.1.1.1能耗界面开发","modFlag":true,"PARENT_ID":2,"CORP_CAT":"港口-集装箱","TYPE":"sector","delFlag":true},
-          {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":"0","SECTOR_ID":5,"ORG_ID":1,"id":"s5","pId":"s3","name":"3.1.2.1设备监控界面开发","modFlag":true,"PARENT_ID":3,"CORP_CAT":"港口-集装箱","TYPE":"sector","delFlag":true},
-          {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":"0","SECTOR_ID":8,"ORG_ID":1,"id":"s8","pId":"s2","name":"3.1.1.2个人中心界面开发","modFlag":true,"PARENT_ID":2,"CORP_CAT":"-","TYPE":"sector","delFlag":true},
-          {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":"0","SECTOR_ID":9,"ORG_ID":1,"id":"s9","pId":"s2","name":"3.1.1.3空调监控界面开发","modFlag":true,"PARENT_ID":2,"CORP_CAT":"-","TYPE":"sector","delFlag":true},
-          {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":null,"SECTOR_ID":38,"ORG_ID":1,"id":"s38","pId":"o1","name":"3.1后端开发","modFlag":true,"PARENT_ID":null,"CORP_CAT":"-","TYPE":"sector","delFlag":true},
-          {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":null,"SECTOR_ID":61,"ORG_ID":1,"id":"s61","pId":"o1","name":"3.1调试","modFlag":true,"PARENT_ID":null,"CORP_CAT":"港口-天然液化气","TYPE":"sector","delFlag":true}]
+          var data = <?=$jsonDate?>;
+//               [
+//           {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","CONTACT_PHONE":"18888888888","addFlag":true,"ORG_ID":1,"id":"o1","pId":"onull","open":true,"name":"3.编码落地","modFlag":true,"CORP_CAT":"港口-天然液化气,港口-液化石油气","TYPE":"org","delFlag":true},
+//           {"CONTACT_USER":"xxx项目","SECTOR_NAME":"某某","addFlag":true,"CONTACT_PHONE":null,"SECTOR_ID":1,"ORG_ID":1,"id":"s1","pId":"o1","name":"3.1前端开发","modFlag":true,"PARENT_ID":null,"CORP_CAT":"港口-天然液化气","TYPE":"sector","delFlag":true},
           //初始化列表
           zTreeNodes = data;
           //初始化树
           $.fn.zTree.init($("#dataTree"), setting, zTreeNodes);
           //添加表头
           var li_head = ' <li class="head"><a><div class="diy">所属项目</div><div class="diy">任务计划名称</div><div class="diy">负责人</div>' +
-              '<div class="diy">部门</div><div class="diy">类型</div><div class="diy">开始时间</div><div class="diy">结束时间</div><div class="diy">任务进度</div></a></li>';
+              '<div class="diy">部门</div><div class="diy">开始时间</div><div class="diy">结束时间</div><div class="diy" id="headPercent">任务进度</div></a></li>';
           var rows = $("#dataTree").find('li');
           if (rows.length > 0) {
               rows.eq(0).before(li_head)
@@ -311,7 +311,14 @@ include_once("inc/header.inc.php");
        * @returns {string}
        */
       function formatHandle(treeNode) {
-          var htmlStr = "<div class='progress' style='margin-left:"+(treeNode.level+treeNode.getIndex())*20 +"px'><div class='bar bar-success' style='width: 60%;'></div></div>";
+          var date01 = "<?=$month?>"+"-01";
+//           var startNum = treeNode.TASK_START_TIME.substr(-2)*1;
+          var startNum = datedifference(date01,treeNode.TASK_START_TIME);
+          var diffDay = datedifference(treeNode.TASK_START_TIME,treeNode.TASK_END_TIME);
+		  var divWidth = (diffDay+1)*16+"px"; 
+		  
+          
+          var htmlStr = "<div class='progress' style='margin-left:"+(startNum)*16 +"px;width:"+divWidth+";'><div class='bar bar-success' style='width: "+treeNode.TASK_PERCENT_COMPLETE +"%;'></div></div>";
           return htmlStr;
       }
   
@@ -320,6 +327,23 @@ include_once("inc/header.inc.php");
           //初始化数据
           query();
       })
+      
+      function datedifference(sDate1, sDate2) {    //sDate1和sDate2是2006-12-18格式  
+        var dateSpan,
+            tempDate,
+            iDays;
+        sDate1 = Date.parse(sDate1);
+        sDate2 = Date.parse(sDate2);
+        dateSpan = sDate2 - sDate1;
+//         dateSpan = Math.abs(dateSpan);
+        iDays = Math.floor(dateSpan / (24 * 3600 * 1000));
+        return iDays
+    };
+
+    function selectMonth() {  
+        WdatePicker({ dateFmt: 'yyyy-MM', isShowToday: false, isShowClear: false });  
+    }  
+    
   </script>
 </body>
 </html>

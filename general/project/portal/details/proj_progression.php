@@ -439,7 +439,7 @@ function look_flow(RUN_ID){
 			var num = tempArray.length * 20;
 			var styleTd = "text-align: left; padding-left:" + num + "px;";
 			
-			$("#tree").append("<tr><td style='"+styleTd+"'>"+datas.TASK_NO+" <a href='proj_task.php?VALUE=2&TASK_ID="+datas.TASK_ID+"&PROJ_ID="+datas.PROJ_ID+"'>"+datas.TASK_NAME+"</a></td><td>"+datas.TASK_USER+"</td><td>"+datas.TASK_START_TIME+"</td><td>"+datas.TASK_TIME+"<?= _("天") ?></td><td>"+datas.TASK_END_TIME+"</td><td><a href='/general/project/proj/task/task_detail.php?PROJ_ID="+datas.PROJ_ID+"&TASK_ID="+datas.TASK_ID+"'  title='"+datas.TASK_LOG+"'><div class='progress progress-striped progress-info active' style='margin:0px' ><div class='bar' style='width:"+datas.TASK_PERCENT_COMPLETE+"%;'><span style='color:black'>"+datas.TASK_PERCENT_COMPLETE+"%</span></div></div></a></td></tr>");
+			$("#tree").append("<tr><td style='"+styleTd+"'>"+datas.TASK_NO+" <a href='proj_task.php?VALUE=2&TASK_ID="+datas.TASK_ID+"&PROJ_ID="+datas.PROJ_ID+"'>"+datas.TASK_NAME+"</a></td><td>"+datas.TASK_USER+"</td><td>"+datas.TASK_START_TIME+"</td><td>"+datas.TASK_TIME+"<?= _("天") ?></td><td>"+datas.TASK_END_TIME+"</td><td><a href='/general/project/proj/task/task_detail.php?PROJ_ID="+datas.PROJ_ID+"&TASK_ID="+datas.TASK_ID+"'  title='"+datas.TASK_LOG+"'><div class='progress progress-striped progress-info active' style='margin:0px;border-radius:8px;' ><div class='bar' style='width:"+datas.TASK_PERCENT_COMPLETE+"%;background-color:#1EafFF;'><span style='color:black'>"+datas.TASK_PERCENT_COMPLETE+"%</span></div></div></a></td></tr>");
 			if(datas.hasOwnProperty("SON"))
 			{
 				son(datas.SON);
@@ -461,7 +461,7 @@ function look_flow(RUN_ID){
 			var num = tempArray.length * 20;
 			var styleTd = "text-align: left; padding-left:" + num + "px;";
 			
-			$("#tree").append("<tr><td style='"+styleTd+"'>"+date[i].TASK_NO+" <a href='proj_task.php?VALUE=2&TASK_ID="+date[i].TASK_ID+"&PROJ_ID="+date[i].PROJ_ID+"'>"+date[i].TASK_NAME+"</a></td><td>"+date[i].TASK_USER+"</td><td>"+date[i].TASK_START_TIME+"</td><td>"+date[i].TASK_TIME+"<?= _("天") ?></td><td>"+date[i].TASK_END_TIME+"</td><td><a href='/general/project/proj/task/task_detail.php?PROJ_ID="+date[i].PROJ_ID+"&TASK_ID="+date[i].TASK_ID+"'  title='"+date[i].TASK_LOG+"'><div class='progress progress-striped progress-info active' style='margin:0px' ><div class='bar' style='width:"+date[i].TASK_PERCENT_COMPLETE+"%;'><span style='color:black'>"+date[i].TASK_PERCENT_COMPLETE+"%</span></div></div></a></td></tr>");
+			$("#tree").append("<tr><td style='"+styleTd+"'>"+date[i].TASK_NO+" <a href='proj_task.php?VALUE=2&TASK_ID="+date[i].TASK_ID+"&PROJ_ID="+date[i].PROJ_ID+"'>"+date[i].TASK_NAME+"</a></td><td>"+date[i].TASK_USER+"</td><td>"+date[i].TASK_START_TIME+"</td><td>"+date[i].TASK_TIME+"<?= _("天") ?></td><td>"+date[i].TASK_END_TIME+"</td><td><a href='/general/project/proj/task/task_detail.php?PROJ_ID="+date[i].PROJ_ID+"&TASK_ID="+date[i].TASK_ID+"'  title='"+date[i].TASK_LOG+"'><div class='progress progress-striped progress-info active' style='margin:0px;border-radius:8px;' ><div class='bar' style='width:"+date[i].TASK_PERCENT_COMPLETE+"%;background-color:#1EafFF;'><span style='color:black'>"+date[i].TASK_PERCENT_COMPLETE+"%</span></div></div></a></td></tr>");
 			if(date[i].hasOwnProperty("SON"))
 			{
 				son(date[i].SON);

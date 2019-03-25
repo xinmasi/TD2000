@@ -20,12 +20,14 @@ jQuery(document).ready(function(){
         <li id="sidebar_li_3">
             <a href="proj_time.php?VALUE=3"><span class="time-1"></span><?=_("时间管理")?></a>
         </li>
+        <!--  
         <li id="sidebar_li_4">
             <a href="proj_budget.php?VALUE=4"><span class="money-1"></span><?=_("预算及成本")?></a>
         </li>
         <li id="sidebar_li_5">
             <a href="proj_resource.php?VALUE=5"><span class="setting-1"></span><?=_("资源管理")?></a>
         </li>
+        -->
         <li id="sidebar_li_6">
             <a href="proj_report.php?VALUE=6"><span class="paper-1"></span><?=_("汇总报表")?></a>
         </li>
